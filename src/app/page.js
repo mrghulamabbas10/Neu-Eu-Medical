@@ -5,6 +5,8 @@ import Providers from "@/components/home/providers";
 import Section2 from "@/components/home/section-2";
 import Section3 from "@/components/home/section-3";
 import StepsSlider from "@/components/home/steps";
+import Pricing from "../components/home/pricing";
+import Join from "@/components/home/join";
 
 
 export default function Home() {
@@ -19,6 +21,8 @@ export default function Home() {
       </div>
       <StepsSlider />
       <Providers />
+      <Pricing />
+      <Join />
     </div>
   );
 }
