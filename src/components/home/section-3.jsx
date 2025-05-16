@@ -74,11 +74,11 @@ export default function Section3() {
             </motion.div>
 
             {/* Cards Grid */ }
-            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-8 mt-10 sm:mt-20'>
+            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-8 mt-10 sm:mt-20 '>
                 { data.map((item, idx) => (
                     <motion.div
                         key={ idx }
-                        className='relative'
+                        className='sticky top-10'
                         initial="hidden"
                         whileInView="visible"
                         viewport={ { once: true } }

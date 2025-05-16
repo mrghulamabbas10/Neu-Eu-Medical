@@ -40,6 +40,33 @@ const cardVariants = {
     }),
 };
 
+
+// Container animation
+const fadeInUpContainer = {
+    hidden: {},
+    show: {
+        transition: {
+            staggerChildren: 0.15,
+        },
+    },
+};
+
+// Child animation (word)
+const wordAnimation = {
+    hidden: { opacity: 0, y: 30 },
+    show: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            duration: 0.5,
+            ease: "easeOut",
+        },
+    },
+};
+
+
+const heading = "You deserve Providers who listen.".split(" ");
+
 export default function Providers() {
     return (
         <motion.div
@@ -50,15 +77,19 @@ export default function Providers() {
             transition={ { type: 'spring', stiffness: 100, damping: 14 } }
         >
             {/* Title */ }
-            <motion.h2
-                className='text-center md:text-5xl text-3xl font-semibold text-[#751010]'
-                initial={ { rotateX: 90, opacity: 0 } }
-                whileInView={ { rotateX: 0, opacity: 1 } }
+            <motion.h1
+                className="md:text-5xl text-3xl w-2/5 mx-auto text-[#751010] font-semibold text-center leading-tight flex flex-wrap justify-center gap-2"
+                variants={ fadeInUpContainer }
+                initial="hidden"
+                whileInView="show"
                 viewport={ { once: true } }
-                transition={ { duration: 0.6, type: 'spring', bounce: 0.4 } }
             >
-                You deserve Providers <br /> who listen.
-            </motion.h2>
+                { heading.map((word, index) => (
+                    <motion.span key={ index } variants={ wordAnimation }>
+                        { word }
+                    </motion.span>
+                )) }
+            </motion.h1>
 
             <motion.p
                 className='text-[#751010] mt-4 md:text-base text-sm'

@@ -12,6 +12,29 @@ import { IoIosCall } from "react-icons/io";
 import { LuDot } from "react-icons/lu";
 import Star from "../assets/star";
 
+
+const staggerContainer = {
+    hidden: {},
+    show: {
+        transition: {
+            staggerChildren: 0.3,
+        },
+    },
+};
+
+const fadeInFromRight = {
+    hidden: { opacity: 0, x: 50 },
+    show: {
+        opacity: 1,
+        x: 0,
+        transition: {
+            duration: 0.6,
+            ease: "easeOut",
+        },
+    },
+};
+
+
 const fadeInUp = {
     hidden: { opacity: 0, y: 40 },
     visible: (i = 1) => ({
@@ -24,6 +47,49 @@ const fadeInUp = {
         },
     }),
 };
+
+const tagContainer = {
+    hidden: {},
+    show: {
+        transition: {
+            staggerChildren: 0.2,
+            delayChildren: 0.3,
+        },
+    },
+};
+
+const tagItem = {
+    hidden: { opacity: 0, x: -20 },
+    show: { opacity: 1, x: 0, transition: { duration: 0.4 } },
+};
+
+
+const heading = "Weight loss that works".split(" ");
+
+// Container animation
+const fadeInUpContainer = {
+    hidden: {},
+    show: {
+        transition: {
+            staggerChildren: 0.15,
+        },
+    },
+};
+
+// Child animation (word)
+const wordAnimation = {
+    hidden: { opacity: 0, y: 30 },
+    show: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            duration: 0.5,
+            ease: "easeOut",
+        },
+    },
+};
+
+
 
 export default function Hero() {
     return (
@@ -44,12 +110,19 @@ export default function Hero() {
 
                 {/* Main Heading */ }
                 <motion.h1
-                    className="text-4xl md:text-5xl lg:text-6xl text-[#751010] font-bold leading-tight"
-                    variants={ fadeInUp }
-                    custom={ 1 }
+                    className="text-4xl md:text-5xl lg:text-7xl text-[#751010] font-bold leading-tight flex flex-wrap gap-2"
+                    variants={ fadeInUpContainer }
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={ { once: true } }
                 >
-                    Weight loss that works
+                    { heading.map((word, index) => (
+                        <motion.span key={ index } variants={ wordAnimation }>
+                            { word }
+                        </motion.span>
+                    )) }
                 </motion.h1>
+
 
                 {/* Description */ }
                 <motion.p className="text-base text-gray-800" variants={ fadeInUp } custom={ 2 }>
@@ -68,9 +141,15 @@ export default function Hero() {
                 </motion.div>
 
                 {/* Features Grid */ }
-                <motion.div className="grid grid-cols-1 sm:grid-cols-2 gap-5" variants={ fadeInUp } custom={ 4 }>
+                <motion.div
+                    className="grid grid-cols-1 sm:grid-cols-2 gap-5"
+                    variants={ staggerContainer }
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={ { once: true } }
+                >
                     {/* Left Box */ }
-                    <div className="relative">
+                    <motion.div variants={ fadeInFromRight } className="relative">
                         <p className="absolute top-4 left-4 font-medium text-white z-10">
                             Licensed <br /> Providers
                         </p>
@@ -81,15 +160,14 @@ export default function Hero() {
                             height={ 206 }
                             className="w-full rounded-xl"
                         />
-                    </div>
+                    </motion.div>
 
                     {/* Right Box */ }
-                    <div className="relative bg-white rounded-3xl overflow-hidden">
-                        <div className="absolute top-5 left-4 text-sm">
+                    <motion.div variants={ fadeInFromRight } className="relative bg-white rounded-3xl overflow-hidden">
+                        <div className="absolute text-sm flex flex-col justify-between h-full p-6">
                             <p className="font-medium">Neu Eu Medical</p>
                             <p className="text-gray-600 text-sm mt-4 leading-snug">
-                                Achieve Your Weight Loss <br /> Goals with Neu Eu Medical's <br /> Telehealth
-                                Solutions
+                                Achieve Your Weight Loss <br /> Goals with Neu Eu Medical's <br /> Telehealth Solutions
                             </p>
                             <Link
                                 href="tel:+9723325266"
@@ -105,8 +183,9 @@ export default function Hero() {
                             height={ 206 }
                             className="w-full"
                         />
-                    </div>
+                    </motion.div>
                 </motion.div>
+
 
                 {/* Talk to Providers */ }
                 <motion.div
@@ -128,8 +207,8 @@ export default function Hero() {
             {/* Right Avatar Image */ }
             <motion.div
                 className="relative w-full h-full"
-                initial={ { opacity: 0, x: 50 } }
-                whileInView={ { opacity: 1, x: 0 } }
+                initial={ { opacity: 0, scale: 1.1 } }
+                whileInView={ { opacity: 1, scale: 1 } }
                 transition={ { delay: 0.3, duration: 0.8, ease: "easeOut" } }
                 viewport={ { once: true } }
             >
@@ -144,32 +223,40 @@ export default function Hero() {
                     alt="main avatar"
                     width={ 745 }
                     height={ 900 }
-                    className="w-full mx-auto md:absolute md:bottom-0 md:right-0"
+                    className="w-full mx-auto md:absolute md:bottom-0 md:right-0 h-full object-center"
                 />
 
                 {/* Tags */ }
-                <div className="absolute bottom-4 right-4 space-y-2 text-xs">
-                    <div className="flex items-center justify-end gap-2 flex-wrap">
-                        <span className="bg-[#84848433] px-3 py-1 rounded-full border border-white text-white flex items-center">
+                <motion.div
+                    className="absolute bottom-4 right-4 space-y-2 text-xs"
+                    variants={ tagContainer }
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={ { once: true } }
+                >
+                    <motion.div variants={ tagContainer } className="flex items-center justify-end gap-2 flex-wrap">
+                        <motion.span variants={ tagItem } className="bg-[#84848433] px-3 py-1 rounded-full border border-white text-white flex items-center">
                             <LuDot /> Clinic
-                        </span>
-                        <span className="bg-white px-3 py-1 rounded-full border border-white text-black flex items-center">
+                        </motion.span>
+                        <motion.span variants={ tagItem } className="bg-white px-3 py-1 rounded-full border border-white text-black flex items-center">
                             <LuDot /> Medicine CL
-                        </span>
-                    </div>
-                    <div className="flex items-center justify-end gap-2 flex-wrap">
-                        <span className="bg-[#84848433] px-3 py-1 rounded-full border border-white text-white flex items-center">
+                        </motion.span>
+                    </motion.div>
+
+                    <motion.div variants={ tagContainer } className="flex items-center justify-end gap-2 flex-wrap">
+                        <motion.span variants={ tagItem } className="bg-[#84848433] px-3 py-1 rounded-full border border-white text-white flex items-center">
                             <LuDot /> Lifestyle
-                        </span>
-                        <span className="bg-[#84848433] px-3 py-1 rounded-full border border-white text-white flex items-center">
+                        </motion.span>
+                        <motion.span variants={ tagItem } className="bg-[#84848433] px-3 py-1 rounded-full border border-white text-white flex items-center">
                             <LuDot /> Medical
-                        </span>
-                        <span className="bg-[#84848433] px-3 py-1 rounded-full border border-white text-white flex items-center">
+                        </motion.span>
+                        <motion.span variants={ tagItem } className="bg-[#84848433] px-3 py-1 rounded-full border border-white text-white flex items-center">
                             <LuDot /> Healthcare
-                        </span>
-                    </div>
-                </div>
+                        </motion.span>
+                    </motion.div>
+                </motion.div>
             </motion.div>
+
         </div>
     );
 }

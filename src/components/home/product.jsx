@@ -47,6 +47,22 @@ const fadeUp = {
     }),
 };
 
+const fadeInFromBottomLeft = {
+    hidden: { opacity: 0, x: -50, y: 50 },
+    show: (custom = 1) => ({
+        opacity: 1,
+        x: 0,
+        y: 0,
+        transition: {
+            duration: 0.8,
+            delay: custom * 0.2,
+            ease: "easeOut",
+        },
+    }),
+};
+
+
+
 export default function Product() {
     return (
         <motion.div
@@ -77,18 +93,23 @@ export default function Product() {
 
             {/* Center Image */ }
             <motion.div
-                className='flex justify-center items-center'
-                variants={ fadeUp }
+                className="flex justify-center items-center"
+                variants={ fadeInFromBottomLeft }
+                initial="hidden"
+                whileInView="show"
                 custom={ 1 }
+                viewport={ { once: true } }
             >
                 <Image
                     src="/images/product-1.png"
-                    alt='product-1'
+                    alt="product-1"
                     width={ 516 }
                     height={ 594 }
-                    className='w-full max-w-[400px] md:max-w-full'
+                    className="w-full max-w-[400px] md:max-w-full"
                 />
             </motion.div>
+
+
 
             {/* Right List */ }
             <motion.div

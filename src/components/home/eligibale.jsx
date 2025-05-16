@@ -54,6 +54,26 @@ const navLinks = [
     { name: "📞 +9723325266", path: "" },
 ];
 
+
+const headingContainer = {
+    hidden: {},
+    show: {
+        transition: {
+            staggerChildren: 0.2, // delay between lines
+        },
+    },
+};
+
+const lineVariant = {
+    hidden: { opacity: 0, y: 40 },
+    show: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.6, ease: "easeOut" },
+    },
+};
+
+
 export default function Eligibale() {
     return (
         <div className='Providers pt-20 pb-10 px-4 md:px-14 md:mt-[-5vw] mt-[-16vw]'>
@@ -72,16 +92,24 @@ export default function Eligibale() {
                     >
                         Join 5000+ weight loss patients
                     </motion.h3>
-                    <motion.h2
+
+
+                    <motion.div
+                        variants={ headingContainer }
+                        initial="hidden"
+                        whileInView="show"
+                        viewport={ { once: true } }
                         className="text-2xl md:text-4xl uppercase mt-2 leading-tight md:leading-snug"
-                        variants={ textVariants }
                     >
-                        Take our 5 min quiz to
-                        <br />
-                        <span className="ml-4 md:ml-10">see if you're eligible,</span>
-                        <br />
-                        <span className="ml-6 md:ml-14"> no insurance needed</span>
-                    </motion.h2>
+                        <motion.p variants={ lineVariant }>Take our 5 min quiz to</motion.p>
+                        <motion.p variants={ lineVariant } className="ml-4 md:ml-10">
+                            see if you're eligible,
+                        </motion.p>
+                        <motion.p variants={ lineVariant } className="ml-6 md:ml-14">
+                            no insurance needed
+                        </motion.p>
+                    </motion.div>
+
 
                     <motion.div
                         className="flex items-end gap-5 my-8"

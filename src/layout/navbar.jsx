@@ -14,28 +14,69 @@ const HomeData = [
     { name: "Appointment", path: "/appointment" },
 ];
 
-export default function Navbar() {
+const logoVariant = {
+    hidden: { scale: 0, opacity: 0 },
+    show: { scale: 1, opacity: 1, transition: { duration: 0.6, ease: "easeOut" } }
+};
+
+const navItemVariant = {
+    hidden: { y: 20, opacity: 0 },
+    show: (i) => ({
+        y: 0,
+        opacity: 1,
+        transition: { delay: i * 0.15, duration: 0.5, ease: "easeOut" }
+    })
+};
+
+const rightSectionVariant = {
+    hidden: { x: 30, opacity: 0 },
+    show: { x: 0, opacity: 1, transition: { delay: 0.6, duration: 0.6, ease: "easeOut" } }
+};
+
+export default function Navbar({ className }) {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
         <div className="md:px-8 px-3 md:pt-8 pt-3">
-            <div className="bg-[#FFE6DF] py-4 px-6 md:px-10 flex items-center justify-between rounded-tl-3xl rounded-tr-3xl relative z-50">
+            <div className={ `${className ? className : "bg-[#FFE6DF]"} py-4 px-6 md:px-10 flex items-center justify-between rounded-tl-3xl rounded-tr-3xl relative z-50` }>
                 {/* Logo */ }
-                <div>
-                    <Image src="/images/logo.png" alt="logo" width={ 107 } height={ 40 } />
-                </div>
+                <motion.div
+                    variants={ logoVariant }
+                    initial="hidden"
+                    animate="show"
+                >
+                    <Link href="/" className="block">
+                        <Image src="/images/logo.png" alt="logo" width={ 107 } height={ 40 } />
+                    </Link>
+                </motion.div>
 
                 {/* Desktop Navigation */ }
-                <div className="hidden md:flex items-center gap-12 bg-[#FFFFFF66] border border-[#FFFFFF] px-10 p-2 rounded-full">
+                <motion.div className="hidden md:flex items-center gap-12 bg-[#FFFFFF66] border border-[#FFFFFF] px-10 p-2 rounded-full"
+                    variants={ navItemVariant }
+                    initial="hidden"
+                    animate="show"
+                >
                     { HomeData.map((item, idx) => (
-                        <Link key={ idx } href={ item.path }>
-                            { item.name }
-                        </Link>
+                        <motion.div
+                            key={ idx }
+                            custom={ idx }
+                            variants={ navItemVariant }
+                            initial="hidden"
+                            animate="show"
+                        >
+                            <Link href={ item.path }>{ item.name }</Link>
+                        </motion.div>
                     )) }
-                </div>
+                </motion.div>
+
 
                 {/* Right Side */ }
-                <div className="hidden md:flex items-center gap-2">
+                <motion.div
+                    className="hidden md:flex items-center gap-2"
+                    variants={ rightSectionVariant }
+                    initial="hidden"
+                    animate="show"
+                >
                     <Link
                         href="tel:+9723325266"
                         className="flex items-center bg-[#FFFFFF66] border border-[#FFFFFF] px-3 py-1 gap-3 rounded-full"
@@ -48,7 +89,8 @@ export default function Navbar() {
                     <div className="flex items-center justify-center cursor-pointer bg-[#FFFFFF66] border border-[#FFFFFF] w-10 h-10 rounded-full">
                         <FiSearch />
                     </div>
-                </div>
+                </motion.div>
+
 
                 {/* Mobile Menu Button */ }
                 <div className="md:hidden">

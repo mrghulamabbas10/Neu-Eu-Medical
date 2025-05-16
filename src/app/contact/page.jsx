@@ -1,16 +1,14 @@
-import ConsentFormPage from '@/components/contact'
-import Footer2 from '@/layout/footer-2'
+import ContactUsPage from '@/components/contact'
 import Navbar from '@/layout/navbar'
 import React from 'react'
 
 export default function Page() {
     return (
-        <>
-            <div className='bg-[#FFE6DF] md:rounded-b-[10%] rounded-b-[5%]'>
-                <Navbar />
-                <ConsentFormPage />
+        <div>
+            <Navbar className={ "bg-[#FFE4D1]" } />
+            <div className='md:px-8 px-3'>
+                <ContactUsPage />
             </div>
-            <Footer2 className="bg-[#FFE6DF] mt-5" />
-        </>
+        </div>
     )
 }

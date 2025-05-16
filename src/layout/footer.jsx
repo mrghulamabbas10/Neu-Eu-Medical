@@ -28,7 +28,10 @@ export default function Footer() {
                 whileInView="show"
                 viewport={ { once: true, amount: 0.3 } }
             >
-                <Image src="/images/logo.png" alt="logo" width={ 107 } height={ 40 } />
+                {/* Logo */ }
+                <Link href={ "/" } className="block">
+                    <Image src="/images/logo.png" alt="logo" width={ 107 } height={ 40 } />
+                </Link>
                 <div className="flex flex-wrap gap-4 md:gap-8 text-[#333] opacity-80">
                     <Link href="#">Terms of Service</Link>
                     <Link href="/contact">Contact Us</Link>
