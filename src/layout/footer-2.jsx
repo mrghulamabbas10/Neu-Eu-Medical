@@ -16,13 +16,12 @@ const container = {
 };
 
 
-
-export default function Footer() {
+export default function Footer2({ className }) {
     return (
-        <footer className="md:px-8 px-3 bg-[#fae9d9] py-6 ">
+        <div className="md:px-10 px-4 mb-5">
             {/* Footer Bottom */ }
             <motion.div
-                className="flex flex-col md:flex-row items-center justify-between bg-white p-5 rounded-3xl gap-4 text-sm"
+                className={ `flex flex-col md:flex-row items-center justify-between ${className ? className : "bg-[#F2E1D0]"} p-5 rounded-3xl gap-4 text-sm` }
                 variants={ container }
                 initial="hidden"
                 whileInView="show"
@@ -35,6 +34,6 @@ export default function Footer() {
                     <Link href="#">Privacy Policy</Link>
                 </div>
             </motion.div>
-        </footer>
-    );
+        </div>
+    )
 }

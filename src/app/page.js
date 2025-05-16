@@ -9,11 +9,15 @@ import Pricing from "../components/home/pricing";
 import Join from "@/components/home/join";
 import FAQs from "@/components/home/FAQs";
 import CallSection from "@/components/home/callSection";
+import Eligibale from "@/components/home/eligibale";
+import Navbar from "@/layout/navbar";
+import Footer from "@/layout/footer";
 
 
 export default function Home() {
   return (
     <div>
+      <Navbar />
       <div className="md:px-8 px-3">
         <Hero />
         <Brands />
@@ -27,6 +31,8 @@ export default function Home() {
       <Pricing />
       <Join />
       <FAQs />
+      <Eligibale />
+      <Footer />
     </div>
   );
 }

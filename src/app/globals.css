@@ -53,3 +53,8 @@ body {
   width: 100%;
   height: 100%;
 }
+
+.blog-content h2 {
+  color: #751010;
+  font-size: 1.5rem;
+}
