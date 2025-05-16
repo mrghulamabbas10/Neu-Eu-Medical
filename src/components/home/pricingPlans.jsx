@@ -1,7 +1,7 @@
-"use client"
+'use client'
 
-import { motion } from "framer-motion";
-import CheckIcon from "../assets/check";
+import { motion } from 'framer-motion'
+import CheckIcon from '../assets/check'
 
 const pricingData = [
     {
@@ -14,7 +14,7 @@ const pricingData = [
             "Regular virtual consultations to monitor progress.",
             "Ongoing support to ensure long-term weight loss and effective weight loss."
         ],
-        highlight: true
+
     },
     {
         title: "Tirzepatide Weight Loss Program",
@@ -49,34 +49,76 @@ const pricingData = [
             "Ongoing support to ensure long-term weight loss and effective weight loss."
         ]
     }
-];
+]
+
+// Animation Variants
+const cardVariants = {
+    hidden: { opacity: 0, y: 30 },
+    show: (i) => ({
+        opacity: 1,
+        y: 0,
+        transition: {
+            delay: i * 0.2,
+            duration: 0.6,
+            ease: 'easeOut',
+            staggerChildren: 0.1,
+            delayChildren: 0.2,
+        }
+    })
+}
+
+const textVariants = {
+    hidden: { opacity: 0, y: 10 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.4 } }
+}
 
 export default function PricingPlans() {
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-10 ">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-10">
             { pricingData.map((plan, index) => (
                 <motion.div
                     key={ index }
-                    className={ `sticky top-10 z-10 rounded-2xl shadow-lg p-6 border transition-all duration-300 shadow_class border-[#D4D4D4] bg-white hover:scale-105` }
-                    initial={ { opacity: 0, y: 50 } }
-                    animate={ { opacity: 1, y: 0 } }
-                    transition={ { delay: index * 0.1 } }
+                    className="sticky top-10 z-10 rounded-2xl shadow-lg p-6 border transition-all duration-300 shadow_class border-[#D4D4D4] bg-white hover:scale-105"
+                    variants={ cardVariants }
+                    initial="hidden"
+                    whileInView="show"
+                    viewport={ { once: true, amount: 0.2 } }
+                    custom={ index }
                 >
-                    <h3 className="text-lg font-semibold text-[#7A3333] mb-2 text-center">{ plan.title }</h3>
-                    <p className="text-3xl font-bold text-[#7A3333] text-center">{ plan.price }</p>
-                    <p className="text-sm text-gray-500 text-center mb-4">{ plan.subtitle }</p>
-                    <ul className="space-y-2">
+                    <motion.h3
+                        className="text-lg font-semibold text-[#7A3333] mb-2 text-center"
+                        variants={ textVariants }
+                    >
+                        { plan.title }
+                    </motion.h3>
+                    <motion.p
+                        className="text-3xl font-bold text-[#7A3333] text-center"
+                        variants={ textVariants }
+                    >
+                        { plan.price }
+                    </motion.p>
+                    <motion.p
+                        className="text-sm text-gray-500 text-center mb-4"
+                        variants={ textVariants }
+                    >
+                        { plan.subtitle }
+                    </motion.p>
+                    <motion.ul className="space-y-2">
                         { plan.features.map((feature, i) => (
-                            <li key={ i } className="flex items-start gap-2 text-[#7A3333]">
-                                <span className="text-lg">
-                                    <CheckIcon className=" mt-1" />
+                            <motion.li
+                                key={ i }
+                                className="flex items-start gap-2 text-[#7A3333]"
+                                variants={ textVariants }
+                            >
+                                <span className="text-lg mt-1">
+                                    <CheckIcon />
                                 </span>
-                                <span className="text-sm font-medium ">{ feature }</span>
-                            </li>
+                                <span className="text-sm font-medium">{ feature }</span>
+                            </motion.li>
                         )) }
-                    </ul>
+                    </motion.ul>
                 </motion.div>
             )) }
         </div>
-    );
+    )
 }

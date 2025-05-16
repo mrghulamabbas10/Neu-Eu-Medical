@@ -37,11 +37,18 @@ export default function Join() {
         show: { opacity: 1, scale: 1, transition: { type: 'spring', stiffness: 100 } },
     };
 
+    const bubble = {
+        hidden: { opacity: 0, scale: 0.3 },
+        show: { opacity: 1, scale: 1, transition: { type: 'spring', stiffness: 120 } },
+    };
+
 
     return (
-        <div className="px-[20px] md:px-[120px] py-16 overflow-hidden">
+        <div className="px-[20px] md:px-[120px] py-16 overflow-hidden relative">
+            <Image src="/images/bubbuls.png" alt="img1" width={ 200 } height={ 200 } className="absolute top-[8vw] right-[3vw]" />
+
             <motion.h2
-                className="text-3xl md:text-4xl text-[#751010] font-medium text-center"
+                className="text-2xl md:text-4xl text-[#751010] font-medium text-center"
                 variants={ textVariant }
                 initial="hidden"
                 animate="show"
@@ -52,7 +59,7 @@ export default function Join() {
             </motion.h2>
 
             <motion.p
-                className="text-[#751010] font-medium mt-5 text-center"
+                className="text-[#751010] font-medium mt-5 md:text-base text-sm text-center"
                 variants={ textVariant }
                 initial="hidden"
                 animate="show"
@@ -87,11 +94,26 @@ export default function Join() {
                     <motion.div variants={ popup } className="-mt-10 ml-9">
                         <Image src="/images/avatar-4.png" alt="img4" width={ 69 } height={ 69 } />
                     </motion.div>
+
+                    <motion.div variants={ popup } className="-mt-5 ml-auto">
+                        <Image src="/images/see-more-btn.png" alt="img4" width={ 142 } height={ 142 } />
+                    </motion.div>
                 </div>
 
                 {/* Center group */ }
-                <div className="w-full md:w-[40%]">
-                    <motion.div variants={ popup } className="ml-auto">
+                <div className="w-full md:w-[40%] relative">
+
+                    {/* Rating */ }
+                    <motion.div
+                        variants={ bubble }
+                        className="absolute md:right-0 left-0 md:left-auto bg-gray-50 rounded-full p-5 top-[5vw] text-center text-[#751010]"
+                    >
+                        <p className="text-3xl font-semibold">4.8</p>
+                        <p className=" text-xl">★★★★★</p>
+                        <p className="text-xs ">8K+ REVIEWS</p>
+                    </motion.div>
+
+                    <motion.div variants={ popup } className="ml-32">
                         <Image src="/images/avatar-6.png" alt="img6" width={ 160 } height={ 160 } />
                     </motion.div>
                     <div className="flex gap-2 mt-5">
