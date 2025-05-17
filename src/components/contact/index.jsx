@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { FaPaperPlane, FaFacebookF, FaInstagram, FaRegUser } from "react-icons/fa";
+import { FaPaperPlane, FaRegUser } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
 import { IoCallOutline } from "react-icons/io5";
 import { MdOutlineCall } from "react-icons/md";

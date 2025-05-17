@@ -132,7 +132,7 @@ export default function Hero() {
                 {/* CTA Button */ }
                 <motion.div variants={ fadeInUp } custom={ 3 }>
                     <Link
-                        href="#"
+                        href="/eligibility"
                         className="flex items-center gap-3 bg-[#B16464] hover:bg-[#814a4a] px-6 py-3 text-white rounded-full w-fit text-sm md:text-base"
                     >
                         <Eligible />

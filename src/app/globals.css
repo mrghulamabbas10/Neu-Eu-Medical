@@ -76,3 +76,14 @@ body {
 input[type="checkbox"].custom-checkbox:checked {
   accent-color: #891a1f;
 }
+
+/* styles/globals.css or in <style jsx> if scoped */
+input[type="radio"].custom-radio {
+  accent-color: #751010; /* changes the checked color (dot) */
+}
+
+/* Fallback for browsers that don’t support accent-color */
+input[type="radio"].custom-radio:checked {
+  background-color: #751010;
+  border-color: #751010;
+}
