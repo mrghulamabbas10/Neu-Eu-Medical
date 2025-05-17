@@ -76,7 +76,7 @@ const lineVariant = {
 
 export default function Eligibale() {
     return (
-        <div className='Providers pt-20 pb-10 px-4 md:px-14 md:mt-[-5vw] mt-[-16vw]'>
+        <div className='Providers pt-20 md:pb-10 pb-20 px-4 md:px-14 md:mt-[-5vw] mt-[-16vw]'>
             <motion.div
                 className="bg-[#95423A] text-white rounded-2xl p-6 md:p-10 grid grid-cols-1 md:grid-cols-2 gap-10"
                 variants={ container }

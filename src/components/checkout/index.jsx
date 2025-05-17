@@ -55,7 +55,7 @@ export default function CheckoutPage() {
     }
 
     return (
-        <div className="bg-[#FFE6DF] min-h-screen pt-24 pb-12 px-4">
+        <div className="bg-[#FFE6DF] min-h-screen md:pt-24 pt-16 pb-12 px-4 rounded-b-3xl">
             <motion.div
                 className="container mx-auto max-w-6xl"
                 variants={ containerVariants }

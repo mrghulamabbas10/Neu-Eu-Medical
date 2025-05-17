@@ -11,6 +11,8 @@ const imageData = [
     "/images/brand-2.png",
     "/images/brand-3.png",
     "/images/brand-4.png",
+    "/images/brand-1.png",
+    "/images/brand-2.png",
 ];
 
 const containerVariants = {

@@ -78,7 +78,7 @@ export default function Providers() {
         >
             {/* Title */ }
             <motion.h1
-                className="md:text-5xl text-3xl w-2/5 mx-auto text-[#751010] font-semibold text-center leading-tight flex flex-wrap justify-center gap-2"
+                className="md:text-5xl text-3xl md:w-2/5 mx-auto text-[#751010] font-semibold text-center leading-tight flex flex-wrap justify-center gap-2"
                 variants={ fadeInUpContainer }
                 initial="hidden"
                 whileInView="show"

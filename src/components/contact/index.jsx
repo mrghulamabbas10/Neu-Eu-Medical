@@ -115,7 +115,7 @@ export default function ContactUsPage() {
                     initial={ { x: 100, opacity: 0 } }
                     animate={ { x: 0, opacity: 1 } }
                     transition={ { duration: 0.8 } }
-                    className="bg-white p-8 rounded-lg shadow_class space-y-4"
+                    className="bg-white md:p-8 p-5 rounded-lg shadow_class space-y-4"
                 >
                     <div className="relative">
                         <FaRegUser className="absolute top-4 left-4 text-gray-600 text-xl" />

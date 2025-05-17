@@ -36,13 +36,13 @@ export default function Eligibility({ children, onBack, tabNumber, heading, subh
 
     return (
         <div className="relative bg-[#FFE6DF] flex items-center justify-center px-4 py-12 min-h-screen">
-            <div className="mt-10 max-w-xl w-full">
+            <div className="md:mt-10 mt-5 max-w-xl w-full">
                 <BlurText
                     text="Let's check your eligibility"
                     delay={ 150 }
                     animateBy="words"
                     direction="bottom"
-                    className="text-4xl md:text-5xl font-semibold text-[#751010] text-center"
+                    className="text-4xl md:text-5xl justify-center font-semibold text-[#751010] text-center"
                 />
                 <p className="text-center mt-3 opacity-80">
                     Please answer a few questions so that our providers can review <br className="hidden md:block" />& respond
@@ -58,7 +58,7 @@ export default function Eligibility({ children, onBack, tabNumber, heading, subh
                         exit="exit"
                         className="w-full"
                     >
-                        <div className="bg-white rounded-xl shadow-lg mt-10 max-w-10/12 mx-auto">
+                        <div className="bg-white rounded-xl shadow-lg mt-10 md:max-w-10/12 md:mx-auto">
                             <div className="flex items-center justify-between p-5">
                                 <div>
                                     { onBack && (

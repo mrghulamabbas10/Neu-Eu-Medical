@@ -78,7 +78,7 @@ export default function PricingPlans() {
             { pricingData.map((plan, index) => (
                 <motion.div
                     key={ index }
-                    className="sticky top-10 z-10 rounded-2xl shadow-lg p-6 border transition-all duration-300 shadow_class border-[#D4D4D4] bg-white hover:scale-105"
+                    className="sticky top-10 z-10 rounded-2xl shadow-lg md:p-6 p-9 border transition-all duration-300 shadow_class border-[#D4D4D4] bg-white hover:scale-105"
                     variants={ cardVariants }
                     initial="hidden"
                     whileInView="show"

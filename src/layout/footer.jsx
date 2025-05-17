@@ -19,7 +19,7 @@ const container = {
 
 export default function Footer() {
     return (
-        <footer className="md:px-8 px-3 bg-[#fae9d9] py-6 ">
+        <footer className="md:px-8 px-3 bg-[#fae9d9] py-6 -mt-10 ">
             {/* Footer Bottom */ }
             <motion.div
                 className="flex flex-col md:flex-row items-center justify-between bg-white p-5 rounded-3xl gap-4 text-sm"

@@ -60,7 +60,7 @@ export default function CallSection() {
 
             {/* Main Heading */ }
             <motion.h1
-                className="text-2xl md:text-4xl w-2/5 mx-auto text-[#751010] font-semibold text-center leading-tight flex flex-wrap justify-center gap-2"
+                className="text-2xl md:text-4xl md:w-2/5 mx-auto text-[#751010] font-semibold text-center leading-tight flex flex-wrap justify-center gap-2"
                 variants={ fadeInUpContainer }
                 initial="hidden"
                 whileInView="show"
