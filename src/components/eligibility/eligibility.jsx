@@ -2,7 +2,6 @@
 
 import { AnimatePresence, motion } from "framer-motion"
 import BlurText from "../animations/BlurText"
-import Link from "next/link"
 import { CgArrowLongLeft } from "react-icons/cg"
 
 
@@ -62,7 +61,7 @@ export default function Eligibility({ children, onBack, tabNumber, heading, subh
                             <div className="flex items-center justify-between p-5">
                                 <div>
                                     { onBack && (
-                                        <button onClick={ onBack } className="text-2xl text-gray-600 hover:text-[#751010] transition-colors">
+                                        <button onClick={ onBack } className="text-2xl text-gray-600 hover:text-[#751010] transition-colors cursor-pointer">
                                             <CgArrowLongLeft />
                                         </button>
                                     ) }

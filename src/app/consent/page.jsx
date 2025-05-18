@@ -1,4 +1,4 @@
-import ConsentFormPage from '@/components/contact'
+import ConsentFormPage from '@/components/consent'
 import Footer2 from '@/layout/footer-2'
 import Navbar from '@/layout/navbar'
 import React from 'react'

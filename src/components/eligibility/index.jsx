@@ -9,6 +9,8 @@ export default function EligibilityPage() {
     const router = useRouter()
     const [step, setStep] = useState(1)
     const [direction, setDirection] = useState(1) // 1 for forward, -1 for backward
+    const [showManualReviewPopup, setShowManualReviewPopup] = useState(false)
+
     const [formData, setFormData] = useState({
         name: "",
         dateOfBirth: "",
@@ -31,14 +33,82 @@ export default function EligibilityPage() {
 
     const nextStep = () => {
         if (step < 8) {
-            setDirection(1)
-            setStep(step + 1)
+            // STEP VALIDATION: check only fields relevant to the current step
+            const stepRequiredFields = {
+                1: ["name"],
+                2: ["dateOfBirth"],
+                3: ["state"],
+                4: formData.state === "Other" ? ["otherState"] : [],
+                5: ["thyroidCancer"],
+                6: ["pregnant"],
+                7: ["allergicToGlp"],
+                8: ["triedGlpBefore"],
+            };
+
+            const currentFields = stepRequiredFields[step] || [];
+            const isStepValid = currentFields.every(
+                (key) => formData[key] && formData[key].trim() !== ""
+            );
+
+            if (!isStepValid) {
+                alert("Please fill in the required field(s) before proceeding.");
+                return;
+            }
+
+            // If valid, go to the next step
+            setDirection(1);
+            setStep(step + 1);
         } else {
-            // Submit form and navigate to checkout
-            console.log("Form submitted:", formData)
-            router.push("/checkout")
+            // FINAL SUBMISSION VALIDATION
+            const requiredFields = ["name", "dateOfBirth", "state", "thyroidCancer", "pregnant", "allergicToGlp", "triedGlpBefore"];
+            if (formData.state === "Other") requiredFields.push("otherState");
+
+            const isFormValid = requiredFields.every(
+                (key) => formData[key] && formData[key].trim() !== ""
+            );
+
+            if (!isFormValid) {
+                alert("Please complete all required fields before submitting.");
+                return;
+            }
+
+            // ✅ Logic for redirect or popup
+            const { thyroidCancer, pregnant, allergicToGlp, triedGlpBefore } = formData;
+
+            const allNo =
+                thyroidCancer === "No" &&
+                pregnant === "No" &&
+                allergicToGlp === "No" &&
+                triedGlpBefore === "No";
+
+            const pregnantOrThyroidYesOnly =
+                (pregnant === "Yes" || thyroidCancer === "Yes") &&
+                allergicToGlp === "No" &&
+                triedGlpBefore === "No";
+
+            const allYesExceptThyroid =
+                thyroidCancer === "No" &&
+                pregnant === "Yes" &&
+                allergicToGlp === "Yes" &&
+                triedGlpBefore === "Yes";
+
+
+            if (allNo) {
+                router.push("/consent");
+            } else if (pregnantOrThyroidYesOnly) {
+                alert("Sorry, you are not eligible.");
+            } else if (allYesExceptThyroid) {
+                router.push("/checkout");
+                console.log("Send email to admin", formData);
+            } else {
+                setDirection(1);
+                setShowManualReviewPopup(true);
+                router.push("/eligibility")
+            }
+
         }
-    }
+    };
+
 
     const prevStep = () => {
         if (step > 1) {
@@ -51,7 +121,8 @@ export default function EligibilityPage() {
 
     const renderStep = () => {
         return (
-            <> { getStepContent() }</>
+            <> { getStepContent() }
+            </>
         )
     }
 
@@ -361,5 +432,22 @@ export default function EligibilityPage() {
         }
     }
 
-    return <div>{ renderStep() }</div>
+    return <div>{ renderStep() }
+        <div>
+            { showManualReviewPopup && (
+                <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex justify-center items-center">
+                    <div className="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full text-center">
+                        <h2 className="text-xl font-semibold mb-4 text-[#751010]">Manual Review Required</h2>
+                        <p className="text-gray-700 mb-6">Sorry, you are not eligible based on your responses.</p>
+                        <button
+                            onClick={ () => setShowManualReviewPopup(false) }
+                            className="px-4 py-2 bg-[#751010] text-white rounded-md hover:bg-[#5a0d0d] transition"
+                        >
+                            Close
+                        </button>
+                    </div>
+                </div>
+            ) }
+        </div>
+    </div>
 }

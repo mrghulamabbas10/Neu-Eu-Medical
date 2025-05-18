@@ -3,10 +3,9 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
-
 import { CgArrowLongLeft } from "react-icons/cg";
 import Star from "../assets/star";
-
+import emailjs from "@emailjs/browser";
 
 export default function ConsentFormPage() {
     const [formData, setFormData] = useState({
@@ -16,21 +15,86 @@ export default function ConsentFormPage() {
         agreed: false,
     });
 
+    const [errors, setErrors] = useState({});
+    const [sending, setSending] = useState(false);
+
+    const validate = () => {
+        const errs = {};
+
+        if (!formData.name.trim()) {
+            errs.name = "Name is required";
+        }
+        // Simple email regex validation
+        if (!formData.email) {
+            errs.email = "Email is required";
+        } else if (
+            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(formData.email)
+        ) {
+            errs.email = "Invalid email address";
+        }
+        // Basic phone validation (digits, min 10 digits)
+        if (!formData.phone) {
+            errs.phone = "Phone number is required";
+        } else if (!/^\d{10,}$/.test(formData.phone.replace(/\D/g, ""))) {
+            errs.phone = "Invalid phone number";
+        }
+        if (!formData.agreed) {
+            errs.agreed = "You must agree to the terms";
+        }
+
+        setErrors(errs);
+
+        return Object.keys(errs).length === 0;
+    };
+
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
         setFormData((prev) => ({
             ...prev,
             [name]: type === "checkbox" ? checked : value,
         }));
+
+        // Clear error for the field on change
+        setErrors((prev) => ({ ...prev, [name]: null }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!formData.agreed) {
-            alert("Please agree to the terms and conditions.");
+
+        if (!validate()) {
             return;
         }
-        console.log("Form Submitted", formData);
+
+        setSending(true);
+
+        try {
+            // Replace with your EmailJS service ID, template ID, and user/public key
+            const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_CONSENT_ID;
+            const templateID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_CONSENT_ID;
+            const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+
+            const templateParams = {
+                name: formData.name,
+                email: formData.email,
+                phone: formData.phone,
+                agreed: formData.agreed ? "Yes" : "No",
+            };
+
+            const result = await emailjs.send(
+                serviceID,
+                templateID,
+                templateParams,
+                publicKey
+            );
+
+            alert("Form submitted successfully!");
+            setFormData({ name: "", email: "", phone: "", agreed: false });
+        } catch (error) {
+            console.error("EmailJS error:", error);
+            alert("Failed to send email. Please try again later.");
+        } finally {
+            setSending(false);
+        }
     };
 
     return (
@@ -40,8 +104,10 @@ export default function ConsentFormPage() {
             transition={ { duration: 0.6 } }
             className=" px-4 py-10 flex items-center justify-center relative"
         >
-
-            <Link href="/" className="absolute md:top-[5vw] top-[17vw] text-2xl left-[5vw]">
+            <Link
+                href="/eligibility"
+                className="absolute md:top-[5vw] top-[17vw] text-2xl left-[5vw]"
+            >
                 <CgArrowLongLeft />
             </Link>
 
@@ -69,25 +135,34 @@ export default function ConsentFormPage() {
                             name="agreed"
                             checked={ formData.agreed }
                             onChange={ handleChange }
-                            className="mt-1 h-7 w-7 text-[#891a1f] accent-[#891a1f] rounded border-gray-300 focus:ring-[#891a1f]"
+                            className="md:mt-1 md:h-7 md:w-7 w-10 h-10 text-[#891a1f] accent-[#891a1f] rounded border-gray-300 focus:ring-[#891a1f]"
                         />
-                        <label className="text-base text-gray-500">
-                            Please check this box to indicate that you have read and agree to our
-                            terms and conditions
+                        <label className="md:text-base text-xs text-gray-500">
+                            Please check this box to indicate that you have read and agree to
+                            our terms and conditions
                         </label>
                     </div>
+                    { errors.agreed && (
+                        <p className="text-red-600 text-sm">{ errors.agreed }</p>
+                    ) }
 
                     <div>
-                        <label className="block mb-1 font-medium text-[#891a1f]">Full Name</label>
+                        <label className="block mb-1 font-medium text-[#891a1f]">
+                            Full Name
+                        </label>
                         <input
                             type="text"
                             name="name"
                             value={ formData.name }
                             onChange={ handleChange }
-                            className="w-full px-4 py-4 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#891a1f]"
+                            className={ `w-full px-4 py-4 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#891a1f] ${errors.name ? "border border-red-600" : ""
+                                }` }
                             placeholder="Type here"
                             required
                         />
+                        { errors.name && (
+                            <p className="text-red-600 text-sm mt-1">{ errors.name }</p>
+                        ) }
                     </div>
 
                     <div>
@@ -97,10 +172,14 @@ export default function ConsentFormPage() {
                             name="email"
                             value={ formData.email }
                             onChange={ handleChange }
-                            className="w-full px-4 py-4 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#891a1f]"
+                            className={ `w-full px-4 py-4 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#891a1f] ${errors.email ? "border border-red-600" : ""
+                                }` }
                             placeholder="Type here"
                             required
                         />
+                        { errors.email && (
+                            <p className="text-red-600 text-sm mt-1">{ errors.email }</p>
+                        ) }
                     </div>
 
                     <div>
@@ -110,10 +189,14 @@ export default function ConsentFormPage() {
                             name="phone"
                             value={ formData.phone }
                             onChange={ handleChange }
-                            className="w-full px-4 py-4 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#891a1f]"
+                            className={ `w-full px-4 py-4 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-[#891a1f] ${errors.phone ? "border border-red-600" : ""
+                                }` }
                             placeholder="Type here"
                             required
                         />
+                        { errors.phone && (
+                            <p className="text-red-600 text-sm mt-1">{ errors.phone }</p>
+                        ) }
                     </div>
 
                     <div className="text-center text-sm text-[#891a1f] font-semibold">
@@ -125,15 +208,19 @@ export default function ConsentFormPage() {
                             Terms of Service
                         </a>
                     </div>
-                    <div className="mx-auto w-full flex justify-center">
 
+                    <div className="mx-auto w-full flex justify-center">
                         <motion.button
                             whileHover={ { scale: 1.05 } }
                             whileTap={ { scale: 0.95 } }
                             type="submit"
-                            className="w-fit px-20 py-3  rounded-full bg-[#a65758] text-white font-semibold hover:bg-[#8a3f40] transition-colors"
+                            disabled={ sending }
+                            className={ `w-fit px-20 py-3 rounded-full text-white font-semibold transition-colors ${sending
+                                ? "bg-gray-400 cursor-not-allowed"
+                                : "bg-[#a65758] hover:bg-[#8a3f40]"
+                                }` }
                         >
-                            Submit
+                            { sending ? "Sending..." : "Submit" }
                         </motion.button>
                     </div>
                 </form>

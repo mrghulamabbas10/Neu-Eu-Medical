@@ -4,7 +4,11 @@ import { useState } from "react"
 import { motion } from "framer-motion"
 import Image from "next/image"
 
+import emailjs from "@emailjs/browser";
+
+
 import { PiSealCheckFill } from "react-icons/pi";
+import { useRouter } from "next/navigation";
 
 
 export default function CheckoutPage() {
@@ -16,21 +20,16 @@ export default function CheckoutPage() {
         city: "",
         country: "",
         zipCode: "",
-        cardNumber: "",
-        expiry: "",
-        cvv: "",
     })
+
+    const router = useRouter()
 
     const handleInputChange = (e) => {
         const { name, value } = e.target
         setFormData((prev) => ({ ...prev, [name]: value }))
     }
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        console.log("Order submitted:", formData)
-        // Process order
-    }
+
 
     // Animation variants
     const containerVariants = {
@@ -53,6 +52,55 @@ export default function CheckoutPage() {
             transition: { duration: 0.5 },
         },
     }
+
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        // Basic validation
+        for (const key in formData) {
+            if (!formData[key]) {
+                alert(`Please fill in your ${key.replace(/([A-Z])/g, ' $1')}`);
+                return;
+            }
+        }
+
+        const templateParams = {
+            fullName: formData.fullName,
+            phone: formData.phone,
+            email: formData.email,
+            address: `${formData.address}, ${formData.city}, ${formData.country} - ${formData.zipCode}`,
+            productTitle: "Injectable GLP-1 Weight Loss Program",
+            productPrice: "$399",
+            productImage: `${process.env.NEXT_PUBLIC_DOMAIN}/images/serum.png`,
+        };
+
+        try {
+            const response = await emailjs.send(
+                process.env.NEXT_PUBLIC_EMAILJS_SERVICE_PRODUCT_ID,
+                process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_PRODUCT_ID,
+                templateParams,
+                process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+            );
+            console.log("SUCCESS!", response.status, response.text);
+            alert("Order sent successfully!");
+            router.push("/")
+            setFormData({
+                fullName: "",
+                phone: "",
+                email: "",
+                address: "",
+                city: "",
+                country: "",
+                zipCode: "",
+            });
+        } catch (error) {
+            console.error("FAILED...", error);
+            alert("Failed to send the order. Please try again.");
+        }
+    };
+
+
 
     return (
         <div className="bg-[#FFE6DF] min-h-screen md:pt-24 pt-16 pb-12 px-4 rounded-b-3xl">
@@ -207,60 +255,6 @@ export default function CheckoutPage() {
                                     </div>
                                 </motion.div>
 
-                                {/* Payment Information */ }
-                                <motion.div variants={ itemVariants }>
-                                    <h2 className="text-2xl font-bold text-[#751010] mb-4">Payment</h2>
-                                    <div className="space-y-4">
-                                        <div className="relative">
-                                            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                                <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    className="w-5 h-5 text-black opacity-80"
-                                                    viewBox="0 0 24 24"
-                                                    fill="none"
-                                                    stroke="currentColor"
-                                                    strokeWidth="2"
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                >
-                                                    <rect x="1" y="4" width="22" height="16" rx="2" ry="2" />
-                                                    <line x1="1" y1="10" x2="23" y2="10" />
-                                                </svg>
-                                            </div>
-                                            <input
-                                                type="text"
-                                                name="cardNumber"
-                                                value={ formData.cardNumber }
-                                                onChange={ handleInputChange }
-                                                placeholder="Card Number"
-                                                className="w-full pl-10 pr-4 py-3.5 bg-[#FFECE7] rounded-md focus:outline-none focus:ring-2 focus:ring-[#751010] focus:border-transparent"
-                                                required
-                                            />
-                                        </div>
-
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                            <input
-                                                type="text"
-                                                name="expiry"
-                                                value={ formData.expiry }
-                                                onChange={ handleInputChange }
-                                                placeholder="MM/YY"
-                                                className="w-full px-4 py-3.5 bg-[#FFECE7] rounded-md focus:outline-none focus:ring-2 focus:ring-[#751010] focus:border-transparent"
-                                                required
-                                            />
-
-                                            <input
-                                                type="text"
-                                                name="cvv"
-                                                value={ formData.cvv }
-                                                onChange={ handleInputChange }
-                                                placeholder="CVV"
-                                                className="w-full px-4 py-3.5 bg-[#FFECE7] rounded-md focus:outline-none focus:ring-2 focus:ring-[#751010] focus:border-transparent"
-                                                required
-                                            />
-                                        </div>
-                                    </div>
-                                </motion.div>
 
                                 <motion.button
                                     type="submit"
