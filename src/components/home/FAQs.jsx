@@ -51,7 +51,7 @@ export default function FAQs() {
     const heading = "QUESTIONS? WE’VE GOT ANSWERS.".split(" ");
 
     return (
-        <div className='join pt-32 md:pb-20 pb-10 mt-[-10vw]'>
+        <div className='join pt-32 md:pb-20 pb-10 mt-[-10vw]' id='FAQS'>
 
 
             <motion.h1

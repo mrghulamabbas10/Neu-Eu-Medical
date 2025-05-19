@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import CheckIcon from '../assets/check'
+import Link from 'next/link'
 
 const pricingData = [
     {
@@ -14,7 +15,6 @@ const pricingData = [
             "Regular virtual consultations to monitor progress.",
             "Ongoing support to ensure long-term weight loss and effective weight loss."
         ],
-
     },
     {
         title: "Tirzepatide Weight Loss Program",
@@ -28,8 +28,8 @@ const pricingData = [
         ]
     },
     {
-        title: "Ozempic Weight Loss Program",
-        price: "$299",
+        title: "Semaglutide Weight Loss Program",
+        price: "$199",
         subtitle: "Price includes only medication",
         features: [
             "Access to prescribed injectable GLP-1 clinically proven medication for weight loss.",
@@ -39,8 +39,8 @@ const pricingData = [
         ]
     },
     {
-        title: "Mounjaro Weight Loss Program",
-        price: "$299",
+        title: "Tirzepatide weight loss program",
+        price: "$199",
         subtitle: "Price includes only medication",
         features: [
             "Access to prescribed injectable GLP-1 clinically proven medication for weight loss.",
@@ -72,51 +72,106 @@ const textVariants = {
     show: { opacity: 1, y: 0, transition: { duration: 0.4 } }
 }
 
+const contentVariants = {
+    normal: { filter: 'blur(0px)', opacity: 1 },
+    blurred: { filter: 'blur(4px)', opacity: 0.7 }
+}
+
+
+const buttonVariants = {
+    hidden: {
+        opacity: 0,
+        y: 20,
+        scale: 0.8
+    },
+    visible: {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        transition: {
+            type: 'spring',
+            stiffness: 100,
+            damping: 10
+        }
+    }
+}
+
+
 export default function PricingPlans() {
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-10">
             { pricingData.map((plan, index) => (
                 <motion.div
                     key={ index }
-                    className="sticky top-10 z-10 rounded-2xl shadow-lg md:p-6 p-9 border transition-all duration-300 shadow_class border-[#D4D4D4] bg-white hover:scale-105"
+                    className="relative rounded-2xl shadow-lg md:p-6 p-9 border transition-all duration-300 shadow_class border-[#D4D4D4] bg-white hover:scale-105 h-full"
                     variants={ cardVariants }
                     initial="hidden"
                     whileInView="show"
                     viewport={ { once: true, amount: 0.2 } }
                     custom={ index }
+                    whileHover="hover"
                 >
-                    <motion.h3
-                        className="text-lg font-semibold text-[#7A3333] mb-2 text-center"
-                        variants={ textVariants }
+                    {/* Content Wrapper - will blur on hover */ }
+                    <motion.div
+                        className="h-full"
+                        initial="normal"
+                        whileHover="blurred"
+                        variants={ contentVariants }
+                        transition={ { duration: 0.3 } }
                     >
-                        { plan.title }
-                    </motion.h3>
-                    <motion.p
-                        className="text-3xl font-bold text-[#7A3333] text-center"
-                        variants={ textVariants }
+                        <motion.h3
+                            className="text-lg font-semibold text-[#7A3333] mb-2 text-center"
+                            variants={ textVariants }
+                        >
+                            { plan.title }
+                        </motion.h3>
+                        <motion.p
+                            className="text-3xl font-bold text-[#7A3333] text-center"
+                            variants={ textVariants }
+                        >
+                            { plan.price }
+                        </motion.p>
+                        <motion.p
+                            className="text-sm text-gray-500 text-center mb-4"
+                            variants={ textVariants }
+                        >
+                            { plan.subtitle }
+                        </motion.p>
+                        <motion.ul className="space-y-2">
+                            { plan.features.map((feature, i) => (
+                                <motion.li
+                                    key={ i }
+                                    className="flex items-start gap-2 text-[#7A3333]"
+                                    variants={ textVariants }
+                                >
+                                    <span className="text-lg mt-1">
+                                        <CheckIcon />
+                                    </span>
+                                    <span className="text-sm font-medium">{ feature }</span>
+                                </motion.li>
+                            )) }
+                        </motion.ul>
+                    </motion.div>
+
+                    {/* CTA button - centered and appears on hover */ }
+                    <motion.div
+                        className="absolute inset-0 flex items-center justify-center pointer-events-none"
+                        initial={ { opacity: 0 } }
+                        whileHover={ { opacity: 1 } }
+                        transition={ { duration: 0.3 } }
                     >
-                        { plan.price }
-                    </motion.p>
-                    <motion.p
-                        className="text-sm text-gray-500 text-center mb-4"
-                        variants={ textVariants }
-                    >
-                        { plan.subtitle }
-                    </motion.p>
-                    <motion.ul className="space-y-2">
-                        { plan.features.map((feature, i) => (
-                            <motion.li
-                                key={ i }
-                                className="flex items-start gap-2 text-[#7A3333]"
-                                variants={ textVariants }
+                        <Link href={ "#FAQS" }>
+
+                            <motion.button
+                                variants={ buttonVariants }
+                                className="pointer-events-auto bg-[#7A3333] text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-[#5a2525] transition-colors"
+                                initial="hidden"
+                                whileHover="visible"
                             >
-                                <span className="text-lg mt-1">
-                                    <CheckIcon />
-                                </span>
-                                <span className="text-sm font-medium">{ feature }</span>
-                            </motion.li>
-                        )) }
-                    </motion.ul>
+                                Join Now
+                            </motion.button>
+                        </Link>
+                    </motion.div>
                 </motion.div>
             )) }
         </div>

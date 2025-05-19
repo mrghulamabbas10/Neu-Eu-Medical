@@ -4,6 +4,8 @@ import { motion } from 'framer-motion'
 import CheckIcon from '../assets/check'
 import Image from 'next/image'
 import PricingPlans from './pricingPlans'
+import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 const data = [
     "Connect with a board-certified clinician to discuss your weight loss goals.",
@@ -26,6 +28,8 @@ const itemVariants = {
 }
 
 export default function Pricing() {
+
+
     return (
         <div className='bg-[#FFE6DF] py-10 md:px-[132px] px-8 -mt-10 relative z-10'>
             <motion.div
@@ -76,13 +80,15 @@ export default function Pricing() {
                         transition={ { duration: 0.5, delay: 0.5 } }
                         viewport={ { once: true } }
                     >
-                        <motion.button
-                            className='bg-[#B16464] px-6 py-2 rounded-full text-white'
-                            whileHover={ { scale: 1.05 } }
-                            whileTap={ { scale: 0.95 } }
-                        >
-                            Book a Consultation
-                        </motion.button>
+                        <Link href='/https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ20PesWrliNOdYy-TL5lNHSZ3F4D2DhusMxOSgHC4D2_LT6u9ThzCFAxFOPKlBFRoEN-zKCBIa3' className='block mb-2'>
+                            <motion.button
+                                className='bg-[#B16464] px-6 py-2 rounded-full text-white'
+                                whileHover={ { scale: 1.05 } }
+                                whileTap={ { scale: 0.95 } }
+                            >
+                                Book a Consultation
+                            </motion.button >
+                        </Link>
                         <p className='text-base opacity-80'>
                             Kickstart your journey with a complimentary 20-minute consultation.
                             Talk with a licensed provider to discuss your goals, ask questions,

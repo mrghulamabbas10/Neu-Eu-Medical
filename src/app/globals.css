@@ -87,3 +87,7 @@ input[type="radio"].custom-radio:checked {
   background-color: #751010;
   border-color: #751010;
 }
+
+html {
+  scroll-behavior: smooth;
+}

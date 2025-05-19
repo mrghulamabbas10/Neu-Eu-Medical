@@ -11,7 +11,7 @@ import Image from "next/image";
 const HomeData = [
     { name: "Home", path: "/" },
     { name: "Blog", path: "/blog" },
-    { name: "Appointment", path: "/appointment" },
+    { name: "Appointment", path: "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ20PesWrliNOdYy-TL5lNHSZ3F4D2DhusMxOSgHC4D2_LT6u9ThzCFAxFOPKlBFRoEN-zKCBIa3" },
 ];
 
 const logoVariant = {

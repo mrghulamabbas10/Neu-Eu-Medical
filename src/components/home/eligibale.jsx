@@ -123,9 +123,7 @@ export default function Eligibale() {
                             className="w-[100px] md:w-[140px]"
                             quality={ 100 }
                         />
-                        <p className="uppercase text-sm md:text-base font-medium">
-                            get results or <br /> your money <br /> back
-                        </p>
+
                     </motion.div>
                 </div>
 
