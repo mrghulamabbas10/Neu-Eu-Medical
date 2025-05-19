@@ -160,8 +160,7 @@ export default function PricingPlans() {
                         whileHover={ { opacity: 1 } }
                         transition={ { duration: 0.3 } }
                     >
-                        <Link href={ "#FAQS" }>
-
+                        <Link href={ "/eligibility" }>
                             <motion.button
                                 variants={ buttonVariants }
                                 className="pointer-events-auto bg-[#7A3333] text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-[#5a2525] transition-colors"
