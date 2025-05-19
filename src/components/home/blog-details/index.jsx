@@ -22,6 +22,7 @@ export default function BlogDetails({ blog }) {
                         width={ 1014 }
                         height={ 1000 }
                         className="rounded-lg w-full object-cover md:h-[700px] [350px] translate-y-10"
+                        quality={ 100 }
                     />
                 </div>
             </div>

@@ -159,6 +159,7 @@ export default function Hero() {
                             width={ 260 }
                             height={ 206 }
                             className="w-full rounded-xl"
+                            quality={ 100 }
                         />
                     </motion.div>
 
@@ -182,6 +183,7 @@ export default function Hero() {
                             width={ 260 }
                             height={ 206 }
                             className="w-full"
+                            quality={ 100 }
                         />
                     </motion.div>
                 </motion.div>
@@ -194,7 +196,7 @@ export default function Hero() {
                     custom={ 5 }
                 >
                     <div className="flex items-center  gap-5 bg-[#FFF0EC] px-4 py-2 rounded-full w-fit">
-                        <Image src="/images/docters.png" alt="doctors" width={ 115 } height={ 42 } />
+                        <Image src="/images/docters.png" alt="doctors" width={ 115 } height={ 42 } quality={ 100 } />
                         <span className="h-5 border-r border-gray-400 block"></span>
                         <p className="text-sm">Talk to our health providers</p>
                     </div>
@@ -224,6 +226,9 @@ export default function Hero() {
                     width={ 745 }
                     height={ 900 }
                     className="w-full mx-auto md:absolute md:bottom-0 md:right-0 h-full object-center"
+                    quality={ 100 }
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 50vw"
+
                 />
 
                 {/* Tags */ }

@@ -7,27 +7,32 @@ const accordionData = [
     {
         question: 'What is Neueu’s weight loss program?',
         answer:
-            'Neueu’s program is a personalized, science-based weight loss journey designed to fit your lifestyle and goals.',
+            'Neueu offers a medication-assisted weight loss program designed to help you achieve sustainable results. Our virtual clinic provides personalized plans tailored to your health needs, prescribed by licensed medical professionals.',
     },
     {
         question: 'How does the virtual weight loss program work?',
         answer:
-            'Program durations vary based on individual goals, but most participants see significant changes within 8-12 weeks.',
+            'You’ll start with an online consultation where our licensed clinicians assess your goals and medical history. Based on that, we create a customized weight loss plan, including medication (if prescribed), lifestyle recommendations, and ongoing support.',
     },
     {
         question: 'What medications are used in the program?',
         answer:
-            'Yes, our program is developed and monitored by licensed healthcare professionals to ensure your safety and success.',
+            'Our licensed medical team may prescribe clinically approved weight loss medications based on your specific needs. These could include nutritional guidance, exercise plans and prescribed medication for patients that are eligible.',
     },
     {
         question: 'Is the program safe for everyone?',
         answer:
-            'Side effects are rare but may include temporary fatigue or hunger. Our team adjusts plans to minimize discomfort.',
+            'We prioritize safety and effectiveness. Before starting, our licensed providers evaluate your medical history to ensure the program is suitable for you. If you have pre-existing conditions, we’ll work with you to find the best approach.',
     },
     {
         question: 'How soon can I see results?',
         answer:
-            'Simply sign up and complete a quick questionnaire. A personalized plan will be created for you immediately.',
+            'Results vary for each person, but many clients begin noticing significant weight loss within the first few weeks. Consistency with your plan and lifestyle adjustments will help you achieve the best outcomes.',
+    },
+    {
+        question: 'Which States do we Services?',
+        answer:
+            'We are currently providing services in Texas and Oregon.',
     },
 ];
 

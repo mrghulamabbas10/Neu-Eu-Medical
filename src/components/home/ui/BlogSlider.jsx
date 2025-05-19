@@ -67,6 +67,7 @@ export default function BlogSlider() {
                                     width={ 500 }
                                     height={ 300 }
                                     className="rounded-lg w-full object-cover h-[200px]"
+                                    quality={ 100 }
                                 />
                             </Link>
                             <span className="text-sm bg-[#4B6BFB0D] px-3 rounded-md text-[#4B6BFB] font-semibold mt-4 inline-block">

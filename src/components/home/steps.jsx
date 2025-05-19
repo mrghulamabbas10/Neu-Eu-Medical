@@ -88,6 +88,8 @@ export default function Steps() {
                                     width={ 841 }
                                     height={ 325 }
                                     className='mx-auto w-full'
+                                    quality={ 100 }
+                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 50vw"
                                 />
                             </div>
                         </motion.div>

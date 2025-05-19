@@ -285,6 +285,7 @@ export default function CheckoutPage() {
                                         fill
                                         className="object-contain"
                                         sizes="(max-width: 768px) 100vw, 300px"
+                                        quality={ 100 }
                                     />
                                 </div>
                             </div>
@@ -314,7 +315,7 @@ export default function CheckoutPage() {
                                 </ul>
 
                                 <div className="flex justify-center space-x-2 mb-4">
-                                    <Image src="/images/payment.png" alt="Payment Methods" width={ 200 } height={ 40 } />
+                                    <Image src="/images/payment.png" alt="Payment Methods" width={ 200 } height={ 40 } quality={ 100 } />
                                 </div>
 
                                 <div className="bg-[#f9f1ef] p-4 rounded-lg">

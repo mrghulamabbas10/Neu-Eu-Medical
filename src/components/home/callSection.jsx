@@ -85,6 +85,7 @@ export default function CallSection() {
                     width={ 980 }
                     height={ 614 }
                     className="mx-auto"
+                    quality={ 100 }
                 />
             </motion.div>
 

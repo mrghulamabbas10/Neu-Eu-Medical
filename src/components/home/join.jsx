@@ -45,7 +45,7 @@ export default function Join() {
 
     return (
         <div className="px-[20px] md:px-[120px] py-16 overflow-hidden relative">
-            <Image src="/images/bubbuls.png" alt="img1" width={ 200 } height={ 200 } className="absolute top-[8vw] right-[3vw]" />
+            <Image src="/images/bubbuls.png" alt="img1" width={ 200 } height={ 200 } className="absolute top-[8vw] right-[3vw]" quality={ 100 } />
 
             <motion.h2
                 className="text-2xl md:text-4xl text-[#751010] font-medium text-center"
@@ -81,22 +81,22 @@ export default function Join() {
                 {/* Left group */ }
                 <div className="flex justify-center items-center flex-col w-full md:w-[30%]">
                     <motion.div variants={ popup }>
-                        <Image src="/images/avatar-1.png" alt="img1" width={ 114 } height={ 114 } className="-ml-5" />
+                        <Image src="/images/avatar-1.png" alt="img1" width={ 114 } height={ 114 } quality={ 100 } className="-ml-5" />
                     </motion.div>
                     <div className="flex gap-5 mt-4">
                         <motion.div variants={ popup }>
-                            <Image src="/images/avatar-3.png" alt="img3" width={ 167 } height={ 167 } />
+                            <Image src="/images/avatar-3.png" alt="img3" width={ 167 } height={ 167 } quality={ 100 } />
                         </motion.div>
                         <motion.div variants={ popup } className="-mt-5">
-                            <Image src="/images/avatar-2.png" alt="img2" width={ 172 } height={ 172 } />
+                            <Image src="/images/avatar-2.png" alt="img2" width={ 172 } height={ 172 } quality={ 100 } />
                         </motion.div>
                     </div>
                     <motion.div variants={ popup } className="-mt-10 ml-9">
-                        <Image src="/images/avatar-4.png" alt="img4" width={ 69 } height={ 69 } />
+                        <Image src="/images/avatar-4.png" alt="img4" width={ 69 } height={ 69 } quality={ 100 } />
                     </motion.div>
 
                     <motion.div variants={ popup } className="-mt-5 ml-auto">
-                        <Image src="/images/see-more-btn.png" alt="img4" width={ 142 } height={ 142 } />
+                        <Image src="/images/see-more-btn.png" alt="img4" width={ 142 } height={ 142 } quality={ 100 } />
                     </motion.div>
                 </div>
 
@@ -114,21 +114,21 @@ export default function Join() {
                     </motion.div>
 
                     <motion.div variants={ popup } className="ml-32">
-                        <Image src="/images/avatar-6.png" alt="img6" width={ 160 } height={ 160 } />
+                        <Image src="/images/avatar-6.png" alt="img6" width={ 160 } height={ 160 } quality={ 100 } />
                     </motion.div>
                     <div className="flex gap-2 mt-5">
                         <motion.div variants={ popup } className="-ml-5">
-                            <Image src="/images/avatar-5.png" alt="img5" width={ 288 } height={ 288 } />
+                            <Image src="/images/avatar-5.png" alt="img5" width={ 288 } height={ 288 } quality={ 100 } />
                         </motion.div>
                         <motion.div variants={ popup } className="mt-5">
-                            <Image src="/images/avatar-7.png" alt="img7" width={ 214 } height={ 214 } />
+                            <Image src="/images/avatar-7.png" alt="img7" width={ 214 } height={ 214 } quality={ 100 } />
                         </motion.div>
                     </div>
                 </div>
 
                 {/* Right group */ }
                 <motion.div variants={ popup } className="w-full md:w-[30%] flex items-center justify-center">
-                    <Image src="/images/avatar-8.png" alt="img8" width={ 337 } height={ 337 } className="my-auto" />
+                    <Image src="/images/avatar-8.png" alt="img8" width={ 337 } height={ 337 } className="my-auto" quality={ 100 } />
                 </motion.div>
             </motion.div>
         </div>

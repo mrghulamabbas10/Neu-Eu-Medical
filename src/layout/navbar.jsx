@@ -38,7 +38,7 @@ export default function Navbar({ className }) {
 
     return (
         <div className="md:px-8 px-3 md:pt-8 pt-3">
-            <div className={ `${className ? className : "bg-[#FFE6DF]"} py-4 px-6 md:px-10 flex items-center justify-between rounded-tl-3xl rounded-tr-3xl relative z-50` }>
+            <div className={ `${className ? className : "bg-[#FFE6DF] rounded-t-3xl"} py-4 px-6 md:px-10 flex items-center justify-between  relative z-50` }>
                 {/* Logo */ }
                 <motion.div
                     variants={ logoVariant }
@@ -46,7 +46,7 @@ export default function Navbar({ className }) {
                     animate="show"
                 >
                     <Link href="/" className="block">
-                        <Image src="/images/logo.png" alt="logo" width={ 107 } height={ 40 } />
+                        <Image src="/images/logo.png" alt="logo" width={ 107 } height={ 40 } quality={ 100 } />
                     </Link>
                 </motion.div>
 
@@ -126,7 +126,7 @@ export default function Navbar({ className }) {
                         >
                             {/* Logo in sidebar */ }
                             <div>
-                                <Image src="/images/logo.png" alt="logo" width={ 100 } height={ 40 } />
+                                <Image src="/images/logo.png" alt="logo" width={ 100 } height={ 40 } quality={ 100 } />
                             </div>
 
                             {/* Links */ }

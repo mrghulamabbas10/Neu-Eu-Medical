@@ -122,6 +122,7 @@ export default function Pricing() {
                             width={ 400 }
                             height={ 312 }
                             className='w-full'
+                            quality={ 100 }
                         />
                     </motion.div>
                 </motion.div>

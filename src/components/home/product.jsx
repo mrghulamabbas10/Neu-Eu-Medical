@@ -106,6 +106,7 @@ export default function Product() {
                     width={ 516 }
                     height={ 594 }
                     className="w-full max-w-[400px] md:max-w-full"
+                    quality={ 100 }
                 />
             </motion.div>
 

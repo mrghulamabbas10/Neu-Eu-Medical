@@ -30,7 +30,7 @@ export default function Footer() {
             >
                 {/* Logo */ }
                 <Link href={ "/" } className="block">
-                    <Image src="/images/logo.png" alt="logo" width={ 107 } height={ 40 } />
+                    <Image src="/images/logo.png" alt="logo" width={ 107 } height={ 40 } quality={ 100 } />
                 </Link>
                 <div className="flex flex-wrap gap-4 md:gap-8 text-[#333] opacity-80">
                     <Link href="#">Terms of Service</Link>

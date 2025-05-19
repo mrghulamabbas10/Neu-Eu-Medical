@@ -42,6 +42,9 @@ export default function Section2() {
                         className="w-full h-[280px] sm:h-[300px] lg:h-[284px] object-cover rounded-3xl"
                         width={ 390 }
                         height={ 284 }
+                        quality={ 100 }
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 50vw"
+
                     />
 
                     {/* Overlay content */ }

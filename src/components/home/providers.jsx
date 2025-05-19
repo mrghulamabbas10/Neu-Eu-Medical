@@ -123,6 +123,7 @@ export default function Providers() {
                                     width={ 310 }
                                     height={ 273 }
                                     className='rounded-3xl w-full h-auto object-cover'
+                                    quality={ 100 }
                                 />
                                 <div className='px-5 py-2 bg-black/20 w-full absolute bottom-0 left-0 text-start text-white backdrop-blur-sm'>
                                     <h3 className='text-lg font-bold'>{ provider.name }</h3>

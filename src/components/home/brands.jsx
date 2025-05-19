@@ -43,6 +43,7 @@ export default function Brands() {
                                 width={ 210 }
                                 height={ 32 }
                                 className='w-full h-8 object-contain'
+                                quality={ 100 }
                             />
                         </div>
                     )) }

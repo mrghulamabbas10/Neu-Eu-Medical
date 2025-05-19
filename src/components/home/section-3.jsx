@@ -94,6 +94,8 @@ export default function Section3() {
                             width={ 294 }
                             height={ 200 }
                             className='w-full object-cover rounded-2xl'
+                            quality={ 100 }
+
                         />
                     </motion.div>
                 )) }
