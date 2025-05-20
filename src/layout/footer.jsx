@@ -33,9 +33,9 @@ export default function Footer() {
                     <Image src="/images/logo.png" alt="logo" width={ 107 } height={ 40 } quality={ 100 } />
                 </Link>
                 <div className="flex flex-wrap gap-4 md:gap-8 text-[#333] opacity-80">
-                    <Link href="#">Terms of Service</Link>
+                    <Link href="/terms-and-conditions">Terms of Service</Link>
                     <Link href="/contact">Contact Us</Link>
-                    <Link href="#">Privacy Policy</Link>
+                    <Link href="/privacy-policies">Privacy Policy</Link>
                 </div>
             </motion.div>
         </footer>

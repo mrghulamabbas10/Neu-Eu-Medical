@@ -11,6 +11,9 @@ import { PiSealCheckFill } from "react-icons/pi";
 import { useRouter } from "next/navigation";
 
 
+
+
+
 export default function CheckoutPage() {
     const [formData, setFormData] = useState({
         fullName: "",
@@ -30,6 +33,10 @@ export default function CheckoutPage() {
     }
 
 
+    // Replace with your EmailJS service ID, template ID, and user/public key
+    const serviceID = "service_zfam3rg";
+    const templateID = "template_8ie1cek";
+    const publicKey = "FhTT97vSejz41wgWD";
 
     // Animation variants
     const containerVariants = {
@@ -77,10 +84,11 @@ export default function CheckoutPage() {
 
         try {
             const response = await emailjs.send(
-                process.env.NEXT_PUBLIC_EMAILJS_SERVICE_PRODUCT_ID,
-                process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_PRODUCT_ID,
+                serviceID,
+                templateID,
                 templateParams,
-                process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
+                publicKey
+
             );
             console.log("SUCCESS!", response.status, response.text);
             alert("Order sent successfully!");

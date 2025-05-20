@@ -69,9 +69,9 @@ export default function ConsentFormPage() {
 
         try {
             // Replace with your EmailJS service ID, template ID, and user/public key
-            const serviceID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_CONSENT_ID;
-            const templateID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_CONSENT_ID;
-            const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
+            const serviceID = "service_kzpfa1o";
+            const templateID = "template_8ie1cek";
+            const publicKey = "FhTT97vSejz41wgWD";
 
             const templateParams = {
                 name: formData.name,
@@ -200,13 +200,13 @@ export default function ConsentFormPage() {
                     </div>
 
                     <div className="text-center text-sm text-[#891a1f] font-semibold">
-                        <a href="#" className="hover:underline">
+                        <Link href="/privacy-policies" className="hover:underline">
                             Privacy Policy
-                        </a>{ " " }
+                        </Link>{ " " }
                         |{ " " }
-                        <a href="#" className="hover:underline">
+                        <Link href="/terms-and-conditions" className="hover:underline">
                             Terms of Service
-                        </a>
+                        </Link>
                     </div>
 
                     <div className="mx-auto w-full flex justify-center">
