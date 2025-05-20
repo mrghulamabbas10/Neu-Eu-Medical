@@ -67,7 +67,7 @@ export default function Eligibility({ children, onBack, tabNumber, heading, subh
                                     ) }
                                 </div>
                                 <div className="opacity-90 font-medium">
-                                    <span>{ tabNumber }</span> / <span>8</span>
+                                    <span>{ tabNumber }</span> / <span>7</span>
                                 </div>
                             </div>
                             <div className="relative w-full h-1.5 bg-[#F8F8F8]">

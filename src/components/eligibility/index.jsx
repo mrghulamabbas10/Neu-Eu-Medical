@@ -1,21 +1,23 @@
 "use client"
 
 import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
 import Eligibility from "./eligibility"
 import { useRouter } from "next/navigation"
+import Usericon from "../assets/user"
+import DataIcon from "../assets/date"
+import LocationIcon from "../assets/location"
 
 export default function EligibilityPage() {
     const router = useRouter()
     const [step, setStep] = useState(1)
     const [direction, setDirection] = useState(1) // 1 for forward, -1 for backward
     const [showManualReviewPopup, setShowManualReviewPopup] = useState(false)
+    const [errorMessage, setErrorMessage] = useState("")
 
     const [formData, setFormData] = useState({
         name: "",
         dateOfBirth: "",
         state: "",
-        otherState: "",
         thyroidCancer: "",
         pregnant: "",
         allergicToGlp: "",
@@ -29,20 +31,63 @@ export default function EligibilityPage() {
 
     const handleRadioChange = (name, value) => {
         setFormData((prev) => ({ ...prev, [name]: value }))
+
+        // Immediate validation for disqualifying conditions
+        if (name === "thyroidCancer" && value === "Yes") {
+            setErrorMessage("You are disqualified due to history of thyroid cancer.");
+        }
+        else if (name === "pregnant" && value === "Yes") {
+            setErrorMessage("You are disqualified because you are pregnant.");
+        }
+        else if (name === "allergicToGlp" && value === "Yes") {
+            setErrorMessage("You are disqualified due to allergy to GLP-1's.");
+        }
+        else {
+            setErrorMessage("");
+        }
+    }
+
+    const calculateAge = (birthDate) => {
+        const today = new Date();
+        const birthDateObj = new Date(birthDate);
+        let age = today.getFullYear() - birthDateObj.getFullYear();
+        const monthDiff = today.getMonth() - birthDateObj.getMonth();
+
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDateObj.getDate())) {
+            age--;
+        }
+
+        return age;
     }
 
     const nextStep = () => {
-        if (step < 8) {
+        // Check for disqualifying conditions first
+        if (formData.thyroidCancer === "Yes") {
+            setErrorMessage("You are disqualified due to history of thyroid cancer.");
+            return;
+        }
+        if (formData.pregnant === "Yes") {
+            setErrorMessage("You are disqualified because you are pregnant.");
+            return;
+        }
+        if (formData.allergicToGlp === "Yes") {
+            setErrorMessage("You are disqualified due to allergy to GLP-1's.");
+            return;
+        }
+
+        // Clear any previous error messages
+        setErrorMessage("");
+
+        if (step < 7) {
             // STEP VALIDATION: check only fields relevant to the current step
             const stepRequiredFields = {
                 1: ["name"],
                 2: ["dateOfBirth"],
                 3: ["state"],
-                4: formData.state === "Other" ? ["otherState"] : [],
-                5: ["thyroidCancer"],
-                6: ["pregnant"],
-                7: ["allergicToGlp"],
-                8: ["triedGlpBefore"],
+                4: ["thyroidCancer"],
+                5: ["pregnant"],
+                6: ["allergicToGlp"],
+                7: ["triedGlpBefore"],
             };
 
             const currentFields = stepRequiredFields[step] || [];
@@ -55,13 +100,21 @@ export default function EligibilityPage() {
                 return;
             }
 
+            // Additional validation for date of birth (age check)
+            if (step === 2 && formData.dateOfBirth) {
+                const age = calculateAge(formData.dateOfBirth);
+                if (age < 18) {
+                    alert("You must be at least 18 years old to proceed.");
+                    return;
+                }
+            }
+
             // If valid, go to the next step
             setDirection(1);
             setStep(step + 1);
         } else {
             // FINAL SUBMISSION VALIDATION
             const requiredFields = ["name", "dateOfBirth", "state", "thyroidCancer", "pregnant", "allergicToGlp", "triedGlpBefore"];
-            if (formData.state === "Other") requiredFields.push("otherState");
 
             const isFormValid = requiredFields.every(
                 (key) => formData[key] && formData[key].trim() !== ""
@@ -72,43 +125,16 @@ export default function EligibilityPage() {
                 return;
             }
 
-            // ✅ Logic for redirect or popup
-            const { thyroidCancer, pregnant, allergicToGlp, triedGlpBefore } = formData;
+            // ✅ Logic for redirect
+            const { triedGlpBefore } = formData;
 
-            const allNo =
-                thyroidCancer === "No" &&
-                pregnant === "No" &&
-                allergicToGlp === "No" &&
-                triedGlpBefore === "No";
-
-            const pregnantOrThyroidYesOnly =
-                (pregnant === "Yes" || thyroidCancer === "Yes") &&
-                allergicToGlp === "No" &&
-                triedGlpBefore === "No";
-
-            const allYesExceptThyroid =
-                thyroidCancer === "No" &&
-                pregnant === "Yes" &&
-                allergicToGlp === "Yes" &&
-                triedGlpBefore === "Yes";
-
-
-            if (allNo) {
+            if (triedGlpBefore === "No") {
                 router.push("/consent");
-            } else if (pregnantOrThyroidYesOnly) {
-                alert("Sorry, you are not eligible.");
-            } else if (allYesExceptThyroid) {
-                router.push("/checkout");
-                console.log("Send email to admin", formData);
             } else {
-                setDirection(1);
-                setShowManualReviewPopup(true);
-                router.push("/eligibility")
+                router.push("/checkout");
             }
-
         }
     };
-
 
     const prevStep = () => {
         if (step > 1) {
@@ -117,11 +143,15 @@ export default function EligibilityPage() {
         }
     }
 
-
-
     const renderStep = () => {
         return (
-            <> { getStepContent() }
+            <>
+                { getStepContent() }
+                {/* { errorMessage && (
+                    <div className="mt-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">
+                        { errorMessage }
+                    </div>
+                ) } */}
             </>
         )
     }
@@ -134,19 +164,7 @@ export default function EligibilityPage() {
                         <div className="mt-6">
                             <div className="relative">
                                 <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        className="w-5 h-5 text-gray-400"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                    >
-                                        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-                                        <circle cx="12" cy="7" r="4" />
-                                    </svg>
+                                    <Usericon />
                                 </div>
                                 <input
                                     type="text"
@@ -174,21 +192,7 @@ export default function EligibilityPage() {
                         <div className="mt-6">
                             <div className="relative">
                                 <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        className="w-5 h-5 text-gray-400"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                    >
-                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                                        <line x1="16" y1="2" x2="16" y2="6" />
-                                        <line x1="8" y1="2" x2="8" y2="6" />
-                                        <line x1="3" y1="10" x2="21" y2="10" />
-                                    </svg>
+                                    <DataIcon />
                                 </div>
                                 <input
                                     type="date"
@@ -215,7 +219,7 @@ export default function EligibilityPage() {
                         onBack={ prevStep }
                     >
                         <div className="mt-6 space-y-3">
-                            { ["Texas", "Oregon", "Other"].map((stateOption) => (
+                            { ["Texas", "Oregon"].map((stateOption) => (
                                 <label
                                     key={ stateOption }
                                     className={ `block w-full p-3 border rounded-md cursor-pointer transition-colors ${formData.state === stateOption
@@ -237,56 +241,13 @@ export default function EligibilityPage() {
                                 </label>
                             )) }
                         </div>
-
                     </Eligibility>
-
-
                 )
 
             case 4:
                 return (
                     <Eligibility
                         tabNumber="04"
-                        heading="What is the Other State?"
-                        buttontext="Next"
-                        onClick={ nextStep }
-                        onBack={ prevStep }
-                    >
-                        <div className="mt-6">
-                            <div className="relative">
-                                <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        className="w-5 h-5 text-gray-400"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                    >
-                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                                        <circle cx="12" cy="10" r="3" />
-                                    </svg>
-                                </div>
-                                <input
-                                    type="text"
-                                    name="otherState"
-                                    value={ formData.otherState }
-                                    onChange={ handleInputChange }
-                                    placeholder="Other State*"
-                                    className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-[#751010] focus:border-transparent"
-                                    required
-                                />
-                            </div>
-                        </div>
-                    </Eligibility>
-                )
-
-            case 5:
-                return (
-                    <Eligibility
-                        tabNumber="05"
                         heading="Do you have a history of thyroid cancer?"
                         buttontext="Next"
                         onClick={ nextStep }
@@ -316,13 +277,12 @@ export default function EligibilityPage() {
                             )) }
                         </div>
                     </Eligibility>
-
                 )
 
-            case 6:
+            case 5:
                 return (
                     <Eligibility
-                        tabNumber="06"
+                        tabNumber="05"
                         heading="Are you pregnant?"
                         buttontext="Next"
                         onClick={ nextStep }
@@ -352,13 +312,12 @@ export default function EligibilityPage() {
                             )) }
                         </div>
                     </Eligibility>
-
                 )
 
-            case 7:
+            case 6:
                 return (
                     <Eligibility
-                        tabNumber="07"
+                        tabNumber="06"
                         heading="Are you allergic to glp-1's?"
                         buttontext="Next"
                         onClick={ nextStep }
@@ -388,13 +347,12 @@ export default function EligibilityPage() {
                             )) }
                         </div>
                     </Eligibility>
-
                 )
 
-            case 8:
+            case 7:
                 return (
                     <Eligibility
-                        tabNumber="08"
+                        tabNumber="07"
                         heading="Have you tried a glp-1 in the past?"
                         buttontext="Next"
                         onClick={ nextStep }
@@ -424,7 +382,6 @@ export default function EligibilityPage() {
                             )) }
                         </div>
                     </Eligibility>
-
                 )
 
             default:
@@ -434,13 +391,17 @@ export default function EligibilityPage() {
 
     return <div>{ renderStep() }
         <div>
-            { showManualReviewPopup && (
+            { errorMessage && (
                 <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex justify-center items-center">
                     <div className="bg-white p-6 rounded-lg shadow-lg max-w-sm w-full text-center">
-                        <h2 className="text-xl font-semibold mb-4 text-[#751010]">Manual Review Required</h2>
-                        <p className="text-gray-700 mb-6">Sorry, you are not eligible based on your responses.</p>
+                        <h2 className="text-xl font-semibold mb-4 text-[#751010]">Ineligible</h2>
+                        <p className="text-gray-700 mb-6">{ errorMessage }</p>
                         <button
-                            onClick={ () => setShowManualReviewPopup(false) }
+                            onClick={ () => {
+                                setErrorMessage("");
+                                window.location.reload();
+                                setStep(1);
+                            } }
                             className="px-4 py-2 bg-[#751010] text-white rounded-md hover:bg-[#5a0d0d] transition"
                         >
                             Close

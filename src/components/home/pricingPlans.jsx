@@ -41,7 +41,7 @@ const pricingData = [
     {
         title: "Tirzepatide weight loss program",
         price: "$199",
-        subtitle: "Price includes only medication",
+        subtitle: "Price includes appointments with providers only, prescriptions will be sent to brand’s online pharmacy.",
         features: [
             "Access to prescribed injectable GLP-1 clinically proven medication for weight loss.",
             "Personalized treatment plan developed by our medical team.",
