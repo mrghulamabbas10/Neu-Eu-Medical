@@ -70,7 +70,7 @@ const heading = "You deserve Providers who listen.".split(" ");
 export default function Providers() {
     return (
         <motion.div
-            className='Providers py-20 md:px-10 px-4 relative overflow-hidden md:-mt-[5vw] -mt-[15vw] text-center'
+            className='Providers py-20 md:px-10 px-4 relative overflow-hidden md:-mt-[10vw] -mt-[20vw] text-center'
             initial={ { opacity: 0, y: 30 } }
             whileInView={ { opacity: 1, y: 0 } }
             viewport={ { once: true } }

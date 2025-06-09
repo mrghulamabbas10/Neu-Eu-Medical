@@ -20,6 +20,14 @@ const data = [
         imagePath: "/images/sec-3-box-3.png",
         text: "Patient Support"
     },
+    {
+        imagePath: "/images/sec-3-box-4.png",
+        text: "Stay Great and Stay Healthy"
+    },
+    {
+        imagePath: "/images/sec-3-box-5.png",
+        text: "Doctor-Led Guidance"
+    },
 ];
 
 const fadeUp = {
@@ -56,9 +64,7 @@ export default function Section3() {
             >
                 <div className='space-y-4 sm:space-y-6'>
                     <h1 className='text-3xl sm:text-4xl md:text-5xl font-medium text-[#751010] leading-tight'>
-                        Neu Eu Medical
-                        <br />
-                        Telehealth Made Simple
+                       MEDICAL Telehealth Made Simple
                     </h1>
                     <p className="text-[#751010] text-sm sm:text-base">
                         Achieve Your Weight Loss Goals with Neu <br className='hidden sm:block' />
@@ -69,12 +75,12 @@ export default function Section3() {
                     href=""
                     className='flex items-center gap-2 text-black bg-[#B16464] px-5 py-2 rounded-full w-fit text-sm sm:text-base'
                 >
-                    <IoIosCall />  +9723325266 <MdOutlineArrowRightAlt className='text-xl sm:text-2xl' />
+                    <IoIosCall />  <span className='text-white'>+9723325266</span> <MdOutlineArrowRightAlt className='text-xl sm:text-2xl text-white' />
                 </Link>
             </motion.div>
 
             {/* Cards Grid */ }
-            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-8 mt-10 sm:mt-20 '>
+            <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5 sm:gap-5 mt-10 sm:mt-20 '>
                 { data.map((item, idx) => (
                     <motion.div
                         key={ idx }
@@ -85,7 +91,7 @@ export default function Section3() {
                         variants={ fadeUp }
                         custom={ idx + 1 }
                     >
-                        <p className='inset-0 p-8 absolute w-3/4 sm:w-2/3 text-[#751010] font-medium text-xl sm:text-lg'>
+                        <p className='inset-0 p-8 absolute w-3/4 sm:w-2/2 text-[#751010] font-medium text-xl sm:text-lg'>
                             { item.text }
                         </p>
                         <Image
