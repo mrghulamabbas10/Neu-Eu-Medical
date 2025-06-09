@@ -51,7 +51,7 @@ export default function Navbar({ className }) {
                 </motion.div>
 
                 {/* Desktop Navigation */ }
-                <motion.div className="hidden md:flex items-center gap-12 bg-[#FFFFFF66] border border-[#FFFFFF] px-10 p-2 rounded-full"
+                <motion.div className="hidden lg:flex items-center gap-12 bg-[#FFFFFF66] border border-[#FFFFFF] px-10 p-2 rounded-full"
                     variants={ navItemVariant }
                     initial="hidden"
                     animate="show"
@@ -72,7 +72,7 @@ export default function Navbar({ className }) {
 
                 {/* Right Side */ }
                 <motion.div
-                    className="hidden md:flex items-center gap-2"
+                    className="hidden lg:flex items-center gap-2"
                     variants={ rightSectionVariant }
                     initial="hidden"
                     animate="show"
@@ -93,12 +93,12 @@ export default function Navbar({ className }) {
 
 
                 {/* Mobile Menu Button */ }
-                <div className="md:hidden">
+                <div className="lg:hidden">
                     <button
                         className="text-3xl text-black"
                         onClick={ () => setIsOpen(!isOpen) }
                     >
-                        { isOpen ? <HiX /> : <HiMenuAlt3 /> }
+                        { isOpen ? "" : <HiMenuAlt3 /> }
                     </button>
                 </div>
             </div>
@@ -109,7 +109,7 @@ export default function Navbar({ className }) {
                     <>
                         {/* Overlay */ }
                         <motion.div
-                            className="fixed inset-0 bg-black bg-opacity-40 z-40"
+                            className="fixed inset-0 z-40"
                             initial={ { opacity: 0 } }
                             animate={ { opacity: 1 } }
                             exit={ { opacity: 0 } }

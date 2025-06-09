@@ -38,7 +38,7 @@ export default function Steps() {
     return (
         <div className='steps py-20 md:px-10 px-4 relative overflow-hidden'>
             {/* Arrow Buttons */ }
-            <div className='flex flex-col md:gap-10 gap-3 absolute md:top-[50%] top-[38%] md:-translate-y-[50%] -translate-y-[30%] md:left-20 left-5 z-50'>
+            <div className='flex flex-col md:gap-10 gap-3 absolute lg:top-[50%] md:top-[15%] md:-translate-y-[15%] top-[38%] lg:-translate-y-[50%] -translate-y-[30%] lg:left-20 left-5 z-50'>
                 <button onClick={ handlePrev } className='bg-white rounded-full md:p-3 p-1 md:text-2xl text-sm cursor-pointer shadow-lg'>
                     <IoIosArrowRoundUp />
                 </button>
@@ -79,7 +79,7 @@ export default function Steps() {
                             transition={ { type: 'spring', stiffness: 100, damping: 15 } }
                         >
                             <div className='relative w-full'>
-                                <p className='absolute md:w-2/6 w-2/5 md:left-[10vw] left-[14vw] md:top-[8vw] top-[9vw] md:text-xl text-[10px] font-medium text-[#7A3333]'>
+                                <p className='absolute z-10 md:w-2/6 w-[45%] lg:left-[10vw] md:left-[20vw] left-[11vw] lg:top-[8vw] md:top-[14vw] top-[9vw] md:text-xl text-[11px] font-medium text-[#7A3333]'>
                                     { step.text }
                                 </p>
                                 <Image
@@ -87,7 +87,7 @@ export default function Steps() {
                                     alt=''
                                     width={ 841 }
                                     height={ 325 }
-                                    className='mx-auto w-full'
+                                    className='mx-auto w-full scale-110'
                                     quality={ 100 }
                                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 50vw"
                                 />

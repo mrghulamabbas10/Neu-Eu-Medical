@@ -4,6 +4,7 @@ import { blogs } from '@/components/assets/data';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 
@@ -12,6 +13,8 @@ import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 export default function BlogSlider() {
     const [index, setIndex] = useState(0);
     const [itemsPerPage, setItemsPerPage] = useState(2);
+
+    const router = useRouter()
 
     // Responsive: detect screen width
     useEffect(() => {
@@ -49,16 +52,17 @@ export default function BlogSlider() {
                 Welcome to the Neu Eu Blog!
             </motion.h1>
 
-            <div className="relative max-w-3xl mx-auto overflow-hidden">
+            <div className="relative max-w-3xl mx-auto overflow-hidden" >
 
                 <div className={ `grid grid-cols-1 sm:grid-cols-${itemsPerPage} gap-8 transition-all` }>
                     { currentBlogs.map((blog, i) => (
                         <motion.div
                             key={ i }
-                            className="bg-white rounded-xl p-4 shadow_class"
+                            className="bg-white rounded-xl p-4 shadow_class cursor-pointer"
                             initial={ { opacity: 0, scale: 0.95, y: 20 } }
                             animate={ { opacity: 1, scale: 1, y: 0 } }
                             transition={ { duration: 0.5, delay: i * 0.2 } }
+                            onClick={()=> router.push(`/blog/${blog.slug}`)}
                         >
                             <Link href={ `/blog/${blog.slug}` }>
                                 <Image

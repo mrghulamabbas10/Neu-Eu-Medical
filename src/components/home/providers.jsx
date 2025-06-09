@@ -78,7 +78,7 @@ export default function Providers() {
         >
             {/* Title */ }
             <motion.h1
-                className="md:text-5xl text-3xl md:w-2/5 mx-auto text-[#751010] font-semibold text-center leading-tight flex flex-wrap justify-center gap-2"
+                className="md:text-5xl text-3xl lg:w-2/5 mx-auto text-[#751010] font-semibold text-center leading-tight flex flex-wrap justify-center gap-2"
                 variants={ fadeInUpContainer }
                 initial="hidden"
                 whileInView="show"
@@ -104,7 +104,7 @@ export default function Providers() {
             </motion.p>
 
             {/* Cards */ }
-            <div className='w-full md:w-3/6 mx-auto mt-10'>
+            <div className='w-full lg:w-3/6 mx-auto mt-10'>
                 <div className='grid grid-cols-1 sm:grid-cols-2 gap-8'>
                     { providersdata.map((provider, i) => (
                         <motion.div

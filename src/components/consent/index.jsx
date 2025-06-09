@@ -14,6 +14,8 @@ export default function ConsentFormPage() {
         phone: "",
         agreed: false,
     });
+    const [showPopup, setShowPopup] = useState(false);
+
 
     const [errors, setErrors] = useState({});
     const [sending, setSending] = useState(false);
@@ -35,7 +37,7 @@ export default function ConsentFormPage() {
         // Basic phone validation (digits, min 10 digits)
         if (!formData.phone) {
             errs.phone = "Phone number is required";
-        } else if (!/^\d{10,}$/.test(formData.phone.replace(/\D/g, ""))) {
+        } else if (!/^\d{5,}$/.test(formData.phone.replace(/\D/g, ""))) {
             errs.phone = "Invalid phone number";
         }
         if (!formData.agreed) {
@@ -87,7 +89,7 @@ export default function ConsentFormPage() {
                 publicKey
             );
 
-            alert("Form submitted successfully!");
+      setShowPopup(true);
             setFormData({ name: "", email: "", phone: "", agreed: false });
         } catch (error) {
             console.error("EmailJS error:", error);
@@ -96,6 +98,13 @@ export default function ConsentFormPage() {
             setSending(false);
         }
     };
+
+    
+    const closePopup = () => {
+    setShowPopup(false);
+    window.location.href = "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ20PesWrliNOdYy-TL5lNHSZ3F4D2DhusMxOSgHC4D2_LT6u9ThzCFAxFOPKlBFRoEN-zKCBIa3";
+};
+
 
     return (
         <motion.div
@@ -225,6 +234,21 @@ export default function ConsentFormPage() {
                     </div>
                 </form>
             </div>
+            {showPopup && (
+    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+        <div className="bg-white p-8 rounded-lg shadow-lg text-center max-w-sm w-full">
+            <h2 className="text-2xl font-bold text-[#891a1f] mb-2">Thank you!</h2>
+            <p className="text-gray-600 mb-6">We’ll contact you within 2–3 days</p>
+            <button
+                onClick={closePopup}
+                className="mt-4 px-6 py-2 rounded-full bg-[#891a1f] text-white font-semibold hover:bg-[#751010]"
+            >
+                Close
+            </button>
+        </div>
+    </div>
+)}
+
         </motion.div>
     );
 }

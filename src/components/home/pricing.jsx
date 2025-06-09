@@ -31,7 +31,7 @@ export default function Pricing() {
 
 
     return (
-        <div className='bg-[#FFE6DF] py-10 md:px-[132px] px-8 -mt-10 relative z-10'>
+        <div className='bg-[#FFE6DF] py-10 lg:px-[132px] md:px-[80px] px-8 -mt-10 relative z-10'>
             <motion.div
                 className='grid lg:grid-cols-2 grid-cols-1 gap-8'
                 initial="hidden"
@@ -48,13 +48,13 @@ export default function Pricing() {
                         transition={ { duration: 0.6, ease: 'easeOut' } }
                     >
                         A <span className='font-bold'>PLAN</span> THAT
-                        <br />
+                        <br className='lg:block hidden' />
                         WORKS FOR
-                        <br />YOU!
+                        <br className='lg:block hidden' />YOU!
                     </motion.h2>
 
                     <motion.p
-                        className='md:w-2/5 ml-auto text-[#751010]'
+                        className='lg:w-2/5 ml-auto text-[#751010] lg:text-start text-center lg:mt-0 mt-2'
                         initial={ { x: 50, opacity: 0 } }
                         animate={ { x: 0, opacity: 1 } }
                         transition={ { duration: 0.6, ease: 'easeOut', delay: 0.2 } }

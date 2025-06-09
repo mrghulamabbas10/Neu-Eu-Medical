@@ -83,7 +83,7 @@ export default function AccordionSection() {
     };
 
     return (
-        <div className="w-full md:w-2/3 mx-auto space-y-5 py-16 px-4">
+        <div className="w-full lg:w-2/3 md:w-3/4 mx-auto space-y-5 py-16 px-4">
             { accordionData.map((item, index) => (
                 <AccordionItem
                     key={ index }

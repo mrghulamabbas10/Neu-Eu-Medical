@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import CheckIcon from '../assets/check'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 const pricingData = [
     {
@@ -98,12 +99,13 @@ const buttonVariants = {
 
 
 export default function PricingPlans() {
+    const router = useRouter()
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-10">
             { pricingData.map((plan, index) => (
                 <motion.div
                     key={ index }
-                    className="relative rounded-2xl shadow-lg md:p-6 p-9 border transition-all duration-300 shadow_class border-[#D4D4D4] bg-white hover:scale-105 h-full"
+                    className="relative rounded-2xl shadow-lg group md:p-6 p-9 border transition-all duration-300 shadow_class border-[#D4D4D4] bg-white hover:scale-105 h-full"
                     variants={ cardVariants }
                     initial="hidden"
                     whileInView="show"
@@ -155,20 +157,15 @@ export default function PricingPlans() {
 
                     {/* CTA button - centered and appears on hover */ }
                     <motion.div
-                        className="absolute inset-0 flex items-center justify-center pointer-events-none"
-                        initial={ { opacity: 0 } }
-                        whileHover={ { opacity: 1 } }
-                        transition={ { duration: 0.3 } }
+                       className="absolute inset-0 bottom-5 flex items-end justify-center bg-white/90 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out"
+                        
                     >
                         <Link href={ "/eligibility" }>
-                            <motion.button
-                                variants={ buttonVariants }
-                                className="pointer-events-auto bg-[#7A3333] text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-[#5a2525] transition-colors"
-                                initial="hidden"
-                                whileHover="visible"
+                            <button 
+                                className="cursor-pointer bg-[#7A3333] text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-[#5a2525] transition-colors duration-150"
                             >
                                 Join Now
-                            </motion.button>
+                            </button>
                         </Link>
                     </motion.div>
                 </motion.div>

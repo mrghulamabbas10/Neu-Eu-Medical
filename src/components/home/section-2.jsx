@@ -66,8 +66,8 @@ export default function Section2() {
 
                         { item === 3 && (
                             <>
-                                <p className="text-sm font-medium opacity-80">REVIEWS</p>
-                                <p className="text-sm lg:text-base font-medium mt-2 mb-4 leading-snug">
+                                <p className="text-sm md:text-xl lg:text-base font-medium opacity-80">REVIEWS</p>
+                                <p className="text-sm md:text-xl lg:text-base font-medium mt-2 mb-4 leading-snug">
                                     My provider helped me understand the difference between hunger, being bored, and food addiction.
                                 </p>
                                 <div className="flex items-center justify-between gap-3">

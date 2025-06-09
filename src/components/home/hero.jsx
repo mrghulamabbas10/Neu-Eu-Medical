@@ -93,7 +93,7 @@ const wordAnimation = {
 
 export default function Hero() {
     return (
-        <div className="bg-[#FFE6DF] rounded-b-3xl pt-10 px-6 md:px-10 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-5 items-center">
+        <div className="bg-[#FFE6DF] rounded-b-3xl pt-10 px-6 md:px-10 grid grid-cols-1 lg:grid-cols-2 gap-5 items-center">
             {/* Left Content */ }
             <motion.div
                 className="space-y-6 md:pb-10"
@@ -225,7 +225,7 @@ export default function Hero() {
                     alt="main avatar"
                     width={ 745 }
                     height={ 900 }
-                    className="w-full mx-auto md:absolute md:bottom-0 md:right-0 h-full object-center"
+                    className="w-full mx-auto lg:absolute static  lg:bottom-0 lg:right-0 lg:h-full h-full md:h-[100vw] object-center"
                     quality={ 100 }
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 50vw"
 

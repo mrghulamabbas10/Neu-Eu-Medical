@@ -44,7 +44,7 @@ export default function Join() {
 
 
     return (
-        <div className="px-[20px] md:px-[120px] py-16 overflow-hidden relative">
+        <div className="px-[20px] lg:px-[120px] md:px-[60px] py-16 overflow-hidden relative">
             <Image src="/images/bubbuls.png" alt="img1" width={ 200 } height={ 200 } className="absolute top-[8vw] right-[3vw]" quality={ 100 } />
 
             <motion.h2
@@ -95,7 +95,7 @@ export default function Join() {
                         <Image src="/images/avatar-4.png" alt="img4" width={ 69 } height={ 69 } quality={ 100 } />
                     </motion.div>
 
-                    <motion.div variants={ popup } className="-mt-5 ml-auto">
+                    <motion.div variants={ popup } className="lg:-mt-5 ml-auto">
                         <Image src="/images/see-more-btn.png" alt="img4" width={ 142 } height={ 142 } quality={ 100 } />
                     </motion.div>
                 </div>
@@ -106,7 +106,7 @@ export default function Join() {
                     {/* Rating */ }
                     <motion.div
                         variants={ bubble }
-                        className="absolute md:right-0 left-0 md:left-auto bg-gray-50 rounded-full p-5 top-[5vw] text-center text-[#751010]"
+                        className="absolute lg:right-0 md:-left-7 left-0 lg:left-auto bg-gray-50 rounded-full p-5 lg:top-[5vw] top-0 text-center text-[#751010]"
                     >
                         <p className="text-3xl font-semibold">4.8</p>
                         <p className=" text-xl">★★★★★</p>

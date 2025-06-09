@@ -55,7 +55,7 @@ export default function FAQs() {
 
 
             <motion.h1
-                className="text-2xl md:text-4xl w-2/6 mx-auto text-[#751010] font-semibold text-center leading-tight flex flex-wrap justify-center gap-2"
+                className="text-2xl md:text-4xl lg:w-2/6 mx-auto text-[#751010] font-semibold text-center leading-tight flex flex-wrap justify-center gap-2"
                 variants={ fadeInUpContainer }
                 initial="hidden"
                 whileInView="show"
