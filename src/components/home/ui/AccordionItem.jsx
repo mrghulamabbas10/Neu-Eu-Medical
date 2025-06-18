@@ -46,7 +46,7 @@ const AccordionItem = ({ question, answer, isOpen, onClick }) => {
             viewport={ { once: true, amount: 0.2 } }
             transition={ { duration: 0.5 } }
         >
-            <div className="flex justify-between items-center text-[#863C3C] font-semibold md:text-lg text-sm">
+            <div className="flex justify-between items-center text-primary font-semibold md:text-lg text-sm">
                 <span>{ question }</span>
                 <span>{ isOpen ? '−' : '+' }</span>
             </div>
@@ -65,7 +65,7 @@ const AccordionItem = ({ question, answer, isOpen, onClick }) => {
                         transition={ { duration: 0.4, ease: [0.4, 0, 0.2, 1] } }
                         className="overflow-hidden"
                     >
-                        <div className="pt-4 text-[#751010] text-sm leading-relaxed">
+                        <div className="pt-4 text-primary text-sm leading-relaxed">
                             { answer }
                         </div>
                     </motion.div>

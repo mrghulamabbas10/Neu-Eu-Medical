@@ -8,9 +8,10 @@ import { motion } from "framer-motion";
 import PlayIcon from "../assets/play-icon";
 import Eligible from "../assets/eligible";
 import Arrow from "../assets/arrow";
-import { IoIosCall } from "react-icons/io";
+import { IoIosCall, IoMdCall } from "react-icons/io";
 import { LuDot } from "react-icons/lu";
 import Star from "../assets/star";
+import { FiSearch } from "react-icons/fi";
 
 const staggerContainer = {
   hidden: {},
@@ -88,78 +89,69 @@ const wordAnimation = {
 
 export default function Hero() {
   return (
-    <div className="bg-[#FFE6DF] rounded-b-3xl pt-10 px-6 md:px-10 grid grid-cols-1 lg:grid-cols-2 gap-5 items-center">
+    <div className=" rounded-b-3xl pt-20 px-3 md:px-10 grid grid-cols-1 lg:grid-cols-2 md:gap-5 items-center">
       {/* Left Content */}
       <motion.div
-        className="space-y-6 md:pb-10"
+        className="md:pb-10"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
         variants={fadeInUp}
       >
-        {/* Tagline */}
-        <motion.div className="flex items-center gap-2" variants={fadeInUp}>
-          <PlayIcon />
-          <p className="text-sm md:text-base">
-            Join our virtual weight loss clinic
-          </p>
-        </motion.div>
-
         {/* Main Heading */}
         <motion.h1
-          className="text-4xl md:text-5xl lg:text-7xl text-[#751010] font-bold leading-tight flex flex-wrap gap-2"
+          className="text-5xl uppercase lg:text-7xl text-[#751010] font-extrabold lg:leading-[2.5rem] leading-[3rem] flex flex-wrap gap-2"
           variants={fadeInUpContainer}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
         >
-          {heading.map((word, index) => (
-            <motion.span key={index} variants={wordAnimation}>
-              {word}
-            </motion.span>
-          ))}
+          <span className="font-light">Weight loss</span>
+          <br className="md:block hidden" /> that works!
         </motion.h1>
 
-        <motion.p
-          variants={fadeInUp}
-          custom={2}
-          className="text-[#751010] text-2xl font-bold"
-        >
-          Join our Clinic
-        </motion.p>
         {/* Description */}
         <motion.p
-          className="text-base text-gray-800"
+          className="text-base text-gray-800 my-8 md:w-[80%]"
           variants={fadeInUp}
           custom={2}
         >
-          Prescribed Medication Assisted Weight Loss Program That Gets Results
+          Prescribed Medication-Assisted Weight Loss Program for Sustainable,
+          Long Lasting Results.
         </motion.p>
 
         {/* CTA Button */}
-        <motion.div variants={fadeInUp} custom={3}>
+
+        <div className="flex items-center gap-4">
+          <div>
+            <Link
+              href={"/"}
+              className="flex items-center justify-center font-bold text-2xl cursor-pointer text-white hover:bg-black bg-primary 2xl:w-[60px] 2xl:h-[60px] w-12 h-12 rounded-full"
+            >
+              <IoMdCall />
+            </Link>
+          </div>
           <Link
             href="/eligibility"
-            className="flex items-center gap-3 bg-[#B16464] hover:bg-[#814a4a] px-6 py-3 text-white rounded-full w-fit text-sm md:text-base"
+            className="flex items-center gap-3 font-bold bg-primary hover:bg-[#814a4a] px-8 py-3 text-white rounded-full md:w-fit w-full text-sm md:text-base"
           >
-            <Eligible />
-            <span>Am I Eligible?</span>
+            Book Free Consultation
           </Link>
-        </motion.div>
+        </div>
 
         {/* Features Grid */}
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 gap-5"
+          className="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-20 "
           variants={staggerContainer}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
         >
           {/* Left Box */}
-          <motion.div variants={fadeInFromRight} className="relative">
-            <p className="absolute top-4 left-4 font-medium text-white z-10">
-              Licensed <br /> Providers
-            </p>
+          <motion.div
+            variants={fadeInFromRight}
+            className="relative md:block hidden"
+          >
             <Image
               src="/images/doctor.png"
               alt="doctor"
@@ -173,20 +165,14 @@ export default function Hero() {
           {/* Right Box */}
           <motion.div
             variants={fadeInFromRight}
-            className="relative bg-white rounded-3xl overflow-hidden"
+            className="relative bg-white rounded-3xl overflow-hidden md:block hidden"
           >
-            <div className="absolute text-sm flex flex-col justify-between h-full p-6">
-              <p className="font-medium">Neu Eu Medical</p>
-              <p className="text-gray-600 text-sm mt-4 leading-snug">
-                Achieve Your Weight Loss <br /> Goals with Neu Eu Medical's{" "}
-                <br /> Telehealth Solutions
+            <div className="absolute text-sm flex gap-6 flex-col h-full p-6">
+              <p className="font-semibold text-lg">Neu Eu Medical</p>
+              <p className="text-gray-600 text-sm mt-4 leading-snug w-[191px]">
+                Achieve Your Weight Loss Goals with Neu Eu Medical's Telehealth
+                Solutions
               </p>
-              <Link
-                href="tel:+9723325266"
-                className="flex items-center mt-4 gap-2 px-4 py-1 rounded-full bg-[#F5DFA2] text-sm"
-              >
-                <IoIosCall /> +9723325266
-              </Link>
             </div>
             <Image
               src="/images/box-2.png"
@@ -198,31 +184,6 @@ export default function Hero() {
             />
           </motion.div>
         </motion.div>
-
-        {/* Talk to Providers */}
-        {/* <motion.div
-          className="flex flex-col sm:flex-row items-end sm:items-center justify-between gap-4 mt-4"
-          variants={fadeInUp}
-          custom={5}
-        >
-          <div className="flex items-center  gap-5 bg-[#FFF0EC] px-4 py-2 rounded-full w-fit">
-            <Image
-              src="/images/docters.png"
-              alt="doctors"
-              width={115}
-              height={42}
-              quality={100}
-            />
-            <span className="h-5 border-r border-gray-400 block"></span>
-            <p className="text-sm">Talk to our health providers</p>
-          </div>
-          <Link
-            href="#"
-            className="transition-transform duration-300 hover:scale-110"
-          >
-            <Arrow />
-          </Link>
-        </motion.div> */}
       </motion.div>
 
       {/* Right Avatar Image */}
@@ -233,72 +194,16 @@ export default function Hero() {
         transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
         viewport={{ once: true }}
       >
-        {/* Star Decoration */}
-        <span className="absolute md:top-[50%] top-[30%] right-5 md:right-10">
-          <Star />
-        </span>
-
         {/* Main Image */}
         <Image
           src="/images/main-avatar.png"
           alt="main avatar"
           width={745}
-          height={900}
-          className="w-full mx-auto lg:absolute static  lg:bottom-0 lg:right-0 lg:h-full h-full md:h-[100vw] object-center"
+          height={1105}
+          className="w-full mx-auto 2xl:h-[1105px] lg:h-[850px] object-contain h-full md:h-[100vw] object-center"
           quality={100}
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 50vw"
         />
-
-        {/* Tags */}
-        <motion.div
-          className="absolute bottom-4 right-4 space-y-2 text-xs"
-          variants={tagContainer}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-        >
-          <motion.div
-            variants={tagContainer}
-            className="flex items-center justify-end gap-2 flex-wrap"
-          >
-            <motion.span
-              variants={tagItem}
-              className="bg-[#84848433] px-3 py-1 rounded-full border border-white text-white flex items-center"
-            >
-              <LuDot /> Clinic
-            </motion.span>
-            <motion.span
-              variants={tagItem}
-              className="bg-white px-3 py-1 rounded-full border border-white text-black flex items-center"
-            >
-              <LuDot /> Medicine CL
-            </motion.span>
-          </motion.div>
-
-          <motion.div
-            variants={tagContainer}
-            className="flex items-center justify-end gap-2 flex-wrap"
-          >
-            <motion.span
-              variants={tagItem}
-              className="bg-[#84848433] px-3 py-1 rounded-full border border-white text-white flex items-center"
-            >
-              <LuDot /> Lifestyle
-            </motion.span>
-            <motion.span
-              variants={tagItem}
-              className="bg-[#84848433] px-3 py-1 rounded-full border border-white text-white flex items-center"
-            >
-              <LuDot /> Medical
-            </motion.span>
-            <motion.span
-              variants={tagItem}
-              className="bg-[#84848433] px-3 py-1 rounded-full border border-white text-white flex items-center"
-            >
-              <LuDot /> Healthcare
-            </motion.span>
-          </motion.div>
-        </motion.div>
       </motion.div>
     </div>
   );

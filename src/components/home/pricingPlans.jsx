@@ -1,175 +1,263 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion'
-import CheckIcon from '../assets/check'
-import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import Link from "next/link";
+import React, { useState } from "react";
+import { IoMdCall } from "react-icons/io";
+import AppointmentIcon from "../assets/oppointment-icon";
+import Engaction from "../assets/engaction";
+import Engactionwhite from "../assets/engactionwhite";
+import { BsPatchCheckFill } from "react-icons/bs";
+import { MdKeyboardArrowDown } from "react-icons/md";
+import { motion, AnimatePresence } from "framer-motion";
 
-const pricingData = [
-    {
-        title: "Semaglutide Weight Loss Program",
-        price: "$399",
-        subtitle: "Price includes medication & appointments",
-        features: [
-            "Access to prescribed injectable GLP-1 clinically proven medication for weight loss.",
-            "Personalized treatment plan developed by our medical team.",
-            "Regular virtual consultations to monitor progress.",
-            "Ongoing support to ensure long-term weight loss and effective weight loss."
-        ],
-    },
-    {
-        title: "Tirzepatide Weight Loss Program",
-        price: "$499",
-        subtitle: "Price includes medication & appointments",
-        features: [
-            "Utilize prescribed GLP-1s, an advanced medication shown to aid in significant weight reduction.",
-            "Customized treatment strategy tailored to your lifestyle & health goals.",
-            "Monthly virtual support & monitoring by our healthcare professionals.",
-            "Comprehensive guidance to achieve and maintain your desired weight."
-        ]
-    },
-    {
-        title: "Brand name Semaglutide",
-        price: "$199",
-        subtitle: "Price includes appointments with providers only, prescriptions will be sent to brand’s online pharmacy.",
-        features: [
-            "Access to prescribed injectable GLP-1 clinically proven medication for weight loss.",
-            "Personalized treatment plan developed by our medical team.",
-            "Regular virtual consultations to monitor progress.",
-            "Ongoing support to ensure long-term weight loss and effective weight loss."
-        ]
-    },
-    {
-        title: "Brand Name Tirzepatide",
-        price: "$199",
-        subtitle: "Price includes appointments with providers only, prescriptions will be sent to brand’s online pharmacy.",
-        features: [
-            "Access to prescribed injectable GLP-1 clinically proven medication for weight loss.",
-            "Personalized treatment plan developed by our medical team.",
-            "Regular virtual consultations to monitor progress.",
-            "Ongoing support to ensure long-term weight loss and effective weight loss."
-        ]
-    }
-]
+const pricingPlans = [
+  {
+    icon: <AppointmentIcon />,
+    bgClass: "bg-box3",
+    title: "Semaglutide Consultation (Brand Name)",
+    price: "$199",
+    type: "Appointment Only",
+    features: [
+      "Online medical visit with provider",
+      "Evaluation for GLP-1 therapy suitability",
+      "Prescription if appropriate",
+      "Medication not included",
+      "Provider answers your questions",
+      "Follow-ups not included",
+      "One time consult",
+    ],
+  },
+  {
+    icon: <AppointmentIcon />,
+    bgClass: "bg-[#FFDCCC]",
+    title: "Tirzepatide Consultation (Brand Name)",
+    price: "$199",
+    type: "Appointment Only",
+    features: [
+      "Online medical visit with provider",
+      "Evaluation for GLP-1 therapy suitability",
+      "Prescription if appropriate",
+      "Medication not included",
+      "Provider answers your questions",
+      "Follow-ups not included",
+      "One time consult",
+    ],
+  },
+  {
+    icon: <Engaction />,
+    bgClass: "bg-box1",
+    title: "Semaglutide Package (Compounded)",
+    price: "$399",
+    type: "Medication + Appointment",
+    features: [
+      "Online medical visit with provider",
+      "Evaluation for GLP-1 therapy suitability",
+      "Prescription if appropriate",
+      "Provider answers your questions",
+      "Follow-ups included",
+      "Medication included (1 month)",
+      "No insurance required",
+    ],
+  },
+  {
+    icon: <Engactionwhite />,
+    bgClass: "bg-[#D77979]",
+    title: "Tirzepatide Package (Compounded)",
+    price: "$499",
+    type: "Medication + Appointment",
+    features: [
+      "Online medical visit with provider",
+      "Evaluation for GLP-1 therapy suitability",
+      "Prescription if appropriate",
+      "Provider answers your questions",
+      "Follow-ups included",
+      "Medication included (1 month)",
+      "Cash Pay, No insurance required",
+    ],
+  },
+];
 
-// Animation Variants
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
 const cardVariants = {
-    hidden: { opacity: 0, y: 30 },
-    show: (i) => ({
-        opacity: 1,
-        y: 0,
-        transition: {
-            delay: i * 0.2,
-            duration: 0.6,
-            ease: 'easeOut',
-            staggerChildren: 0.1,
-            delayChildren: 0.2,
-        }
-    })
-}
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0 },
+};
 
-const textVariants = {
-    hidden: { opacity: 0, y: 10 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.4 } }
-}
-
-const contentVariants = {
-    normal: { filter: 'blur(0px)', opacity: 1 },
-    blurred: { filter: 'blur(4px)', opacity: 0.7 }
-}
-
-
-const buttonVariants = {
-    hidden: {
-        opacity: 0,
-        y: 20,
-        scale: 0.8
+const listItemVariants = {
+  hidden: { opacity: 0, x: -20 },
+  visible: (i) => ({
+    opacity: 1,
+    x: 0,
+    transition: {
+      delay: i * 0.1,
     },
-    visible: {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        transition: {
-            type: 'spring',
-            stiffness: 100,
-            damping: 10
-        }
-    }
-}
-
+  }),
+};
 
 export default function PricingPlans() {
-    const router = useRouter()
-    return (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-10">
-            { pricingData.map((plan, index) => (
-                <motion.div
-                    key={ index }
-                    className="relative rounded-2xl shadow-lg group md:p-6 p-9 border transition-all duration-300 shadow_class border-[#D4D4D4] bg-white hover:scale-105 h-full"
-                    variants={ cardVariants }
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={ { once: true, amount: 0.2 } }
-                    custom={ index }
-                    whileHover="hover"
-                >
-                    {/* Content Wrapper - will blur on hover */ }
-                    <motion.div
-                        className="h-full"
-                        initial="normal"
-                        whileHover="blurred"
-                        variants={ contentVariants }
-                        transition={ { duration: 0.3 } }
-                    >
-                        <motion.h3
-                            className="text-lg font-semibold text-[#7A3333] mb-2 text-center"
-                            variants={ textVariants }
-                        >
-                            { plan.title }
-                        </motion.h3>
-                        <motion.p
-                            className="text-3xl font-bold text-[#7A3333] text-center"
-                            variants={ textVariants }
-                        >
-                            { plan.price }
-                        </motion.p>
-                        <motion.p
-                            className="text-sm text-gray-500 text-center mb-4"
-                            variants={ textVariants }
-                        >
-                            { plan.subtitle }
-                        </motion.p>
-                        <motion.ul className="space-y-2">
-                            { plan.features.map((feature, i) => (
-                                <motion.li
-                                    key={ i }
-                                    className="flex items-start gap-2 text-[#7A3333]"
-                                    variants={ textVariants }
-                                >
-                                    <span className="text-lg mt-1">
-                                        <CheckIcon />
-                                    </span>
-                                    <span className="text-sm font-medium">{ feature }</span>
-                                </motion.li>
-                            )) }
-                        </motion.ul>
-                    </motion.div>
+  return (
+    <motion.div
+      className="bg-brandbg md:px-10 px-5 md:py-32 pt-32 pb-10 mt-20 rounded-3xl"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+    >
+      <motion.div
+        className="flex items-center md:flex-row flex-col md:justify-between justify-center gap-5"
+        initial={{ opacity: 0, y: -50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
+        <h2 className="text-3xl text-primary capitalize font-semibold">
+          Personalized Solutions for <br className="md:block hidden" />
+          <span className="text-burgundy">Lasting Results</span>
+        </h2>
 
-                    {/* CTA button - centered and appears on hover */ }
-                    <motion.div
-                       className="absolute inset-0 bottom-5 flex items-end justify-center bg-white/90 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-out"
-                        
-                    >
-                        <Link href={ "/eligibility" }>
-                            <button 
-                                className="cursor-pointer bg-[#7A3333] text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:bg-[#5a2525] transition-colors duration-150"
-                            >
-                                Join Now
-                            </button>
-                        </Link>
-                    </motion.div>
-                </motion.div>
-            )) }
+        <div className="flex items-center gap-4">
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Link
+              href="/eligibility"
+              className="flex items-center gap-3 w-full font-bold bg-burgundy hover:bg-primary px-8 py-3 hover:text-white text-white rounded-full md:w-fit text-sm md:text-base"
+            >
+              Book Free Consultation
+            </Link>
+          </motion.div>
+          <motion.div
+            className="md:flex hidden"
+            whileHover={{ rotate: 10 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            <Link
+              href="/"
+              className="flex items-center justify-center font-bold text-2xl cursor-pointer text-white hover:bg-black bg-primary 2xl:w-[60px] 2xl:h-[60px] w-12 h-12 rounded-full"
+            >
+              <IoMdCall />
+            </Link>
+          </motion.div>
         </div>
-    )
+      </motion.div>
+
+      {/* Pricing Cards */}
+      <motion.div
+        variants={containerVariants}
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 2xl:gap-8 md:gap-5 gap-10 mt-20"
+      >
+        {pricingPlans.map((plan, index) => {
+          const [isOpen, setIsOpen] = useState(false);
+
+          return (
+            <motion.div
+              key={index}
+              variants={cardVariants}
+              className={`rounded-2xl w-full pb-5 overflow-hidden shadow-md bg-white flex flex-col justify-between hover:scale-[1.02] transition-transform duration-300 ${
+                index === 3 ? "text-white" : "text-primary"
+              }`}
+            >
+              <div>
+                <div className="text-sm text-center bg-primary2 p-2 text-white">
+                  {plan.type}
+                </div>
+
+                <div className={`${plan.bgClass} md:p-5 p-8`}>
+                  <div className="flex justify-center">{plan.icon}</div>
+                  <h3 className="text-lg font-bold text-center my-3">
+                    {plan.title}
+                  </h3>
+                  <div className={`text-4xl font-bold text-center`}>
+                    {plan.price}
+                  </div>
+                </div>
+
+                {/* Desktop version */}
+                <div className="md:p-5 p-8 pt-10 hidden md:block">
+                  <h3 className="font-medium mb-4 text-[#CA6464]">
+                    Features you’ll get:
+                  </h3>
+                  <ul className="space-y-4 mb-10">
+                    {plan.features.map((feature, i) => (
+                      <motion.li
+                        key={i}
+                        className="flex items-start gap-2 text-sm text-gray-700"
+                        variants={listItemVariants}
+                        custom={i}
+                      >
+                        <span className="text-primary">
+                          <BsPatchCheckFill />
+                        </span>
+                        <span>{feature}</span>
+                      </motion.li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Mobile collapsible */}
+                <div className="md:p-5 p-8 pt-10 md:hidden">
+                  <h3
+                    className="font-medium mb-4 text-[#CA6464] cursor-pointer flex items-center justify-between"
+                    onClick={() => setIsOpen(!isOpen)}
+                  >
+                    Features you’ll get:
+                    <span
+                      className={`transform transition-transform duration-300 ${
+                        isOpen ? "rotate-180" : "rotate-0"
+                      }`}
+                    >
+                      <MdKeyboardArrowDown />
+                    </span>
+                  </h3>
+
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.ul
+                        className="space-y-4 mb-10"
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        {plan.features.map((feature, i) => (
+                          <li
+                            key={i}
+                            className="flex items-start gap-2 text-sm text-gray-700"
+                          >
+                            <span className="text-primary">
+                              <BsPatchCheckFill />
+                            </span>
+                            <span>{feature}</span>
+                          </li>
+                        ))}
+                      </motion.ul>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                {/* Join Now Button */}
+                <motion.div
+                  className="md:px-5 px-8 w-full"
+                  whileHover={{ scale: 1.03 }}
+                  
+                  transition={{ duration: 0.4, repeat: Infinity, repeatType: "reverse" }}
+                >
+                  <Link
+                    href="/eligibility"
+                    className="block text-center w-full border border-primary text-primary font-semibold py-2 rounded-full hover:bg-primary hover:text-white transition"
+                  >
+                    Join Now!
+                  </Link>
+                </motion.div>
+              </div>
+            </motion.div>
+          );
+        })}
+      </motion.div>
+    </motion.div>
+  );
 }

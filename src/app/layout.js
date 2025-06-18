@@ -1,5 +1,6 @@
 import { Urbanist } from "next/font/google";
 import "./globals.css";
+import LayoutLoading from "./loading";
 
 const urbanist = Urbanist({
   variable: "--font-geist-sans",
@@ -19,6 +20,7 @@ export default function RootLayout({ children }) {
       <body
         className={ `${urbanist.className} antialiased ` }
       >
+        <LayoutLoading/>
         { children }
       </body>
     </html>

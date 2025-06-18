@@ -1,71 +1,66 @@
-"use client";
-
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
-import { motion } from "framer-motion";
 
-import RightArrow from "../assets/right-arrow";
-import UserIcon from "../assets/user-icon";
-import QuotsIcon from "../assets/quots";
-
-// Animation variant
-const fadeInUp = {
-    hidden: { opacity: 0, y: 40 },
-    visible: (i) => ({
-        opacity: 1,
-        y: 0,
-        transition: {
-            delay: i * 0.2,
-            duration: 0.6,
-            ease: "easeOut",
-        },
-    }),
-};
+const data = [
+  {
+    className: "bg-box1",
+    imagePath: "/images/searm1.png",
+    title: "Semaglutide",
+    description:
+      "A GLP-1 agonist, curbs appetite for 15–20% weight loss. Branded or compounded, it’s ideal for steady results.",
+    height: "h-28 object-contain",
+  },
+  {
+    className: "bg-box2",
+    imagePath: "/images/searm2.png",
+    title: "Tirzepatide",
+    description:
+      "A dual GLP-1/GIP agonist, promotes 20–25% weight loss. Branded or compounded, it’s great for fast results.",
+    height: "h-28 object-contain",
+  },
+  {
+    className: "bg-box3",
+    imagePath: "/images/searm3.png",
+    title: "Branded GLP-1s",
+    description:
+      "FDA-approved GLP-1s ensure safety via pharmacy pickup. Reliable, they suit those seeking regulated options.",
+    height: "h-28 object-contain",
+  },
+];
 
 export default function Section2() {
-    return (
-        <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            { [1, 2, 3, 4].map((item, index) => (
-                <motion.div
-                    key={ index }
-                    className="relative overflow-hidden rounded-3xl group"
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={ { once: true } }
-                    custom={ index }
-                    variants={ fadeInUp }
-                >
-                    {/* Background Image */ }
-                    <Image
-                        src={ `/images/section-box-3.png` }
-                        alt={ `box-${item}` }
-                        className="w-full h-[280px] sm:h-[300px] lg:h-[284px] object-cover rounded-3xl"
-                        width={ 390 }
-                        height={ 284 }
-                        quality={ 100 }
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 50vw"
-
-                    />
-
-                    {/* Overlay content */ }
-                    <div className="absolute inset-0 p-5 flex flex-col justify-between rounded-3xl">
-                         <>
-                                <p className="text-sm md:text-xl lg:text-base font-medium opacity-80">REVIEWS</p>
-                                <p className="text-sm md:text-xl lg:text-base font-medium mt-2 mb-4 leading-snug">
-                                    My provider helped me understand the difference between hunger, being bored, and food addiction.
-                                </p>
-                                <div className="flex items-center justify-between gap-3">
-                                    <UserIcon />
-                                    <div className="text-xs">
-                                        <h2 className="font-mediem">R.J.</h2>
-                                        <p>Verified Neu Eu Medical patient</p>
-                                    </div>
-                                    <QuotsIcon />
-                                </div>
-                            </>
-                    </div>
-                </motion.div>
-            )) }
+  return (
+    <div className="mt-5 grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-5">
+      <Link href={"#"} className="block">
+        <Image
+          src="/images/chose.png"
+          alt="chose"
+          width={520}
+          height={550}
+          className="w-full h-full object-cover 2xl:rounded-[30px] rounded-3xl"
+        />
+      </Link>
+      {data.map((item, idx) => (
+        <div
+          className={`${item.className} space-y-5 px-5 md:py-10 py-14 2xl:rounded-[30px] rounded-3xl 2xl:px-10 2xl:py-[86px]`}
+          key={idx}
+        >
+          <div>
+            <Image
+              src={item.imagePath}
+              alt={item.title}
+              width={85}
+              height={100}
+              className={item.height}
+            />
+          </div>
+          <div className="space-y-3 text-primary">
+            <h3 className="2xl:text-[30px] text-2xl font-semibold">{item.title}</h3>
+            <p>{item.description}</p>
+          </div>
         </div>
-    );
+      ))}
+    </div>
+  );
 }
