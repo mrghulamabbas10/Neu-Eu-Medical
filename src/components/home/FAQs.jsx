@@ -45,7 +45,7 @@ export default function FAQs() {
   }; 
 
   return (
-    <div className="join pt-42 md:pb-20 pb-10 mt-[-10vw]" id="FAQS">
+    <div className="join pt-42 md:pb-20 pb-10 mt-[-10vw]" id="faqs">
       <motion.h1
         className="text-2xl md:text-4xl lg:w-2/6 mx-auto text-[#751010] font-semibold text-center leading-tight flex flex-wrap justify-center gap-2"
         variants={fadeInUpContainer}

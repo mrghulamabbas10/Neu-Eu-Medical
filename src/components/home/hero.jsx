@@ -125,7 +125,7 @@ export default function Hero() {
         <div className="flex items-center gap-4">
           <div>
             <Link
-              href={"/"}
+              href="/eligibility"
               className="flex items-center justify-center font-bold text-2xl cursor-pointer text-white hover:bg-black bg-primary 2xl:w-[60px] 2xl:h-[60px] w-12 h-12 rounded-full"
             >
               <IoMdCall />

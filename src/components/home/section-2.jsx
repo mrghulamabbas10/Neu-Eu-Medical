@@ -1,6 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 
 const data = [
   {
@@ -24,27 +27,56 @@ const data = [
     imagePath: "/images/searm3.png",
     title: "Branded GLP-1s",
     description:
-      "FDA-approved GLP-1s ensure safety via pharmacy pickup. Reliable, they suit those seeking regulated options.",
+      "Brandname GLP-1s ensure safety via pharmacy pickup. Reliable, they suit those seeking regulated options.",
     height: "h-28 object-contain",
   },
 ];
 
 export default function Section2() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+
+  const cardVariants = {
+    hidden: { opacity: 0, scale: 0.8, y: 40 },
+    visible: (i) => ({
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: {
+        delay: i * 0.2,
+        duration: 0.6,
+        type: "spring",
+        stiffness: 100,
+      },
+    }),
+  };
+
   return (
-    <div className="mt-5 grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-5">
-      <Link href={"#"} className="block">
-        <Image
-          src="/images/chose.png"
-          alt="chose"
-          width={520}
-          height={550}
-          className="w-full h-full object-cover 2xl:rounded-[30px] rounded-3xl"
-        />
-      </Link>
+    <div
+      ref={ref}
+      className="mt-5 grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-5"
+    >
+      {/* Left Image */}
+    
+        <Link href={"#plans"} className="block">
+          <Image
+            src="/images/chose.png"
+            alt="chose"
+            width={520}
+            height={550}
+            className="w-full h-full object-cover 2xl:rounded-[30px] rounded-3xl"
+          />
+        </Link>
+
+      {/* Animated Cards */}
       {data.map((item, idx) => (
-        <div
-          className={`${item.className} space-y-5 px-5 md:py-10 py-14 2xl:rounded-[30px] rounded-3xl 2xl:px-10 2xl:py-[86px]`}
+        <motion.div
           key={idx}
+          className={`${item.className} space-y-5 px-5 md:py-10 py-14 2xl:rounded-[30px] rounded-3xl 2xl:px-10 2xl:py-[86px]`}
+          custom={idx}
+          variants={cardVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
         >
           <div>
             <Image
@@ -56,10 +88,12 @@ export default function Section2() {
             />
           </div>
           <div className="space-y-3 text-primary">
-            <h3 className="2xl:text-[30px] text-2xl font-semibold">{item.title}</h3>
+            <h3 className="2xl:text-[30px] text-2xl font-semibold">
+              {item.title}
+            </h3>
             <p>{item.description}</p>
           </div>
-        </div>
+        </motion.div>
       ))}
     </div>
   );

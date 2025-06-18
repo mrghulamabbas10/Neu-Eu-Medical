@@ -35,6 +35,10 @@ body {
 background-image: linear-gradient(to left top, #f4ae8e, #df9176, #ca7560, #b5584d, #9f3b3b);
 }
 
+.shadowcustom{
+  box-shadow: #FFE2B766 -10px 5px 44px 0px, #FFC6AB 0px 5px 40px 1px;
+}
+
 .shine {
   animation: shine 5s linear infinite;
   background-image: linear-gradient(

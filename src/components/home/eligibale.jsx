@@ -6,13 +6,12 @@ import { FaInstagram } from "react-icons/fa";
 import { CiFacebook } from "react-icons/ci";
 import { FaXTwitter } from "react-icons/fa6";
 import { FaPinterestP } from "react-icons/fa";
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 
 const socialsData = [
-  { icon: <FaInstagram />, link: "" },
-  { icon: <CiFacebook />, link: "" },
+  { icon: <FaInstagram />, link: "https://www.instagram.com/neueumedical?igsh=cm93NXJvajNxenl2" },
+  { icon: <CiFacebook />, link: "https://www.facebook.com/profile.php?id=61566649072474&mibextid=wwXIfr&rdid=OVrmXSbYKrpxHm5A&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1BTkikvoWx%2F%3Fmibextid%3DwwXIfr" },
   { icon: <FaXTwitter />, link: "" },
   { icon: <FaPinterestP />, link: "" },
 ];
@@ -72,14 +71,14 @@ export default function Eligibale() {
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           viewport={{ once: true }}
-          className="bg-[#ffffff7c] rounded-full flex items-center w-[90%] mx-auto justify-center"
+          className="bg-[#ffffff7c] rounded-full flex items-center w-[90%] mx-auto justify-center relative z-20" 
         >
           <input
             type="email"
             placeholder="Enter your email"
-            className="text-primary md:pl-5 pl-10 md:py-3 py-2 outline-0"
+            className="text-primary md:pl-5 pl-5 md:py-3 py-2 outline-0 placeholder:pl-5"
           />
-          <button className="md:px-10 px-7 ml-auto md:py-3 py-2 rounded-full text-primary bg-white font-semibold">
+          <button className="md:px-10 px-7 ml-auto md:py-3 py-2 relative z-20 rounded-full text-primary bg-white font-semibold cursor-pointer">
             Subscribe
           </button>
         </motion.div>
@@ -95,7 +94,7 @@ export default function Eligibale() {
               whileInView="visible"
               viewport={{ once: true }}
               onClick={() => router.push(`${item.link}`)}
-              className="bg-[#9F3B3B] p-3 rounded-full text-xl hover:scale-110 transition"
+              className="bg-[#9F3B3B] p-3 rounded-full text-xl hover:scale-110 transition cursor-pointer"
             >
                               {item.icon}
               

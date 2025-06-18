@@ -2,25 +2,38 @@
 
 import Image from "next/image";
 import React, { useState } from "react";
-import { IoIosArrowRoundBack, IoIosArrowRoundDown, IoIosArrowRoundForward, IoIosArrowRoundUp } from "react-icons/io";
+import {
+  IoIosArrowRoundBack,
+  IoIosArrowRoundDown,
+  IoIosArrowRoundForward,
+  IoIosArrowRoundUp,
+} from "react-icons/io";
 import { motion } from "framer-motion";
 
 const stepsData = [
   {
     img: "/images/step-1.png",
     text: "Fill out our short survey to determine eligibility for services.",
+    name: "- R. Joanne",
+    prfation: "Neu Eu Patient",
   },
   {
     img: "/images/step-2.png",
     text: "Meet with your provider to assess your diet, fitness, & health, & customize a personalized weight loss plan.",
+    name: "- R. Joanne",
+    prfation: "Neu Eu Patient",
   },
   {
     img: "/images/step-3.png",
     text: "On your appointment day, your provider will order your medication, & a U.S. pharmacy will process & ship it.",
+    name: "- R. Joanne",
+    prfation: "Neu Eu Patient",
   },
   {
     img: "/images/step-4.png",
     text: "Take your medication as prescribed & follow your treatment plan—many patients lose up to 10 lbs in the first month!",
+    name: "- R. Joanne",
+    prfation: "Neu Eu Patient",
   },
 ];
 
@@ -32,19 +45,19 @@ const mobilesteps = [
     prfation: "Neu Eu Patient",
   },
   {
-    mobileimg: "/images/mobile-step-1.png",
+    mobileimg: "/images/mobile-step-2.png",
     text: "Meet with your provider to assess your diet, fitness, & health, & customize a personalized weight loss plan.",
     name: "- R. Joanne",
     prfation: "Neu Eu Patient",
   },
   {
-    mobileimg: "/images/mobile-step-1.png",
+    mobileimg: "/images/mobile-step-3.png",
     text: "On your appointment day, your provider will order your medication, & a U.S. pharmacy will process & ship it.",
     name: "- R. Joanne",
     prfation: "Neu Eu Patient",
   },
   {
-    mobileimg: "/images/mobile-step-1.png",
+    mobileimg: "/images/mobile-step-4.png",
     text: "Take your medication as prescribed & follow your treatment plan—many patients lose up to 10 lbs in the first month!",
     name: "- R. Joanne",
     prfation: "Neu Eu Patient",
@@ -82,10 +95,11 @@ export default function Steps() {
 
       {/* Title */}
       <h2 className="text-center md:text-5xl text-3xl font-semibold text-[#751010]">
-        Hear from Our Weight Loss
+        Hear from Our <br /> Weight
         <span className="bg-[#F26969] px-2 text-white rounded-sm inline-block  mx-2 text-3xl">
           Heroes
         </span>
+        .
       </h2>
 
       {/* Steps Layered */}
@@ -109,9 +123,14 @@ export default function Steps() {
               transition={{ type: "spring", stiffness: 100, damping: 15 }}
             >
               <div className="relative w-full">
-                <p className="absolute md:w-2/6 w-2/5 md:left-[10vw] left-[14vw] md:top-[8vw] top-[9vw] md:text-xl text-[10px] font-medium text-[#7A3333]">
-                  {step.text}
-                </p>
+                <div className="absolute md:w-2/6 w-2/5 md:left-[8vw] left-[10vw] md:top-[5vw] top-[9vw]  text-[#7A3333]">
+                  <p className="md:text-xl text-[10px] font-medium">
+                    {step.text}
+                  </p>
+                  <h2 className="text-lg mt-2 font-bold">{step.name}</h2>
+                  <p className="text-sm">{step.prfation}</p>
+                </div>
+
                 <Image
                   src={step.img}
                   alt=""
@@ -126,42 +145,44 @@ export default function Steps() {
           );
         })}
       </div>
-       <div className="md:hidden block mt-10 relative text-center">
-          <div className="relative text-primary ">
-            <div className="absolute p-8 top-14 z-10 w-full">
-              <p className="text-base font-medium">
-                {mobilesteps[currentIndex].text}
-              </p>
-              <h2 className="text-lg mt-2 font-bold">{mobilesteps[currentIndex].name}</h2>
-              <p className="text-sm">{mobilesteps[currentIndex].prfation}</p>
-            </div>
+      <div className="md:hidden block mt-10 relative text-center">
+        <div className="relative text-primary ">
+          <div className="absolute p-8 top-16 z-10 w-full">
+            <p className="text-base font-medium">
+              {mobilesteps[currentIndex].text}
+            </p>
+            <h2 className="text-lg mt-2 font-bold">
+              {mobilesteps[currentIndex].name}
+            </h2>
+            <p className="text-sm">{mobilesteps[currentIndex].prfation}</p>
+          </div>
 
-            <Image
-              src={mobilesteps[currentIndex].mobileimg}
-              alt=""
-              width={841}
-              height={325}
-              className="mx-auto w-full h-full shadow rounded-full shadow-primary"
-              quality={100}
-            />
+          <Image
+            src={mobilesteps[currentIndex].mobileimg}
+            alt=""
+            width={841}
+            height={325}
+            className="mx-auto w-full h-full shadowcustom rounded-full "
+            quality={100}
+          />
 
-            {/* Arrows */}
-            <div className="flex justify-center items-center gap-5 z-10 mt-5">
-              <button
-                onClick={handlePrev}
-                className="bg-white hover:bg-primary text-primary hover:text-white rounded-full p-2 shadow-md"
-              >
-                <IoIosArrowRoundBack className=" text-2xl" />
-              </button>
-              <button
-                onClick={handleNext}
-                className="bg-white hover:bg-primary text-primary hover:text-white rounded-full p-2 shadow-md"
-              >
-                <IoIosArrowRoundForward className="text-2xl" />
-              </button>
-            </div>
+          {/* Arrows */}
+          <div className="flex justify-center items-center gap-5 z-10 mt-10">
+            <button
+              onClick={handlePrev}
+              className="bg-white hover:bg-primary text-primary hover:text-white rounded-full p-2 shadow-md"
+            >
+              <IoIosArrowRoundBack className=" text-2xl" />
+            </button>
+            <button
+              onClick={handleNext}
+              className="bg-white hover:bg-primary text-primary hover:text-white rounded-full p-2 shadow-md"
+            >
+              <IoIosArrowRoundForward className="text-2xl" />
+            </button>
           </div>
         </div>
+      </div>
     </div>
   );
 }

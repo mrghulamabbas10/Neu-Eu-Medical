@@ -11,7 +11,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 const HomeData = [
   { name: "Home", path: "/" },
   { name: "Blog", path: "/blog" },
-  { name: "Signup", path: "#" },
+  { name: "Signup", path: "/eligibility" },
 ];
 
 const logoVariant = {
@@ -41,13 +41,14 @@ const rightSectionVariant = {
   },
 };
 
-export default function Navbar({ className }) {
+export default function Navbar({ className, containerClass }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const pathname = usePathname();
+  const router = useRouter()
 
   return (
-    <div className="pt-3">
+    <div className={`${className ? containerClass : ""} pt-3`}>
       <div
         className={`${
           className ? className : "rounded-t-3xl"
@@ -101,8 +102,9 @@ export default function Navbar({ className }) {
           variants={rightSectionVariant}
           initial="hidden"
           animate="show"
+          
         >
-          <button className="bg-primary px-8 py-3 rounded-full text-white hover:bg-[#CA6464] transition duration-150 cursor-pointer">
+          <button  onClick={() => router.push("/eligibility")} className="bg-primary px-8 py-3 rounded-full text-white hover:bg-[#CA6464] transition duration-150 cursor-pointer">
             Book Now!
           </button>
         </motion.div>
@@ -183,7 +185,10 @@ export default function Navbar({ className }) {
                 initial="hidden"
                 animate="show"
               >
-                <button className="bg-primary px-8 py-3 w-full rounded-full text-white hover:bg-[#CA6464] transition duration-150 cursor-pointer">
+                <button
+                  onClick={() => router.push("/eligibility")}
+                  className="bg-primary px-8 py-3 w-full rounded-full text-white hover:bg-[#CA6464] transition duration-150 cursor-pointer"
+                >
                   Book Now!
                 </button>
               </motion.div>

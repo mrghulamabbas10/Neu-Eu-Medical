@@ -104,11 +104,12 @@ const listItemVariants = {
 
 export default function PricingPlans() {
   return (
-    <motion.div
+    <motion.div 
       className="bg-brandbg md:px-10 px-5 md:py-32 pt-32 pb-10 mt-20 rounded-3xl"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
+      id="plans"
     >
       <motion.div
         className="flex items-center md:flex-row flex-col md:justify-between justify-center gap-5"

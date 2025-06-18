@@ -73,7 +73,7 @@ export default function Section3() {
          
         </div>
         <Link
-          href=""
+          href="/eligibility"
           className="flex items-center justify-center text-white min-w-[186px] text-center bg-burgundy px-5 py-2 rounded-full w-fit text-sm sm:text-base"
         >
         Check Eligibility

@@ -11,7 +11,7 @@ export default async function Page({ params }) {
 
     return (
         <div>
-            <Navbar />
+            <Navbar className="bg-[#FFE6DF] rounded-t-2xl" containerClass="md:px-8 px-3" />
             <div className='px-3 md:px-8 '>
                 <BlogDetails blog={ blogData } />
             </div>

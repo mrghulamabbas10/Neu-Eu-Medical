@@ -15,7 +15,7 @@ export default function CallSection() {
   };
 
   return (
-    <div className="md:block hidden pt-32 pb-20 space-y-5 overflow-hidden calltoaction md:px-8 px-3">
+    <div className="md:block hidden pt-32 pb-20 space-y-5 overflow-hidden calltoaction md:px-8 px-3" id="book">
       {/* Main Heading */}
       <h2 className="text-4xl sm:text-4xl text-primary capitalize font-bold mb-5 text-center">
         Convenient Online Consultation with <br className="md:block hidden" />

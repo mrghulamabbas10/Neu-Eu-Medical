@@ -7,19 +7,19 @@ import Link from "next/link";
 
 const navLinks = [
   { title: "Home", href: "/" },
-  { title: "Plans", href: "/plans" },
-  { title: "FAQs", href: "/faqs" },
-  { title: "Book Consultation", href: "/book" },
-  { title: "Sign Up", href: "/signup" },
+  { title: "Plans", href: "#plans" },
+  { title: "FAQs", href: "#faqs" },
+  { title: "Book Consultation", href: "#book" },
+  { title: "Sign Up", href: "/eligibility" },
   { title: "Blogs", href: "/blogs" },
 ];
 
 const footerInfo = [
-  { title: "Terms Of Service", href: "/terms" },
-  { title: "Privacy Policy", href: "/privacy" },
+  { title: "Terms Of Service", href: "/terms-and-conditions" },
+  { title: "Privacy Policy", href: "/privacy-policies" },
   { title: "© 2025. All Rights Reserved", href: null }, // No link
-  { title: "info@example.com", href: "mailto:info@example.com" },
-  { title: "+1234567890", href: "tel:+1234567890" },
+  { title: "Info@neueu.co", href: "mailto:Info@neueu.co" },
+  { title: "19723325266", href: "tel:19723325266" },
 ];
 
 export default function Footer() {
