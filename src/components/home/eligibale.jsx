@@ -62,7 +62,7 @@ export default function Eligibale() {
             kickstart your wellness journey Now!
           </h2>
           <p>
-            Join our newsletter for exclusive health tips, weight loss insights,
+            Join our newsletter for exclusive health tips, weight loss insights
           </p>
         </motion.div>
 
