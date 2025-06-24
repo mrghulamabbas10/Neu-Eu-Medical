@@ -28,7 +28,7 @@ export default function CheckoutPage() {
     if (savedProduct) {
       setProduct(JSON.parse(savedProduct));
     } else {
-      router.push("/#plans");
+     window.location.href = "https://calendar.google.com/calendar/u/0/appointments/AcZssZ1cKjUucr_7Rl6HsEY96spVnBhoi_G1l16Myo0=";
     }
   }, []);
 
