@@ -88,7 +88,7 @@ export default function Eligibility({ children, onBack, tabNumber, heading, subh
                                         whileTap={ { scale: 0.95 } }
                                         type="submit"
                                         onClick={ onClick }
-                                        className="w-fit px-14 rounded-full bg-[#b35c5c] text-white py-2.5 mx-auto mt-8"
+                                        className="w-fit px-14 rounded-full bg-primary text-white py-2.5 mx-auto mt-8"
                                     >
                                         { buttontext }
                                     </motion.button>

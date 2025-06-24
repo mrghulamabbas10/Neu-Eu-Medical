@@ -10,6 +10,9 @@ import { BsPatchCheckFill } from "react-icons/bs";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { motion, AnimatePresence } from "framer-motion";
 
+import { productData } from "../data";
+
+
 const pricingPlans = [
   {
     icon: <AppointmentIcon />,
@@ -104,7 +107,7 @@ const listItemVariants = {
 
 export default function PricingPlans() {
   return (
-    <motion.div 
+    <motion.div
       className="bg-brandbg md:px-10 px-5 md:py-32 pt-32 pb-10 mt-20 rounded-3xl"
       initial="hidden"
       whileInView="visible"
@@ -244,11 +247,27 @@ export default function PricingPlans() {
                 <motion.div
                   className="md:px-5 px-8 w-full"
                   whileHover={{ scale: 1.03 }}
-                  
-                  transition={{ duration: 0.4, repeat: Infinity, repeatType: "reverse" }}
+                  transition={{
+                    duration: 0.4,
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                  }}
                 >
                   <Link
                     href="/eligibility"
+                    onClick={() => {
+                      const product = {
+                        img: productData[index].img,
+                        title: productData[index].title,
+                        price: productData[index].price,
+                        type: productData[index].type,
+                        features: productData[index].features,
+                      };
+                      localStorage.setItem(
+                        "selectedProduct",
+                        JSON.stringify(product)
+                      );
+                    }}
                     className="block text-center w-full border border-primary text-primary font-semibold py-2 rounded-full hover:bg-primary hover:text-white transition"
                   >
                     Join Now!
