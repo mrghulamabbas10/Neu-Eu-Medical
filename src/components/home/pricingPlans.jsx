@@ -50,7 +50,7 @@ const pricingPlans = [
     icon: <Engaction />,
     bgClass: "bg-box1",
     title: "Semaglutide Package (Compounded)",
-    price: "$399",
+    price: "$349",
     type: "Medication + Appointment",
     features: [
       "Online medical visit with provider",
@@ -66,7 +66,7 @@ const pricingPlans = [
     icon: <Engactionwhite />,
     bgClass: "bg-[#D77979]",
     title: "Tirzepatide Package (Compounded)",
-    price: "$499",
+    price: "$449",
     type: "Medication + Appointment",
     features: [
       "Online medical visit with provider",

@@ -104,7 +104,8 @@ export default function CheckoutPage() {
         country: "",
         zipCode: "",
       });
-      router.push("/");
+       window.location.href = `${product.calander}`
+      // router.push(`${product.calander}`);
     } catch (error) {
       console.error("FAILED...", error);
       alert("Failed to send the order. Please try again.");
