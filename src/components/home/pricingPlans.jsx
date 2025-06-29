@@ -18,7 +18,7 @@ const pricingPlans = [
     icon: <AppointmentIcon />,
     bgClass: "bg-box3",
     title: "Semaglutide Consultation (Brand Name)",
-    price: "$199",
+    price: "$149",
     type: "Appointment Only",
     features: [
       "Online medical visit with provider",
@@ -34,7 +34,7 @@ const pricingPlans = [
     icon: <AppointmentIcon />,
     bgClass: "bg-[#FFDCCC]",
     title: "Tirzepatide Consultation (Brand Name)",
-    price: "$199",
+    price: "$149",
     type: "Appointment Only",
     features: [
       "Online medical visit with provider",
