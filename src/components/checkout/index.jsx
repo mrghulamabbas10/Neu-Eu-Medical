@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 
 export default function CheckoutPage() {
   const router = useRouter();
-  const [product, setProduct] = useState(null)
+  const [product, setProduct] = useState(null);
   const [formData, setFormData] = useState({
     fullName: "",
     phone: "",
@@ -28,7 +28,8 @@ export default function CheckoutPage() {
     if (savedProduct) {
       setProduct(JSON.parse(savedProduct));
     } else {
-     window.location.href = "https://calendar.google.com/calendar/u/0/appointments/AcZssZ1cKjUucr_7Rl6HsEY96spVnBhoi_G1l16Myo0=";
+      window.location.href =
+        "https://calendar.google.com/calendar/u/0/appointments/AcZssZ1cKjUucr_7Rl6HsEY96spVnBhoi_G1l16Myo0=";
     }
   }, []);
 
@@ -75,7 +76,7 @@ export default function CheckoutPage() {
       }
     }
 
-  const templateParams = {
+    const templateParams = {
       fullName: formData.fullName,
       phone: formData.phone,
       email: formData.email,
@@ -83,7 +84,7 @@ export default function CheckoutPage() {
       productTitle: product?.title,
       productPrice: product?.price,
       productImage: `${process.env.NEXT_PUBLIC_DOMAIN || ""}${product?.img}`,
-    }
+    };
 
     try {
       const response = await emailjs.send(
@@ -104,7 +105,9 @@ export default function CheckoutPage() {
         country: "",
         zipCode: "",
       });
-       window.location.href = `${product.calander}`
+      window.location.href = `${product.calander}`;
+
+      router.push(`${product.calander}`);
       // router.push(`${product.calander}`);
     } catch (error) {
       console.error("FAILED...", error);

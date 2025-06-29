@@ -261,7 +261,8 @@ export default function PricingPlans() {
                         title: productData[index].title,
                         price: productData[index].price,
                         type: productData[index].type,
-                        features: productData[index].features,
+                        features: productData[index].features, 
+                        calander: productData[index].calander, 
                       };
                       localStorage.setItem(
                         "selectedProduct",

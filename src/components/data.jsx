@@ -2,7 +2,7 @@ export const productData = [
   {
     img: "/images/searm3.png",
     title: "Semaglutide Consultation",
-    price: "$199",
+    price: "$149",
     type: "Appointment Only",
     calander:"https://neueu.co/branded-semaglutide",
     features: [
@@ -18,7 +18,7 @@ export const productData = [
   {
     img: "/images/serum.png",
     title: "Tirzepatide Consultation",
-    price: "$199",
+    price: "$149",
     type: "Appointment Only",
     calander:"https://neueu.co/branded-tirzepatide",
     features: [
