@@ -8,7 +8,7 @@ import DataIcon from "../assets/date";
 import LocationIcon from "../assets/location";
 
 export default function EligibilityPage() {
-  const router = useRouter();
+  const router = useRouter(); 
   const [step, setStep] = useState(1);
   const [direction, setDirection] = useState(1); // 1 for forward, -1 for backward
   const [showManualReviewPopup, setShowManualReviewPopup] = useState(false);
@@ -23,6 +23,8 @@ export default function EligibilityPage() {
     allergicToGlp: "",
     triedGlpBefore: "",
   });
+
+ 
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -135,11 +137,12 @@ export default function EligibilityPage() {
 
       // ✅ Logic for redirect
       const { triedGlpBefore } = formData;
+
       router.push("/consent");
       // if (triedGlpBefore === "Yes") {
-
       // } else {
-      //   router.push("/consent");
+      //    router.push("/consent");
+      //   window.location.href = `${product.calander}`;
       // }
     }
   };
