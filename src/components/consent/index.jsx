@@ -88,9 +88,9 @@ export default function ConsentFormPage() {
                 templateParams,
                 publicKey
             );
-
-      setShowPopup(true);
+ 
             setFormData({ name: "", email: "", phone: "", agreed: false });
+            window.location.href = "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ20PesWrliNOdYy-TL5lNHSZ3F4D2DhusMxOSgHC4D2_LT6u9ThzCFAxFOPKlBFRoEN-zKCBIa3";
         } catch (error) {
             console.error("EmailJS error:", error);
             alert("Failed to send email. Please try again later.");
@@ -99,13 +99,7 @@ export default function ConsentFormPage() {
         }
     };
 
-    
-    const closePopup = () => {
-    setShowPopup(false);
-    window.location.href = "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ20PesWrliNOdYy-TL5lNHSZ3F4D2DhusMxOSgHC4D2_LT6u9ThzCFAxFOPKlBFRoEN-zKCBIa3";
-};
-
-
+  
     return (
         <motion.div
             initial={ { opacity: 0, y: 50 } }
@@ -226,7 +220,7 @@ export default function ConsentFormPage() {
                             disabled={ sending }
                             className={ `w-fit px-20 py-3 rounded-full text-white font-semibold transition-colors ${sending
                                 ? "bg-gray-400 cursor-not-allowed"
-                                : "bg-[#a65758] hover:bg-[#8a3f40]"
+                                : "bg-primary hover:bg-[#8a3f40]"
                                 }` }
                         >
                             { sending ? "Sending..." : "Submit" }
@@ -234,7 +228,7 @@ export default function ConsentFormPage() {
                     </div>
                 </form>
             </div>
-            {showPopup && (
+            {/* {showPopup && (
     <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
         <div className="bg-white p-8 rounded-lg shadow-lg text-center max-w-sm w-full">
             <h2 className="text-2xl font-bold text-[#891a1f] mb-2">Thank you!</h2>
@@ -247,7 +241,7 @@ export default function ConsentFormPage() {
             </button>
         </div>
     </div>
-)}
+)} */}
 
         </motion.div>
     );
