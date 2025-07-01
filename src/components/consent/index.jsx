@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CgArrowLongLeft } from "react-icons/cg";
 import Star from "../assets/star";
 import emailjs from "@emailjs/browser";
@@ -15,7 +15,18 @@ export default function ConsentFormPage() {
         agreed: false,
     });
     const [showPopup, setShowPopup] = useState(false);
+  const [product, setProduct] = useState(null);
 
+ // Load selected product from localStorage
+  useEffect(() => {
+    const savedProduct = localStorage.getItem("selectedProduct");
+    if (savedProduct) {
+      setProduct(JSON.parse(savedProduct));
+    } else {
+      window.location.href =
+        "https://calendar.google.com/calendar/u/0/appointments/AcZssZ1cKjUucr_7Rl6HsEY96spVnBhoi_G1l16Myo0=";
+    }
+  }, []);
 
     const [errors, setErrors] = useState({});
     const [sending, setSending] = useState(false);
@@ -90,7 +101,7 @@ export default function ConsentFormPage() {
             );
  
             setFormData({ name: "", email: "", phone: "", agreed: false });
-            window.location.href = "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ20PesWrliNOdYy-TL5lNHSZ3F4D2DhusMxOSgHC4D2_LT6u9ThzCFAxFOPKlBFRoEN-zKCBIa3";
+            window.location.href = `${product.calander}`;
         } catch (error) {
             console.error("EmailJS error:", error);
             alert("Failed to send email. Please try again later.");
