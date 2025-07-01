@@ -19,11 +19,11 @@ const TeamCard = ({ name, title, image, socials }) => {
      
 
       {/* Image */}
-      <div className="relative mx-auto w-[217px] h-[217px] z-10 flex justify-center bg-[#F89585] rounded-full overflow-hidden">
+      <div className="relative mx-auto pt-2 w-[217px] h-[217px] z-10 flex justify-center bg-[#F89585] rounded-full overflow-hidden">
         <Image
           src={image}
           alt={name}
-          className=" object-contain object-bottom"
+          className=" object-cover object-top"
           fill
         />
       </div>

@@ -19,8 +19,8 @@ export default function ContactSupport() {
       </Link>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:w-1/2 mx-auto mt-10">
         <TeamCard
-          name="Rachel Smith"
-          title="DNP, AGACNP-BC"
+          name="Ugochi Azubike"
+          title="AGACNP-BC & PMHNP-BC"
           image="/images/docter1.png"
           socials={[
             { type: "facebook", url: "#" },
@@ -30,8 +30,8 @@ export default function ContactSupport() {
           ]}
         />
         <TeamCard
-          name="Leslie Johnson"
-          title="AGACNP-BC & PMHNP-BC"
+          name="Joy Ikeri"
+          title="DNP, AGACNP-BC"
           image="/images/docter2.png"
           socials={[
             { type: "facebook", url: "#" },
