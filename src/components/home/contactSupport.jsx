@@ -15,11 +15,11 @@ export default function ContactSupport() {
         href="/contact"
         className="mt-auto w-fit px-10  border border-primary text-primary font-semibold py-2 rounded-full hover:bg-primary hover:text-white transition"
       >
-        Contact Support
+        Contact Us
       </Link>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:w-1/2 mx-auto mt-10">
         <TeamCard
-          name="Ugochi Azubike"
+          name="Ugochi Azubuike"
           title="AGACNP-BC & PMHNP-BC"
           image="/images/docter1.png"
           socials={[

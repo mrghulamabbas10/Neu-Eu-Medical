@@ -11,7 +11,7 @@ const navLinks = [
   { title: "FAQs", href: "#faqs" },
   { title: "Book Consultation", href: "#book" },
   { title: "Sign Up", href: "/eligibility" },
-  { title: "Blogs", href: "/blogs" },
+  { title: "Blogs", href: "/blog" },
 ];
 
 const footerInfo = [
