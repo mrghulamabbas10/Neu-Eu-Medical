@@ -27,7 +27,7 @@ const data = [
     imagePath: "/images/searm3.png",
     title: "Branded GLP-1s",
     description:
-      "Brandname GLP-1s ensure safety via pharmacy pickup. Reliable, they suit those seeking regulated options.",
+      "Branded GLP-1s promote steady weight loss and lower cravings. Have your provider send your prescription to a pharmacy of your choice.",
     height: "h-28 object-contain",
   },
 ];

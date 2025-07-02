@@ -6,8 +6,8 @@ export default function ContactSupport() {
   return (
     <div className="py-20 2xl:py-40 flex flex-col justify-center items-center">
       <h2 className="text-2xl sm:text-5xl  text-primary capitalize text-center mb-5 font-bold">
-       You deserve Providers 
- <br />
+        You deserve Providers
+        <br />
         <span className="text-burgundy">who listen.</span>
       </h2>
 
@@ -23,9 +23,15 @@ export default function ContactSupport() {
           title="AGACNP-BC & PMHNP-BC"
           image="/images/docter1.png"
           socials={[
-            { type: "facebook", url: "#" },
-            { type: "tiktok", url: "#" },
-            { type: "instagram", url: "#" },
+            {
+              type: "facebook",
+              url: "https://www.facebook.com/people/Neu-Eu-Medical/61566649072474/",
+            },
+            { type: "tiktok", url: "http://www.tiktok.com/@neueumed.co" },
+            {
+              type: "instagram",
+              url: "https://www.instagram.com/neueumedical/",
+            },
             { type: "twitter", url: "#" },
           ]}
         />
@@ -34,9 +40,15 @@ export default function ContactSupport() {
           title="DNP, AGACNP-BC"
           image="/images/docter2.png"
           socials={[
-            { type: "facebook", url: "#" },
-            { type: "tiktok", url: "#" },
-            { type: "instagram", url: "#" },
+            {
+              type: "facebook",
+              url: "https://www.facebook.com/people/Neu-Eu-Medical/61566649072474/",
+            },
+            { type: "tiktok", url: "http://www.tiktok.com/@neueumed.co" },
+            {
+              type: "instagram",
+              url: "https://www.instagram.com/neueumedical/",
+            },
             { type: "twitter", url: "#" },
           ]}
         />
