@@ -3,82 +3,14 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import { IoMdCall } from "react-icons/io";
-import AppointmentIcon from "../assets/oppointment-icon";
-import Engaction from "../assets/engaction";
-import Engactionwhite from "../assets/engactionwhite";
+
 import { BsPatchCheckFill } from "react-icons/bs";
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { motion, AnimatePresence } from "framer-motion";
 
 import { productData } from "../data";
 
-
-const pricingPlans = [
-  {
-    icon: <AppointmentIcon />,
-    bgClass: "bg-box3",
-    title: "Semaglutide Consultation (Brand Name)",
-    price: "$149",
-    type: "Appointment Only",
-    features: [
-      "Online medical visit with provider",
-      "Evaluation for GLP-1 therapy suitability",
-      "Prescription if appropriate",
-      "Medication not included",
-      "Provider answers your questions",
-      "Follow-ups not included",
-      "One time consult",
-    ],
-  },
-  {
-    icon: <AppointmentIcon />,
-    bgClass: "bg-[#FFDCCC]",
-    title: "Tirzepatide Consultation (Brand Name)",
-    price: "$149",
-    type: "Appointment Only",
-    features: [
-      "Online medical visit with provider",
-      "Evaluation for GLP-1 therapy suitability",
-      "Prescription if appropriate",
-      "Medication not included",
-      "Provider answers your questions",
-      "Follow-ups not included",
-      "One time consult",
-    ],
-  },
-  {
-    icon: <Engaction />,
-    bgClass: "bg-box1",
-    title: "Semaglutide Package (Compounded)",
-    price: "$349",
-    type: "Medication + Appointment",
-    features: [
-      "Online medical visit with provider",
-      "Evaluation for GLP-1 therapy suitability",
-      "Prescription if appropriate",
-      "Provider answers your questions",
-      "Follow-ups included",
-      "Medication included (1 month)",
-      "No insurance required",
-    ],
-  },
-  {
-    icon: <Engactionwhite />,
-    bgClass: "bg-[#D77979]",
-    title: "Tirzepatide Package (Compounded)",
-    price: "$449",
-    type: "Medication + Appointment",
-    features: [
-      "Online medical visit with provider",
-      "Evaluation for GLP-1 therapy suitability",
-      "Prescription if appropriate",
-      "Provider answers your questions",
-      "Follow-ups included",
-      "Medication included (1 month)",
-      "Cash Pay, No insurance required",
-    ],
-  },
-];
+ 
 
 const containerVariants = {
   hidden: {},
@@ -154,7 +86,7 @@ export default function PricingPlans() {
         variants={containerVariants}
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 2xl:gap-8 md:gap-5 gap-10 mt-20"
       >
-        {pricingPlans.map((plan, index) => {
+        {productData.map((plan, index) => {
           const [isOpen, setIsOpen] = useState(false);
 
           return (
@@ -261,8 +193,8 @@ export default function PricingPlans() {
                         title: productData[index].title,
                         price: productData[index].price,
                         type: productData[index].type,
-                        features: productData[index].features, 
-                        calander: productData[index].calander, 
+                        features: productData[index].features,
+                        calander: productData[index].calander,
                       };
                       localStorage.setItem(
                         "selectedProduct",

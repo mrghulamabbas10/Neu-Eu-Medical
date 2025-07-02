@@ -8,11 +8,12 @@ import DataIcon from "../assets/date";
 import LocationIcon from "../assets/location";
 
 export default function EligibilityPage() {
-  const router = useRouter(); 
+  const router = useRouter();
   const [step, setStep] = useState(1);
   const [direction, setDirection] = useState(1); // 1 for forward, -1 for backward
   const [showManualReviewPopup, setShowManualReviewPopup] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [product, setProduct] = useState(null);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -24,12 +25,16 @@ export default function EligibilityPage() {
     triedGlpBefore: "",
   });
 
- 
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
+
+  // Load selected product from localStorage
+  useEffect(() => {
+    const savedProduct = localStorage.getItem("selectedProduct");
+    setProduct(JSON.parse(savedProduct));
+  }, []);
 
   const handleRadioChange = (name, value) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -137,6 +142,8 @@ export default function EligibilityPage() {
 
       // ✅ Logic for redirect
       const { triedGlpBefore } = formData;
+
+
 
       router.push("/consent");
       // if (triedGlpBefore === "Yes") {

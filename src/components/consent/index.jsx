@@ -97,11 +97,15 @@ export default function ConsentFormPage() {
 
       setFormData({ name: "", email: "", phone: "", agreed: false });
 
-      const calendarLink =
-        product?.calander ||
-        "https://calendar.google.com/calendar/u/0/appointments/AcZssZ1cKjUucr_7Rl6HsEY96spVnBhoi_G1l16Myo0=";
+      let calendarLink = "https://neueu.co/freeconsultation";
 
+      if (product && product.calander) {
+        calendarLink = product.calander;
+      }
+
+      localStorage.removeItem("selectedProduct");  
       window.location.href = calendarLink;
+
     } catch (error) {
       console.error("EmailJS error:", error);
       alert("Failed to send email. Please try again later.");
@@ -110,7 +114,7 @@ export default function ConsentFormPage() {
     }
   };
 
-  console.log(product, "product");
+  // console.log("Redirecting to:", calendarLink);
 
   return (
     <motion.div

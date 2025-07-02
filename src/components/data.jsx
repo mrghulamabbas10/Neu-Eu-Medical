@@ -1,10 +1,18 @@
+import Engaction from "./assets/engaction";
+import Engactionwhite from "./assets/engactionwhite";
+import AppointmentIcon from "./assets/oppointment-icon";
+
+ 
+
+
 export const productData = [
-  {
-    img: "/images/searm3.png",
-    title: "Semaglutide Consultation",
+{
+    icon: <AppointmentIcon />,
+    bgClass: "bg-box3",
+    title: "Semaglutide Consultation (Brand Name)",
     price: "$149",
     type: "Appointment Only",
-    calander:"https://neueu.co/branded-semaglutide",
+    calander: "https://neueu.co/branded-semaglutide",
     features: [
       "Online medical visit with provider",
       "Evaluation for GLP-1 therapy suitability",
@@ -16,11 +24,12 @@ export const productData = [
     ],
   },
   {
-    img: "/images/serum.png",
-    title: "Tirzepatide Consultation",
+    icon: <AppointmentIcon />,
+    bgClass: "bg-[#FFDCCC]",
+    title: "Tirzepatide Consultation (Brand Name)",
     price: "$149",
     type: "Appointment Only",
-    calander:"https://neueu.co/branded-tirzepatide",
+    calander: "https://neueu.co/branded-tirzepatide",
     features: [
       "Online medical visit with provider",
       "Evaluation for GLP-1 therapy suitability",
@@ -32,11 +41,12 @@ export const productData = [
     ],
   },
   {
-    img: "/images/searm1.png",
-    title: "Semaglutide Package",
+    icon: <Engaction />,
+    bgClass: "bg-box1",
+    title: "Semaglutide Package (Compounded)",
     price: "$349",
     type: "Medication + Appointment",
-     calander:"https://neueu.co/compounded-semaglutide",
+    calander: "https://neueu.co/compounded-semaglutide",
     features: [
       "Online medical visit with provider",
       "Evaluation for GLP-1 therapy suitability",
@@ -48,11 +58,12 @@ export const productData = [
     ],
   },
   {
-    img: "/images/searm2.png",
-    title: "Tirzepatide Package",
+    icon: <Engactionwhite />,
+    bgClass: "bg-[#D77979]",
+    title: "Tirzepatide Package (Compounded)",
     price: "$449",
     type: "Medication + Appointment",
-     calander:"https://neueu.co/compounded-tirzepatide",
+    calander: "https://neueu.co/compounded-tirzepatide",
     features: [
       "Online medical visit with provider",
       "Evaluation for GLP-1 therapy suitability",
