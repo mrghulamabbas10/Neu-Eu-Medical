@@ -10,7 +10,7 @@ const urbanist = Urbanist({
 
 
 export const metadata = {
-  title: "NEU Eu Madical",
+  title: "Neu Eu Medical",
   description: "Prescribed Medication Assisted Weight Loss Program That Gets Results",
 };
 
