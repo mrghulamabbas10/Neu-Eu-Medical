@@ -13,14 +13,32 @@ import Footer from "@/layout/footer";
 import PricingPlans from "@/components/home/pricingPlans";
 import FinePath from "@/components/home/finePath";
 import ContactSupport from "@/components/home/contactSupport";
+import Image from "next/image";
+import ScrollSection from "@/components/home/ScrollSection";
 
 export default function Home() {
   return (
-    <div>
-      <div className="headerbg md:px-8 px-3">
+    <>
+      <div className="md:px-8 px-3 relative">
+        <Image
+          src="/images/Ellipse1.png"
+          alt="Ellipse1"
+          width={290}
+          height={266}
+          className="absolute -z-10 -top-20 left-1/6"
+        />
+
+        <Image
+          src="/images/Ellipse1.png"
+          alt="Ellipse1"
+          width={290}
+          height={266}
+          className="absolute -z-10 top-20 right-1/5"
+        />
         <Navbar />
         <Hero />
       </div>
+        <ScrollSection />
       <div className="md:px-8 px-3">
         <Brands />
         <Section2 />
@@ -38,6 +56,6 @@ export default function Home() {
         <Eligibale />
         <Footer />
       </div>
-    </div>
+    </>
   );
 }

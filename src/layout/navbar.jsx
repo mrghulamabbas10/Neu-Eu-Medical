@@ -7,11 +7,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { IoMdCall } from "react-icons/io";
 
 const HomeData = [
   { name: "Home", path: "/" },
+  { name: "About", path: "#about" },
+  { name: "Faq", path: "#faqs" },
   { name: "Blog", path: "/blog" },
-  { name: "Signup", path: "/eligibility" },
 ];
 
 const logoVariant = {
@@ -45,14 +47,14 @@ export default function Navbar({ className, containerClass }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const pathname = usePathname();
-  const router = useRouter()
+  const router = useRouter();
 
   return (
     <div className={`${className ? containerClass : ""} pt-3`}>
       <div
         className={`${
           className ? className : "rounded-t-3xl"
-        } py-4 px-6 md:px-10 flex items-center justify-between  relative z-50`}
+        } flex items-center justify-between  relative z-50`}
       >
         {/* Logo */}
         <motion.div variants={logoVariant} initial="hidden" animate="show">
@@ -69,7 +71,7 @@ export default function Navbar({ className, containerClass }) {
 
         {/* Desktop Navigation */}
         <motion.div
-          className="hidden lg:flex items-center gap-12 bg-[#FFFFFF66] border border-[#FFFFFF] px-10 p-2 rounded-full"
+          className="hidden lg:flex items-center gap-5 bg-[#6E6E6E10] border border-[#FFFFFF] p-3 rounded-full"
           variants={navItemVariant}
           initial="hidden"
           animate="show"
@@ -84,11 +86,11 @@ export default function Navbar({ className, containerClass }) {
             >
               <Link
                 href={item.path}
-                className={
+                className={`px-5 rounded-full py-2  ${
                   pathname === item.path
-                    ? "text-primary font-semibold"
-                    : "text-[#CA6464]"
-                }
+                    ? "bg-primary text-white font-semibold"
+                    : ""
+                }`}
               >
                 {item.name}
               </Link>
@@ -102,10 +104,23 @@ export default function Navbar({ className, containerClass }) {
           variants={rightSectionVariant}
           initial="hidden"
           animate="show"
-          
         >
-          <button  onClick={() => router.push("/eligibility")} className="bg-primary px-8 py-3 rounded-full text-white hover:bg-[#CA6464] transition duration-150 cursor-pointer">
-            Book Now!
+          <button
+            onClick={() => router.push("/eligibility")}
+            className=" px-5 py-1 flex items-center gap-2 rounded-full bg-[#FFE5E5] hover:bg-[#CA6464] transition duration-150 cursor-pointer"
+          >
+            <span className="flex items-center justify-center font-bold text-2xl cursor-pointer text-white hover:bg-black bg-primary 2xl:w-[60px] 2xl:h-[60px] w-8 h-8 rounded-full">
+              <IoMdCall className="2xl:text-2xl text-sm" />
+            </span>
+            <span className="text-sm font-semibold text-start">
+              Learn More <br /> +1 9723325266
+            </span>
+          </button>
+          <button
+            onClick={() => router.push("/eligibility")}
+            className="bg-primary px-8 py-3 rounded-full text-white hover:bg-[#CA6464] transition duration-150 cursor-pointer"
+          >
+            Sign Up
           </button>
         </motion.div>
 
@@ -189,7 +204,7 @@ export default function Navbar({ className, containerClass }) {
                   onClick={() => router.push("/eligibility")}
                   className="bg-primary px-8 py-3 w-full rounded-full text-white hover:bg-[#CA6464] transition duration-150 cursor-pointer"
                 >
-                  Book Now!
+                  Sign Up
                 </button>
               </motion.div>
             </motion.div>

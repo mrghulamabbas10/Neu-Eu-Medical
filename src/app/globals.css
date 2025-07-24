@@ -3,17 +3,17 @@
 body {
   overflow-x: hidden;
 }
- 
+
 @theme {
-  --color-primary: #751010; 
-  --color-primary2: #9F3B3B; 
+  --color-primary: #751010;
+  --color-primary2: #9F3B3B;
   --color-brandbg: #FFF2EB;
   --color-box1: #FFC6AB;
   --color-box2: #FFE2D6;
   --color-box3: #FFF2EB;
   --color-burgundy: #CA6464;
-  --color-stepbg: #FAF9F3; 
-   
+  --color-stepbg: #FAF9F3;
+
 
 }
 
@@ -21,38 +21,45 @@ body {
   0% {
     background-position: 100%;
   }
+
   100% {
     background-position: -100%;
   }
 }
 
 
-.headerbg{
+.headerbg {
   background-image: linear-gradient(to bottom, #fcddd8, #fed8d0, #ffd4c8, #ffcfc0, #ffcbb7, #fdc4ad, #fbbca4, #f8b59a, #f2a88f, #ec9b84, #e68d7a, #e08071);
 }
 
-.elgibilty{
-background-image: linear-gradient(to left top, #f4ae8e, #df9176, #ca7560, #b5584d, #9f3b3b);
+.elgibilty {
+  background-image: linear-gradient(to left top, #f4ae8e, #df9176, #ca7560, #b5584d, #9f3b3b);
 }
 
-.shadowcustom{
+.shadowcustom {
   box-shadow: #FFE2B766 -10px 5px 44px 0px, #FFC6AB 0px 5px 40px 1px;
 }
 
 .shine {
   animation: shine 5s linear infinite;
-  background-image: linear-gradient(
-    to right,
-    #e0e0e0 0%,
-    #ffffff 50%,
-    #e0e0e0 100%
-  );
+  background-image: linear-gradient(to right,
+      #e0e0e0 0%,
+      #ffffff 50%,
+      #e0e0e0 100%);
   background-size: 200% 100%;
   background-position: 100% 0;
 }
 
 .steps {
   background-image: url("../../public/images/journay-bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+}
+
+.Subtractbg {
+  background-image: url("../../public/images/Subtract\ bg.png");
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
@@ -94,10 +101,12 @@ background-image: linear-gradient(to left top, #f4ae8e, #df9176, #ca7560, #b5584
 }
 
 @keyframes blink {
+
   0%,
   100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0;
   }
@@ -113,7 +122,8 @@ input[type="checkbox"].custom-checkbox:checked {
 
 /* styles/globals.css or in <style jsx> if scoped */
 input[type="radio"].custom-radio {
-  accent-color: #751010; /* changes the checked color (dot) */
+  accent-color: #751010;
+  /* changes the checked color (dot) */
 }
 
 /* Fallback for browsers that don’t support accent-color */
@@ -127,7 +137,7 @@ html {
 }
 
 
-/* From Uiverse.io by mobinkakei */ 
+/* From Uiverse.io by mobinkakei */
 #wifi-loader {
   --background: #62abff;
   --front-color: #751010;
@@ -230,7 +240,8 @@ html {
   letter-spacing: 0.2px;
 }
 
-#wifi-loader .text::before, #wifi-loader .text::after {
+#wifi-loader .text::before,
+#wifi-loader .text::after {
   content: attr(data-text);
 }
 
@@ -324,11 +335,32 @@ html {
     clip-path: inset(0 0 0 100%);
   }
 }
+
+
+/* Custom Swiper pagination dots */
+.swiper-pagination-bullet {
+  background-color: #E99292 !important; /* default color */
+  opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #700000 !important; /* active dot color */
+}
+
  
 
 
 @media only screen and (max-width: 600px) {
   .steps {
-  background-image: none; 
+    background-image: none;
+  }
+
+  .Subtractbg {
+  background-image: url("../../public/images/Subtractmobile.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
 }
+
 }

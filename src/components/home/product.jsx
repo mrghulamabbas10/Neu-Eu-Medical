@@ -71,6 +71,7 @@ export default function Product() {
       viewport={{ once: true, amount: 0.2 }}
       variants={fadeUp}
       custom={0}
+      id="about"
     >
       {/* Left Text */}
       <motion.div
