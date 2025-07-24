@@ -12,7 +12,7 @@ export const productData = [
     title: "Semaglutide Consultation (Brand Name)",
     price: "$149",
     type: "Appointment Only",
-    calander: "https://neueu.co/branded-semaglutide",
+    calander: "https://offer.neueu.co/branded-semaglutide",
     features: [
       "Online medical visit with provider",
       "Evaluation for GLP-1 therapy suitability",
@@ -29,7 +29,7 @@ export const productData = [
     title: "Tirzepatide Consultation (Brand Name)",
     price: "$149",
     type: "Appointment Only",
-    calander: "https://neueu.co/branded-tirzepatide",
+    calander: "https://offer.neueu.co/branded-tirzepatide",
     features: [
       "Online medical visit with provider",
       "Evaluation for GLP-1 therapy suitability",
@@ -46,7 +46,7 @@ export const productData = [
     title: "Semaglutide Package (Compounded)",
     price: "$349",
     type: "Medication + Appointment",
-    calander: "https://neueu.co/compounded-semaglutide",
+    calander: "https://offer.neueu.co/compounded-semaglutide",
     features: [
       "Online medical visit with provider",
       "Evaluation for GLP-1 therapy suitability",
@@ -63,7 +63,7 @@ export const productData = [
     title: "Tirzepatide Package (Compounded)",
     price: "$449",
     type: "Medication + Appointment",
-    calander: "https://neueu.co/compounded-tirzepatide",
+    calander: "https://offer.neueu.co/compounded-tirzepatide",
     features: [
       "Online medical visit with provider",
       "Evaluation for GLP-1 therapy suitability",
