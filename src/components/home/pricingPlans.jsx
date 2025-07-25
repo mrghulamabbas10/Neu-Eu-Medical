@@ -60,7 +60,7 @@ export default function PricingPlans() {
         <div className="flex items-center gap-4">
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <Link
-              href="/eligibility"
+              href="https://offer.neueu.co/freeconsultation"
               className="flex items-center gap-3 w-full font-bold bg-burgundy hover:bg-primary px-8 py-3 hover:text-white text-white rounded-full md:w-fit text-sm md:text-base"
             >
               Book Free Consultation

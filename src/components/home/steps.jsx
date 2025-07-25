@@ -14,25 +14,25 @@ const stepsData = [
   {
     img: "/images/step-1.png",
     text: "Fill out our short survey to determine eligibility for services.",
-    name: "Jessica S. neu eu patient",
+    name: "Jessica S.",
     prfation: "Neu Eu Patient",
   },
   {
     img: "/images/step-2.png",
     text: "Meet with your provider to assess your diet, fitness, & health, & customize a personalized weight loss plan.",
-    name: "Adam K. Neu eu patient",
+    name: "Adam K.",
     prfation: "Neu Eu Patient",
   },
   {
     img: "/images/step-3.png",
     text: "On your appointment day, your provider will order your medication, & a U.S. pharmacy will process & ship it.",
-    name: "Victoria J. Neu Eu patient",
+    name: "Victoria J.",
     prfation: "Neu Eu Patient",
   },
   {
     img: "/images/step-4.png",
     text: "Take your medication as prescribed & follow your treatment plan—many patients lose up to 10 lbs in the first month!",
-    name: "John P. Neu Eu Patient",
+    name: "John P.",
     prfation: "Neu Eu Patient",
   },
 ];
@@ -41,25 +41,25 @@ const mobilesteps = [
   {
     mobileimg: "/images/mobile-step-1.png",
     text: "My provider helped me understand the difference between, hunger, being bored, and food addiction..",
-    name: "Jessica S. neu eu patient",
+    name: "Jessica S.",
     prfation: "Neu Eu Patient",
   },
   {
     mobileimg: "/images/mobile-step-2.png",
     text: "Meet with your provider to assess your diet, fitness, & health, & customize a personalized weight loss plan.",
-    name: "Adam K. Neu eu patient",
+    name: "Adam K.",
     prfation: "Neu Eu Patient",
   },
   {
     mobileimg: "/images/mobile-step-3.png",
     text: "On your appointment day, your provider will order your medication, & a U.S. pharmacy will process & ship it.",
-    name: "Victoria J. Neu Eu patient",
+    name: "Victoria J.",
     prfation: "Neu Eu Patient",
   },
   {
     mobileimg: "/images/mobile-step-4.png",
     text: "Take your medication as prescribed & follow your treatment plan—many patients lose up to 10 lbs in the first month!",
-    name: "John P. Neu Eu Patient",
+    name: "John P.",
     prfation: "Neu Eu Patient",
   },
 ];

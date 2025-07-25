@@ -339,28 +339,36 @@ html {
 
 /* Custom Swiper pagination dots */
 .swiper-pagination-bullet {
-  background-color: #E99292 !important; /* default color */
+  background-color: #E99292 !important;
+  /* default color */
   opacity: 1;
 }
 
 .swiper-pagination-bullet-active {
-  background-color: #700000 !important; /* active dot color */
+  background-color: #700000 !important;
+  /* active dot color */
 }
 
- 
+
 
 
 @media only screen and (max-width: 600px) {
+
+  body,
+  html {
+    overflow-x: hidden;
+  }
+
   .steps {
     background-image: none;
   }
 
   .Subtractbg {
-  background-image: url("../../public/images/Subtractmobile.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-  width: 100%;
-  height: 100%;
-}
+    background-image: url("../../public/images/Subtractmobile.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+  }
 
 }

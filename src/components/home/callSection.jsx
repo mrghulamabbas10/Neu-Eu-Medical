@@ -22,7 +22,7 @@ export default function CallSection() {
         <span className="text-burgundy">Licensed 👩🏻‍⚕️ Providers</span>
       </h2>
 
-      <Link  href="/eligibility" className="md:mt-10 mt-3 relative z-10 mx-auto flex items-center justify-center px-8 border md:w-fit w-full border-primary text-primary font-semibold py-3 rounded-full hover:bg-primary hover:text-white transition">
+      <Link  href="https://offer.neueu.co/freeconsultation" className="md:mt-10 mt-3 relative z-10 mx-auto flex items-center justify-center px-8 border md:w-fit w-full border-primary text-primary font-semibold py-3 rounded-full hover:bg-primary hover:text-white transition">
      Book Free Consultation
       </Link>
 

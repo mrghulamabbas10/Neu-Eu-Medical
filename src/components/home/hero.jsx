@@ -15,7 +15,7 @@ export default function Hero() {
               alt="hero modal"
               width={100}
               height={110}
-              className="absolute md:right-10 -right-1 md:bottom-0 -bottom-2 md:w-[100px] md:h-[110px] w-14 h-14"
+              className="absolute md:right-10 -right-1 md:bottom-0 -bottom-2 md:w-[120px] md:h-[130px] w-14 h-14"
             />
           </h1>
           <h2 className="uppercase  md:text-[8vw] mt-3 leading-[8vw] text-5xl text-primary font-bold text-end md:hidden block">
@@ -35,7 +35,7 @@ export default function Hero() {
             </p>
             <div className="flex items-center gap-3 mt-5 ">
               <Link
-                href="/eligibility"
+                href="https://offer.neueu.co/freeconsultation"
                 className="flex items-center gap-3 font-bold bg-primary hover:bg-[#814a4a] px-7 py-3 text-white rounded-full md:w-fit w-full text-sm"
               >
                 Book Free Consultation
@@ -69,7 +69,7 @@ export default function Hero() {
           <p className="text-end mt-2">
             Join Over 5000 Patients On This <br /> Transformative Journey
           </p>
-          <h2 className="uppercase text-[8vw] leading-[8vw] text-primary font-bold text-end mt-32">
+          <h2 className="uppercase text-[8vw] leading-[8vw] text-primary font-bold mt-32">
             that works!
           </h2>
         </div>
@@ -80,7 +80,7 @@ export default function Hero() {
           </p>
           <div className="flex flex-col justify-center items-center gap-3 mt-3 ">
             <Link
-              href="/eligibility"
+              href="https://offer.neueu.co/freeconsultation"
               className="flex items-center justify-center gap-3 font-bold bg-primary hover:bg-[#814a4a] px-10 py-5 text-center text-white rounded-full w-fit md:text-sm"
             >
               Book Free Consultation

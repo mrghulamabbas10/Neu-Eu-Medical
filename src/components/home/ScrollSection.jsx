@@ -12,6 +12,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 import { Autoplay, Pagination } from "swiper/modules";
+import { useRouter } from "next/navigation";
 
 const docterData = [
   {
@@ -35,13 +36,16 @@ const docterData = [
 ];
 
 export default function ScrollSection() {
+
+  const router = useRouter()
+
   return (
-    <div className="Subtractbg relative flex md:flex-row flex-col gap-5 items-center justify-between md:px-8 px-0 py-5 ">
+    <div className="Subtractbg relative flex md:flex-row flex-col gap-5 items-center justify-between md:px-8 px-0 pb-5 md:mt-0  mt-10">
       <div className="space-y-1 pt-12 pl-5 md:hidden flex-col gap-2 items-center justify-center flex">
-        <div className="p-2 w-8 flex items-center justify-center h-14 mx-auto rounded-full bg-white text-primary text-2xl">
+        <div className="p-2 flex items-center justify-center mx-auto rounded-full bg-white text-primary">
           <GoArrowDown />
         </div>
-        <p>
+        <p className="md:text-base text-xs">
           Scroll down to
           <br />
           check eligibility
@@ -55,13 +59,13 @@ export default function ScrollSection() {
       />
       <Image
         src="/images/arrow button.png"
-        alt="NeuEUMedicalCard"
+        alt="scroll"
         width={74}
         height={74}
-        className="left-[51.5%] -translate-x-[51.5%] absolute md:top-0 -top-6"
+        className="xl:left-[47vw] left-[42.5vw] absolute md:top-0 -top-[50px]"
       />
 
-      <div className="space-y-3 pt-20 md:flex flex-col gap-2 items-center justify-center hidden">
+      <div onClick={()=>router.push("#plans")} className="space-y-3 cursor-pointer pt-20 md:left-[66px] md:flex flex-col gap-2 items-center justify-center hidden">
         <div className="p-2 mx-auto rounded-full bg-white text-primary text-2xl block w-fit">
           <GoArrowDown />
         </div>

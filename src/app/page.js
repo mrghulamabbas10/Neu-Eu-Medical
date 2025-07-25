@@ -31,9 +31,9 @@ export default function Home() {
         <Image
           src="/images/Ellipse1.png"
           alt="Ellipse1"
-          width={290}
-          height={266}
-          className="absolute -z-10 top-20 right-1/5"
+          width={390}
+          height={366}
+          className="absolute w-full h-full -z-10 top-5 -right-28"
         />
         <Navbar />
         <Hero />

@@ -60,7 +60,7 @@ export default function Navbar({ className, containerClass }) {
         <motion.div variants={logoVariant} initial="hidden" animate="show">
           <Link href="/" className="block">
             <Image
-              src="/images/logo.png"
+              src="/images/logo.svg"
               alt="logo"
               width={107}
               height={40}
@@ -71,7 +71,7 @@ export default function Navbar({ className, containerClass }) {
 
         {/* Desktop Navigation */}
         <motion.div
-          className="hidden lg:flex items-center gap-5 bg-[#6E6E6E10] border border-[#FFFFFF] p-3 rounded-full"
+          className="hidden lg:flex xl:ml-32 items-center gap-5 bg-[#6E6E6E10] border border-[#FFFFFF] p-3 rounded-full"
           variants={navItemVariant}
           initial="hidden"
           animate="show"
@@ -160,7 +160,7 @@ export default function Navbar({ className, containerClass }) {
               <div className="flex items-center justify-between">
                 <div>
                   <Image
-                    src="/images/logo.png"
+                    src="/images/logo.svg"
                     alt="logo"
                     width={100}
                     height={40}
