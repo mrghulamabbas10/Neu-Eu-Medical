@@ -8,21 +8,21 @@ export default function Hero() {
     <div className="md:py-20 py-14 relative z-20">
       <div className="grid md:grid-cols-3 grid-cols-1 gap-5">
         <div>
-          <h1 className="uppercase relative md:text-[8vw] text-[52px] leading-[8vw] text-primary font-bold ">
+          <h1 className="uppercase relative md:text-[8vw]  text-[46px] leading-[8vw] text-primary font-bold ">
             Weight loss
             <Image
               src="/images/textserm.png"
               alt="hero modal"
               width={100}
               height={110}
-              className="absolute md:right-10 -right-1 md:bottom-0 -bottom-2 md:w-[120px] md:h-[130px] w-14 h-14"
+              className="absolute md:right-10 -right-1 md:bottom-0 -bottom-2 md:w-[120px] md:h-[130px] w-12 h-12"
             />
           </h1>
-          <h2 className="uppercase  md:text-[8vw] mt-3 leading-[8vw] text-5xl text-primary font-bold text-end md:hidden block">
+          <h2 className="uppercase  md:text-[8vw] mt-5 leading-[8vw] text-[44px] text-primary font-bold text-end md:hidden block">
             <Image
               src="/images/joinavatarsmoble.png"
               alt="hero modal"
-              width={72}
+              width={66}
               height={32}
               className="absolute left-5-bottom-2 "
             />{" "}

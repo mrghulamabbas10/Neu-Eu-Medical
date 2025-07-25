@@ -61,7 +61,7 @@ export default function ScrollSection() {
         alt="scroll"
         width={74}
         height={74}
-        className="xl:left-[47vw] left-[42.5vw] absolute md:top-0 -top-[50px]"
+        className="xl:left-[45vw] left-[37.5vw] absolute md:top-0 -top-[50px]"
       />
 
       <div

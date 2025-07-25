@@ -35,10 +35,17 @@ export default function Home() {
           height={366}
           className="absolute w-full h-full -z-10 top-5 -right-28"
         />
+        <Image
+          src="/images/text-line.png"
+          alt="Ellipse1"
+          width={1440}
+          height={500}
+          className="absolute w-full h-[400px] object-cover -z-10 bottom-0 left-0"
+        />
         <Navbar />
         <Hero />
-      </div>
         <ScrollSection />
+      </div>
       <div className="md:px-8 px-3">
         <Brands />
         <Section2 />
