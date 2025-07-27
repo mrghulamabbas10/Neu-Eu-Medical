@@ -105,7 +105,7 @@ export default function ScrollSection() {
                     height={174}
                   />
                   <div className="pb-3">
-                    <h3 className="font-bold text-xl">
+                    <h3 className="font-bold text-xl text-primary leading-5">
                       Licensed <br /> Providers
                     </h3>
                     <div className="flex justify-center gap-4 mt-2 text-[#E99292] ">

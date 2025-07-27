@@ -5,7 +5,7 @@ import { BsArrowRightShort } from "react-icons/bs";
 
 export default function Hero() {
   return (
-    <div className="md:py-20 py-14 relative z-20">
+    <div className="md:pt-20 pb-10 py-14 relative z-20">
       <div className="grid md:grid-cols-3 grid-cols-1 gap-5">
         <div>
           <h1 className="uppercase relative md:text-[8vw]  text-[46px] leading-[8vw] text-primary font-bold ">
@@ -35,14 +35,14 @@ export default function Hero() {
             </p>
             <div className="flex items-center gap-3 mt-5 ">
               <Link
-                href="https://offer.neueu.co/freeconsultation"
-                className="flex items-center gap-3 font-bold bg-primary hover:bg-[#814a4a] px-7 py-3 text-white rounded-full md:w-fit w-full text-sm"
+                href="/eligibility"
+                className="flex items-center gap-3 font-medium bg-primary hover:bg-[#814a4a] px-7 py-3 text-white rounded-full md:w-fit w-full text-sm"
               >
                 Book Free Consultation
               </Link>
               <Link
                 href="/eligibility"
-                className="flex items-center gap-3 font-bold bg-[#FFE5E5] hover:bg-[#814a4a] px-7 py-3 text-black hover:text-white rounded-full md:w-fit w-full text-sm"
+                className="flex items-center gap-3 font-medium bg-[#FFE5E5] hover:bg-[#814a4a] px-7 py-3 text-black hover:text-white rounded-full md:w-fit w-full text-sm"
               >
                  Get Started Now <BsArrowRightShort />
               </Link>
