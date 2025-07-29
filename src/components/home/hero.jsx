@@ -80,7 +80,7 @@ export default function Hero() {
           </p>
           <div className="flex flex-col justify-center items-center gap-3 mt-3 ">
             <Link
-              href="https://offer.neueu.co/freeconsultation"
+              href="/eligibility"
               className="flex items-center justify-center gap-3 font-bold bg-primary hover:bg-[#814a4a] px-10 py-5 text-center text-white rounded-full w-fit md:text-sm"
             >
               Book Free Consultation

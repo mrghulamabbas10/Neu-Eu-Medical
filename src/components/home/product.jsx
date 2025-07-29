@@ -96,7 +96,7 @@ export default function Product() {
             <IoMdCall />
           </Link>
           <Link
-            href="https://offer.neueu.co/freeconsultation"
+            href="/eligibility"
             className="flex items-center md:w-fit w-full text-center gap-3 font-bold border border-primary hover:bg-primary px-8 py-3 hover:text-white text-primary rounded-full text-sm md:text-base"
           >
             Book Free Consultation

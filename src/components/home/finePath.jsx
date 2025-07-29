@@ -82,7 +82,7 @@ export default function FinePath() {
         transition={{ duration: 0.6, delay: 0.3 }}
       >
         <Link
-          href="https://offer.neueu.co/freeconsultation"
+          href="/eligibility"
           className="flex items-center gap-3 font-medium bg-burgundy hover:bg-primary px-8 py-3 hover:text-white text-white rounded-full w-fit text-sm md:text-base"
         >
           Book Free Consultation

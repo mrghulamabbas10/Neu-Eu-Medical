@@ -15,15 +15,21 @@ export default function CallSection() {
   };
 
   return (
-    <div className="md:block hidden pt-32 pb-20 space-y-5 overflow-hidden calltoaction md:px-8 px-3" id="book">
+    <div
+      className="md:block hidden pt-32 pb-20 space-y-5 overflow-hidden calltoaction md:px-8 px-3"
+      id="book"
+    >
       {/* Main Heading */}
       <h2 className="text-2xl sm:text-4xl text-primary capitalize font-bold mb-5 text-center">
         Convenient Online Consultation with <br className="md:block hidden" />
         <span className="text-burgundy">Licensed 👩🏻‍⚕️ Providers</span>
       </h2>
 
-      <Link  href="https://offer.neueu.co/freeconsultation" className="md:mt-10 mt-3 relative z-10 mx-auto flex items-center justify-center px-8 border md:w-fit w-full border-primary text-primary font-semibold py-3 rounded-full hover:bg-primary hover:text-white transition">
-     Book Free Consultation
+      <Link
+        href="/eligibility"
+        className="md:mt-10 mt-3 relative z-10 mx-auto flex items-center justify-center px-8 border md:w-fit w-full border-primary text-primary font-semibold py-3 rounded-full hover:bg-primary hover:text-white transition"
+      >
+        Book Free Consultation
       </Link>
 
       <motion.div
@@ -40,7 +46,6 @@ export default function CallSection() {
           height={816}
           className="w-full h-full object-center"
           quality={50}
-          
         />
       </motion.div>
     </div>

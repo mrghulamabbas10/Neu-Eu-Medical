@@ -25,7 +25,7 @@ export default function Home() {
           alt="Ellipse1"
           width={290}
           height={266}
-          className="absolute -z-10 -top-20 left-1/6"
+          className="absolute -z-10 w-[800px] h-[800px] -top-40 left-0"
         />
 
         <Image
@@ -40,7 +40,7 @@ export default function Home() {
           alt="Ellipse1"
           width={1440}
           height={500}
-          className="absolute w-full h-[400px] object-cover -z-10 bottom-0 left-0"
+          className="absolute w-full h-[500px] object-cover -z-10 -bottom-32 left-0"
         />
         <Navbar />
         <Hero />
