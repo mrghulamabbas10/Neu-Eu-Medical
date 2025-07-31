@@ -19,6 +19,7 @@ export default function EligibilityPage() {
     name: "",
     dateOfBirth: "",
     state: "",
+    location: "",
     thyroidCancer: "",
     pregnant: "",
     allergicToGlp: "",
@@ -85,16 +86,17 @@ export default function EligibilityPage() {
     // Clear any previous error messages
     setErrorMessage("");
 
-    if (step < 7) {
+    if (step < 8) {
       // STEP VALIDATION: check only fields relevant to the current step
       const stepRequiredFields = {
         1: ["name"],
         2: ["dateOfBirth"],
         3: ["state"],
-        4: ["thyroidCancer"],
-        5: ["pregnant"],
-        6: ["allergicToGlp"],
-        7: ["triedGlpBefore"],
+        4: ["location"],
+        5: ["thyroidCancer"],
+        6: ["pregnant"],
+        7: ["allergicToGlp"],
+        8: ["triedGlpBefore"],
       };
 
       const currentFields = stepRequiredFields[step] || [];
@@ -145,12 +147,7 @@ export default function EligibilityPage() {
 
 
 
-      router.push("/consent");
-      // if (triedGlpBefore === "Yes") {
-      // } else {
-      //    router.push("/consent");
-      //   window.location.href = `${product.calander}`;
-      // }
+      router.push("/consent"); 
     }
   };
 
@@ -236,14 +233,14 @@ export default function EligibilityPage() {
         return (
           <Eligibility
             tabNumber="03"
-            heading="Choose your current state"
+            heading="Choose your current Texas"
             subheading="Select one *"
             buttontext="Next"
             onClick={nextStep}
             onBack={prevStep}
           >
             <div className="mt-6 space-y-3">
-              {["Texas", "Oregon","State"].map((stateOption) => (
+              {["Texas", "Oregon",].map((stateOption) => (
                 <label
                   key={stateOption}
                   className={`block w-full p-3 border rounded-md cursor-pointer transition-colors ${
@@ -268,11 +265,40 @@ export default function EligibilityPage() {
             </div>
           </Eligibility>
         );
+        case 4:
+  return (
+    <Eligibility
+      tabNumber="04"
+      heading="What is your current State?"
+      subheading="Please enter your city or address"
+      buttontext="Next"
+      onClick={nextStep}
+      onBack={prevStep}
+    >
+      <div className="mt-6">
+        <div className="relative">
+          <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+            <LocationIcon />
+          </div>
+          <input
+            type="text"
+            name="location"
+            value={formData.location}
+            onChange={handleInputChange}
+            placeholder="Select your state"
+            className="w-full pl-10 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-md focus:outline-none focus:ring-2 focus:ring-[#751010] focus:border-transparent"
+            required
+          />
+        </div>
+      </div>
+    </Eligibility>
+  );
 
-      case 4:
+
+      case 5:
         return (
           <Eligibility
-            tabNumber="04"
+            tabNumber="05"
             heading="Do you have a history of thyroid cancer?"
             buttontext="Next"
             onClick={nextStep}
@@ -307,10 +333,10 @@ export default function EligibilityPage() {
           </Eligibility>
         );
 
-      case 5:
+      case 6:
         return (
           <Eligibility
-            tabNumber="05"
+            tabNumber="06"
             heading="Are you pregnant?"
             buttontext="Next"
             onClick={nextStep}
@@ -343,10 +369,10 @@ export default function EligibilityPage() {
           </Eligibility>
         );
 
-      case 6:
+      case 7:
         return (
           <Eligibility
-            tabNumber="06"
+            tabNumber="07"
             heading="Are you allergic to glp-1's?"
             buttontext="Next"
             onClick={nextStep}
@@ -381,10 +407,10 @@ export default function EligibilityPage() {
           </Eligibility>
         );
 
-      case 7:
+      case 8:
         return (
           <Eligibility
-            tabNumber="07"
+            tabNumber="08"
             heading="Have you tried a glp-1 in the past?"
             buttontext="Next"
             onClick={nextStep}
