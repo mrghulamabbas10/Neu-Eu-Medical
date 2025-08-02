@@ -240,7 +240,7 @@ export default function EligibilityPage() {
             onBack={prevStep}
           >
             <div className="mt-6 space-y-3">
-              {["Texas", "Oregon",].map((stateOption) => (
+              {["Texas", "Oregon","Others"].map((stateOption) => (
                 <label
                   key={stateOption}
                   className={`block w-full p-3 border rounded-md cursor-pointer transition-colors ${
