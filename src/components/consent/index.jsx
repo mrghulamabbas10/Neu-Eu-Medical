@@ -97,7 +97,7 @@ export default function ConsentFormPage() {
 
       setFormData({ name: "", email: "", phone: "", agreed: false });
 
-      let calendarLink = "https://offer.neueu.co/freeconsultation";
+      let calendarLink = "https://offer.neueu.co/freeconsult";
 
       if (product && product.calander) {
         calendarLink = product.calander;
