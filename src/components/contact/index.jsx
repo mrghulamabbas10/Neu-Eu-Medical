@@ -10,6 +10,7 @@ import { IoCallOutline } from "react-icons/io5";
 import { MdOutlineCall } from "react-icons/md";
 import emailjs from "emailjs-com";
 import Star from "../assets/star";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 
 const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_CONTACT_SERVICE_ID;
 const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_CONTACT_TEMPLATE_ID;
@@ -89,6 +90,15 @@ export default function ContactUsPage() {
             transition={ { duration: 0.8 } }
             className="min-h-screen relative bg-[#FFE4D1] flex items-center justify-center px-4 py-12"
         >
+             <HelmetProvider>
+                                          <Helmet>
+                                            <title>Contact Neu Eu | Online Weight Loss Consultation</title>
+                                            <meta
+                                              name="description"
+                                              content="Connect with Neu Eu for expert guidance on medical weight loss programs. Book an online consultation and start your personalized, medication‑assisted plan."
+                                            />
+                                          </Helmet>
+                                        </HelmetProvider>
             {/* Star Decorations */ }
             <span className="absolute md:top-[30%] top-[20%] right-5 md:right-20 blink"><Star /></span>
             <span className="absolute top-[20%] left-[30%] md:left-20 blink"><Star /></span>

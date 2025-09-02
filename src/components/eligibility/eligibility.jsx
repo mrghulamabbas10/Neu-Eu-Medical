@@ -3,6 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion"
 import BlurText from "../animations/BlurText"
 import { CgArrowLongLeft } from "react-icons/cg"
+import { Helmet, HelmetProvider } from "react-helmet-async"
 
 
 // Animation variants for page transitions
@@ -35,6 +36,15 @@ export default function Eligibility({ children, onBack, tabNumber, heading, subh
 
     return (
         <div className="relative bg-[#FFE6DF] flex items-center justify-center px-4 py-12 min-h-screen">
+            <HelmetProvider>
+                              <Helmet>
+                                <title>Check Eligibility for Online Weight Loss Programs | Neu Eu</title>
+                                <meta
+                                  name="description"
+                                  content="Check eligibility for Neu Eu’s prescription and online weight loss programs. Find out if GLP‑1 medication‑assisted plans are the right choice for your journey."
+                                />
+                              </Helmet>
+                            </HelmetProvider>
             <div className="md:mt-10 mt-5 max-w-xl w-full">
                 <BlurText
                     text="Let's check your eligibility"
